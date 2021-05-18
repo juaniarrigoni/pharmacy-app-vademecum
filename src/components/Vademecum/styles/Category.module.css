@@ -1,0 +1,54 @@
+.Category {
+  position: relative;
+  padding: 20px;
+  display: block;
+  max-width: 450px;
+  width: 100%;
+}
+
+.Category_Tab {
+  color: #000;
+  overflow: hidden;
+  box-shadow: 0 2.5px 10px -2.5px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+}
+
+.Category_Tab:hover {
+  box-shadow: 0 5px 15px -2.5px rgba(0, 0, 0, 0.3);
+}
+
+.Category_Tab__Label {
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  background: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Category_Tab__Label::after {
+  position: absolute;
+  right: 1em;
+  content: "\276F";
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  transition: all 0.35s;
+}
+
+.Category_Tab__Content {
+  max-height: 0;
+  padding: 0 1em;
+  background: #ffffff;
+  transition: all 0.5s;
+}
+
+.active .Category_Tab__Label::after {
+  transform: rotate(90deg);
+}
+.active .Category_Tab__Content {
+  max-height: 100vh;
+  padding: 1em;
+}

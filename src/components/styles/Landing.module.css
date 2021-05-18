@@ -1,0 +1,134 @@
+.Landing {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  vertical-align: middle;
+}
+
+@media only screen and (max-width: 600px) {
+  .Landing {
+    padding: 5vh 0;
+  }
+  img.Landing__Box__Logo {
+    width: 40vw;
+    height: 40vw;
+  }
+  .Landing__Box__Buttons {
+    display: block;
+  }
+  .Landing__Box__Buttons__Button {
+    width: 100%;
+    margin: 20px auto;
+  }
+  .Landing__Box__Buttons__Button img {
+    display: none;
+  }
+  .Landing__Box__Buttons__Button p {
+    margin: 0;
+  }
+
+  .Landing__Scroll,
+  .Landing__Scroll img {
+    position: unset;
+    margin-top: 0px;
+  }
+}
+
+.Landing__Box {
+  margin: 10vh auto;
+  max-width: 100%;
+  width: 800px;
+}
+
+.Landing__Box__Green {
+  color: #00a54f;
+}
+
+img.Landing__Box__Logo {
+  background: #ffffff;
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: 30px auto;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 0 rgba(0, 165, 79, 0.3);
+  animation: shockwaveJump 2.5s ease-out infinite;
+}
+@keyframes shockwaveJump {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.08);
+  }
+  50% {
+    transform: scale(0.98);
+  }
+  55% {
+    transform: scale(1.02);
+  }
+  60% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.Landing__Box__Buttons {
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Landing__Box__Buttons__Button {
+  cursor: pointer;
+  display: block;
+  max-width: 200px;
+  min-width: 80px;
+  width: auto;
+  box-shadow: 0 2.5px 10px -2.5px rgba(0, 165, 79, 0.15);
+  margin: 20px;
+  border-radius: 20px;
+  background: #ffffff;
+  padding: 1em;
+}
+.Landing__Box__Buttons__Button:hover {
+  box-shadow: 0 5px 15px -2.5px rgba(0, 165, 79, 0.3);
+}
+
+.Landing__Box__Buttons__Button img {
+  cursor: pointer;
+  display: block;
+  width: 50px;
+  margin: 0 auto;
+}
+
+.Landing__Box__Buttons__Button p {
+  cursor: pointer;
+  font-weight: 700;
+  color: #00a54f;
+  margin-top: 0.5em;
+}
+
+.Landing__Box__Buttons__Button span {
+  cursor: pointer;
+  color: #00a54f;
+  display: block;
+  font-size: 0.75em;
+}
+
+.Landing__Scroll,
+.Landing__Scroll img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  display: block;
+  max-width: 50px;
+  margin: 0 auto;
+  cursor: pointer;
+}

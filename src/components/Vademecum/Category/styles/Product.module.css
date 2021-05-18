@@ -1,0 +1,18 @@
+p.Products__Product {
+  cursor: pointer;
+  box-shadow: inset 0 0 0.2em 0 rgba(0, 0, 0, 0.3);
+  margin-bottom: 0.75em;
+  padding: 0.5em;
+  border-radius: 10px;
+}
+
+p.Products__Product:hover,
+p.Products__Product:focus {
+  box-shadow: inset 0 0 0.8em 0 rgba(0, 165, 79, 0.3);
+}
+p.Products__NotFound {
+  cursor: pointer;
+  margin-bottom: 0.75em;
+  padding: 0.5em;
+  border-radius: 10px;
+}

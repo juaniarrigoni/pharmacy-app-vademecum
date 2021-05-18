@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from "react";
 
-function App() {
+import Landing from "./components/Landing";
+import Vademecum from "./components/Vademecum";
+import Activos from "./components/Activos";
+import Contact from "./components/Contact";
+import Signature from "./components/Signature";
+
+import "./App.scss";
+import "./assets/smooth-scrolling";
+
+const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="App">
+      <Landing />
+      <Vademecum />
+      <Activos />
+      <Contact />
+      <Signature />
     </div>
   );
-}
+};
 
 export default App;

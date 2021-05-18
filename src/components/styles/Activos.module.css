@@ -1,0 +1,36 @@
+.Activos {
+  padding: 10vh 0;
+}
+
+.Activos h3 {
+  margin-bottom: 20px;
+}
+
+.Activos__Flex {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Activos__Flex__Activo {
+  cursor: default;
+  font-size: 0.9em;
+  font-weight: 700;
+  display: block;
+  background: #ffffff;
+  box-shadow: inset 0 0 0.2em 0 rgba(0, 0, 0, 0.3);
+  margin: 0.75em;
+  padding: 0.5em 1em;
+  width: fit-content;
+  border-radius: 10px;
+}
+
+a.Activos__Flex__Activo {
+  font-weight: 900;
+  cursor: pointer;
+}
+a.Activos__Flex__Activo:hover {
+  box-shadow: inset 0 0 0.8em 0 rgba(0, 165, 79, 0.3);
+}
