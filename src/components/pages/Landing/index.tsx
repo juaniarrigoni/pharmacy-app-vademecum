@@ -1,14 +1,14 @@
 import { FC, useState } from "react";
 
-import ContactModal from "./Landing/ContactModal";
+import ContactModal from "components/general/ContactModal";
 
-import style from "./styles/Landing.module.css";
+import style from "./style.module.css";
 
-import logo from "../assets/Logo.jpg";
-import scroll from "../assets/Scroll-down.gif";
-import vademecum from "../assets/Vademecum.png";
-import activos from "../assets/Activos.png";
-import contacto from "../assets/Contacto.png";
+import logo from "assets/media/Logo.jpg";
+import scroll from "assets/media/Scroll-down.gif";
+import vademecum from "assets/media/Vademecum.png";
+import activos from "assets/media/Activos.png";
+import contacto from "assets/media/Contacto.png";
 
 const Landing: FC = () => {
   const [modal, setModal] = useState(false);

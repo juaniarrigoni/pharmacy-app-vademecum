@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
 
-import Result from "./Category/Result";
-import Product from "./Category/Product";
+import Result from "./components/Result";
+import Product from "./components/Product";
 
-import style from "./styles/Category.module.css";
+import style from "./style.module.css";
 
 const Category: FC<{
   category: string;

@@ -1,7 +1,7 @@
 import { FC, useRef } from "react";
 import dotenv from "dotenv";
 
-import style from "./styles/ProductModal.module.css";
+import style from "./style.module.css";
 
 import edit from "../../assets/Edit.png";
 

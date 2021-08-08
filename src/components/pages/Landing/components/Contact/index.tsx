@@ -1,7 +1,7 @@
 import { FC, useState, useRef } from "react";
 import emailjs from "emailjs-com";
 
-import style from "./styles/Contact.module.css";
+import style from "./style.module.css";
 
 const Contact: FC = () => {
   const [name, setName] = useState("");

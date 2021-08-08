@@ -1,6 +1,6 @@
-import { FC } from "react";
+import style from "./style.module.css";
 
-import style from "./styles/Loader.module.css";
+import type { FC } from "react";
 
 const Loader: FC<{ state: boolean }> = ({ state }) => {
   if (state) {

@@ -1,9 +1,9 @@
 import { FC, useState, useEffect } from "react";
 import axios from "axios";
 
-import Loader from "./Loader";
+import Loader from "components/general/Loader";
 
-import style from "./styles/Activos.module.css";
+import style from "./style.module.css";
 
 const Activos: FC = () => {
   const [data, setData] = useState([]);

@@ -1,7 +1,7 @@
 {
-  "name": "pharmacy-app",
+  "name": "farmaceuticosasociados",
   "version": "1.0.0",
-  "description": "App to enhance workflow between pharmacists from Farmacéuticos Asociados S.R.L. and doctors from Argentina.",
+  "description": "Farmacéuticos Asociados | Laboratorio de Fórmulas",
   "author": "Francisco Arrigoni <franarrigoni@gmail.com>",
   "private": true,
   "dependencies": {
@@ -21,7 +21,7 @@
     "node-sass": "^6.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^1.1.5",
     "sass": "^1.32.13",
     "typescript": "^4.2.4",
     "web-vitals": "^1.1.2"
@@ -30,7 +30,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "check-types": "tsc --noEmit --noUnusedLocals"
   },
   "eslintConfig": {
     "extends": [
@@ -49,5 +50,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@mediamonks/eslint-config-react": "^1.0.2",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.2",
+    "styled-components": "^5.3.0"
   }
 }

@@ -1,6 +1,6 @@
-import { FC } from "react";
+import type { FC } from "react";
 
-import style from "./styles/Product.module.css";
+import style from "./style.module.css";
 
 const Product: FC<{
   data: any[];

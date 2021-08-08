@@ -1,6 +1,6 @@
-import { FC } from "react";
+import type { FC } from "react";
 
-import style from "./styles/Result.module.css";
+import style from "./style.module.css";
 
 const Result: FC<{ search: string; result: number | null }> = ({
   search,

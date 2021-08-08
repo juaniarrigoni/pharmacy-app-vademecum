@@ -1,9 +1,9 @@
-import { FC } from "react";
+import style from "./style.module.css";
 
-import lenses from "../assets/Signature/Francisco.png";
-import smile from "../assets/Signature/Arrigoni.png";
+import lenses from "./assets/Francisco.png";
+import smile from "./assets/Arrigoni.png";
 
-const style = require("./styles/Signature.module.css");
+import type { FC } from "react";
 
 const Signature: FC = () => {
   return (

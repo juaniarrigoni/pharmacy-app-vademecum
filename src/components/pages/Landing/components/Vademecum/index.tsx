@@ -2,13 +2,14 @@ import { FC, useState, useEffect } from "react";
 import axios from "axios";
 import dotenv from "dotenv";
 
-import SearchBar from "./Vademecum/SearchBar";
-import Loader from "./Loader";
-import Category from "./Vademecum/Category";
-import ProductModal from "./Vademecum/ProductModal";
-import RequestData from "./Vademecum/RequestData";
+import SearchBar from "./SearchBar";
+import Category from "./Category";
+import ProductModal from "./ProductModal";
+import RequestData from "./RequestData";
 
-import style from "./styles/Vademecum.module.css";
+import Loader from "components/general/Loader";
+
+import style from "./style.module.css";
 
 dotenv.config();
 

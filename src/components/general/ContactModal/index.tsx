@@ -1,11 +1,11 @@
-import { FC } from "react";
+import style from "./style.module.css";
 
-import style from "./styles/ContactModal.module.css";
+import location from "assets/media/Location.png";
+import chat from "assets/media/Chat.png";
+import mail from "assets/media/Mail.png";
+import phone from "assets/media/Phone.png";
 
-import location from "../../assets/Location.png";
-import chat from "../../assets/Chat.png";
-import mail from "../../assets/Mail.png";
-import phone from "../../assets/Phone.png";
+import type { FC } from "react";
 
 const ContactModal: FC<{ modal: boolean; setModal: Function }> = ({
   modal,
