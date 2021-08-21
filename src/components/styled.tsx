@@ -1,8 +1,10 @@
+// Import dependencies
 import styled from "styled-components";
 
+// Import assets
 import { COLORS } from "constants/styles";
 
-export const App = styled.div`
+export const Container = styled.div`
   max-width: 95%;
   position: relative;
   margin: auto;

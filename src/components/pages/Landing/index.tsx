@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 
-import ContactModal from "components/general/ContactModal";
-
 import style from "./style.module.css";
+
+import ContactModal from "components/general/ContactModal";
 
 import logo from "assets/media/Logo.jpg";
 import scroll from "assets/media/Scroll-down.gif";

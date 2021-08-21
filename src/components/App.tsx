@@ -1,15 +1,17 @@
+// Import dependencies
+import type { FC } from "react";
+
+// Import inner components
 import Landing from "./pages/Landing";
 
-import "assets/styles/App.scss";
-import "assets/scripts/smooth-scrolling";
-
-import type { FC } from "react";
+// Import styled components
+import { Container } from "./styled";
 
 const App: FC = () => {
   return (
-    <div id="App">
+    <Container>
       <Landing />
-    </div>
+    </Container>
   );
 };
 

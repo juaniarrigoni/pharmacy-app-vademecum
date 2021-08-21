@@ -3,63 +3,65 @@ export default window.onload = function () {
     return t * t * t;
   };
 
+  /* eslint-disable no-restricted-properties */
   const scrollElems: NodeListOf<Element> = document.querySelectorAll(
     '[data-scroll="smooth"]'
   );
 
-  const scrollToElem = (
+  const scrollToElement = (
     start: number,
     stamp: number,
     duration: number,
-    scrollEndElemTop,
+    scrollEndElementTop,
     startScrollOffset
   ) => {
     const runtime: number = stamp - start;
     let progress: number = runtime / duration;
     const ease: number = easeInCubic(progress);
     progress = Math.min(progress, 1);
-    window.scroll(0, startScrollOffset + scrollEndElemTop * ease);
+    window.scroll(0, startScrollOffset + scrollEndElementTop * ease);
     if (runtime < duration) {
       requestAnimationFrame(() => {
-        const stamp: number = new Date().getTime();
-        scrollToElem(
+        const newStamp: number = new Date().getTime();
+        scrollToElement(
           start,
-          stamp,
+          newStamp,
           duration,
-          scrollEndElemTop,
+          scrollEndElementTop,
           startScrollOffset
         );
       });
     }
   };
 
-  for (let i = 0; i < scrollElems.length; i++) {
-    const elem: Element = scrollElems[i];
-    let scrollElemId: string;
-    let scrollEndElem: HTMLElement | null;
-    elem.addEventListener("click", function (e: Event) {
-      e.preventDefault();
-      if (e.currentTarget) {
-        scrollElemId = (e.currentTarget as HTMLAnchorElement).href.split(
-          "#"
-        )[1];
-        scrollEndElem = document.getElementById(scrollElemId);
+  scrollElems.forEach((scrollElement) => {
+    const element: Element = scrollElement;
+    let scrollElementId: string;
+    let scrollEndElement: HTMLElement | null;
+    element.addEventListener("click", function (event: Event) {
+      event.preventDefault();
+      if (event.currentTarget) {
+        [scrollElementId] = (
+          event.currentTarget as HTMLAnchorElement
+        ).href.split("#");
+        // eslint-disable-next-line unicorn/prefer-query-selector
+        scrollEndElement = document.getElementById(scrollElementId);
       }
       requestAnimationFrame(() => {
         const stamp: number = new Date().getTime();
         const duration: number = 1000;
         const start: number = stamp;
         const startScrollOffset: number = window.pageYOffset;
-        const scrollEndElemTop: number =
-          scrollEndElem!.getBoundingClientRect().top;
-        scrollToElem(
+        const scrollEndElementTop: number =
+          scrollEndElement!.getBoundingClientRect().top;
+        scrollToElement(
           start,
           stamp,
           duration,
-          scrollEndElemTop,
+          scrollEndElementTop,
           startScrollOffset
         );
       });
     });
-  }
+  });
 };

@@ -1,79 +1,90 @@
-import style from "./style.module.css";
+// Import dependencies
+import type { FC } from "react";
 
+// Import styled components
+import {
+  Container,
+  Modal,
+  ModalClose,
+  ModalContent,
+  ContactInfoItem,
+  ContactInfoIcon,
+} from "./styled";
+
+// Import assets
 import location from "assets/media/Location.png";
 import chat from "assets/media/Chat.png";
 import mail from "assets/media/Mail.png";
 import phone from "assets/media/Phone.png";
 
-import type { FC } from "react";
+const contactInfo = [
+  {
+    text: "Gral. San Martin 1284, Neuquén",
+    icon: location,
+    link: "https://g.page/farmaceuticosasociados",
+    button: "VER MAPA",
+  },
+  {
+    text: "Atención por WhatsApp",
+    icon: chat,
+    link: "https://wa.me/542995799121?text=Hola!%20Vengo%20del%20sitio%20web",
+    button: "CHATEAR",
+  },
+  {
+    text: "farmaceuticosasociados@gmail.com",
+    icon: mail,
+    link: "#Contact",
+    button: "CONTACTAR",
+    isMail: true,
+  },
+  {
+    text: "299 579 9121 – 299 447 5777",
+    icon: phone,
+    isPhone: true,
+  },
+];
 
-const ContactModal: FC<{ modal: boolean; setModal: Function }> = ({
-  modal,
-  setModal,
-}) => {
-  if (modal) {
-    return (
-      <div id="ContactModal" data-state={modal} className={style.ContactModal}>
-        <div className={style.ContactModal__Content}>
-          <span
+const ContactModal: FC<{
+  modal: boolean;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ modal, setModal }) => {
+  const ContactInfo = contactInfo.map((item) => (
+    <ContactInfoItem>
+      <ContactInfoIcon>
+        <img src={item.icon} alt="icon" />
+      </ContactInfoIcon>
+      <p>{item.text}</p>
+      {!item.isPhone &&
+        (item.isMail ? (
+          <a
+            href={item.link}
+            data-scroll="smooth"
             onClick={() => setModal(false)}
-            className={style.ContactModal__Content__Close}
           >
-            x
-          </span>
-          <div className={style.ContactModal__Content__Box}>
+            {item.button}
+          </a>
+        ) : (
+          <a href={item.link} target="_blank" rel="noreferrer">
+            {item.button}
+          </a>
+        ))}
+    </ContactInfoItem>
+  ));
+
+  return (
+    <Container data-state={modal}>
+      {modal && (
+        <Modal>
+          <ModalClose onClick={() => setModal(false)}>x</ModalClose>
+          <ModalContent>
             <h2>CONTACTO</h2>
             <h3>Dónde encontrarnos</h3>
-            <div className={style.ContactModal__Content__Contact}>
-              <div className={style.ContactModal__Content__Contact__Icon}>
-                <img src={location} alt="location" />
-              </div>
-              <p>Gral. San Martin 1284, Neuquén</p>
-              <a
-                href="https://g.page/farmaceuticosasociados"
-                target="_blank"
-                rel="noreferrer"
-              >
-                VER MAPA
-              </a>
-            </div>
-            <div className={style.ContactModal__Content__Contact}>
-              <div className={style.ContactModal__Content__Contact__Icon}>
-                <img src={chat} alt="chat" />
-              </div>
-              <p>Atención por WhatsApp</p>
-              <a
-                href="https://wa.me/542995799121?text=Hola!%20Vengo%20del%20sitio%20web"
-                target="_blank"
-                rel="noreferrer"
-              >
-                CHATEAR
-              </a>
-            </div>
-            <div className={style.ContactModal__Content__Contact}>
-              <div className={style.ContactModal__Content__Contact__Icon}>
-                <img src={mail} alt="mail" />
-              </div>
-              <p>farmaceuticosasociados@gmail.com</p>
-              <a
-                href="#Contact"
-                data-scroll="smooth"
-                onClick={() => setModal(false)}
-              >
-                CONTACTAR
-              </a>
-            </div>
-            <div className={style.ContactModal__Content__Contact}>
-              <div className={style.ContactModal__Content__Contact__Icon}>
-                <img src={phone} alt="phone" />
-              </div>
-              <p>299 579 9121 – 299 447 5777</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  } else return null;
+            {ContactInfo}
+          </ModalContent>
+        </Modal>
+      )}
+    </Container>
+  );
 };
 
 export default ContactModal;
