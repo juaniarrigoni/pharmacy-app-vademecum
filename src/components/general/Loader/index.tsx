@@ -1,12 +1,14 @@
-import style from "./style.module.css";
-
+// Import dependencies
 import type { FC } from "react";
+
+// Import styled components
+import { Container, LoaderContent } from "./styled";
 
 const Loader: FC<{ state: boolean }> = ({ state }) => {
   if (state) {
     return (
-      <div id="Loader" className={style.Loader}>
-        <div className={style.Loader__Content}>
+      <Container>
+        <LoaderContent>
           <div></div>
           <div></div>
           <div></div>
@@ -15,8 +17,8 @@ const Loader: FC<{ state: boolean }> = ({ state }) => {
           <div></div>
           <div></div>
           <div></div>
-        </div>
-      </div>
+        </LoaderContent>
+      </Container>
     );
   } else return null;
 };

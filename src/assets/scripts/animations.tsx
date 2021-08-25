@@ -1,3 +1,4 @@
+// Used in components/general/ContactModal
 export const fadeInTop = `
 @keyframes fadeInTop {
     0% {
@@ -14,6 +15,7 @@ export const fadeInTop = `
     }
 }`;
 
+// Used in components/general/ContactModal
 export const zoom = `
 @keyframes zoom {
   0% {
@@ -24,4 +26,16 @@ export const zoom = `
     opacity: 1;
     transform: scale(1);
   }
+`;
+
+// Used in components/general/Loader
+export const loader = `
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 `;
