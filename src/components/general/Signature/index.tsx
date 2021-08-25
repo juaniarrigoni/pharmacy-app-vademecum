@@ -1,28 +1,23 @@
-import style from "./style.module.css";
+// Import dependencies
+import type { FC } from "react";
 
+// Import styled components
+import { Container } from "./styled";
+
+// Import assets
 import lenses from "./assets/Francisco.png";
 import smile from "./assets/Arrigoni.png";
-
-import type { FC } from "react";
+import { developerWebsite } from "constants/contact";
 
 const Signature: FC = () => {
   return (
-    <div id="Signature">
-      <a
-        href="http://franarrigoni.vercel.app"
-        target="_blank"
-        rel="noreferrer"
-        className={style.Signature__Logo}
-      >
-        <p className={style.Signature__Logo__Text}>made by</p>
-        <img
-          className={style.Signature__Logo__Lenses}
-          alt="lenses"
-          src={lenses}
-        />
-        <img className={style.Signature__Logo__Smile} alt="smile" src={smile} />
+    <Container>
+      <a href={developerWebsite} target="_blank" rel="noreferrer">
+        <p>made by</p>
+        <img alt="Signature" src={lenses} />
+        <img alt="Signature" src={smile} />
       </a>
-    </div>
+    </Container>
   );
 };
 
