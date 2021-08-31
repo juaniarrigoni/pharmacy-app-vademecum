@@ -2,10 +2,11 @@
 import styled from "styled-components";
 
 // Import assets
+import { COLORS, FONT_FAMILY } from "constants/styles";
 import { fadeInTop, zoom } from "assets/scripts/animations";
 
 export const Container = styled.div`
-  background: rgba(0, 0, 0, 0 85);
+  background: rgba(${COLORS.BLACK_RGB}, 0.85);
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -15,30 +16,28 @@ export const Container = styled.div`
 `;
 
 export const Modal = styled.div`
-  background-color: #ffffff;
+  background-color: ${COLORS.WHITE};
   background: radial-gradient(
       circle,
       transparent 20%,
-      #ffffff 20%,
-      #ffffff 80%,
+      ${COLORS.WHITE} 20%,
+      ${COLORS.WHITE} 80%,
       transparent 80%,
       transparent
     ),
     radial-gradient(
         circle,
         transparent 20%,
-        #ffffff 20%,
-        #ffffff 80%,
+        ${COLORS.WHITE} 20%,
+        ${COLORS.WHITE} 80%,
         transparent 80%,
         transparent
       )
-      32export const 5px 32export const 5px,
-    linear-gradient(#f2faf6 2export const 6px, transparent 2export const 6px) 0 -1export
-      const 3px,
-    linear-gradient(90deg, #f2faf6 2export const 6px, #ffffff 2export const 6px) -1export
-      const 3px 0;
-  background-size: 65px 65px, 65px 65px, 32export const 5px 32export const 5px,
-    32export const 5px 32export const 5px;
+      32.5px 32.5px,
+    linear-gradient(${COLORS.PRIMARY} 2.6px, transparent 2.6px) 0 -1.3px,
+    linear-gradient(90deg, ${COLORS.PRIMARY} 2.6px, ${COLORS.WHITE} 2.6px) -1.3px
+      0;
+  background-size: 65px 65px, 65px 65px, 32.5px 32.5px, 32.5px 32.5px;
   border-radius: 20px;
   width: 90%;
   height: fit-content;
@@ -72,13 +71,13 @@ export const ModalClose = styled.div`
   line-height: 30px;
   font-size: 18px;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0 2);
-  color: #ffffff;
-  font-family: "Fredoka One", cursive;
+  background-color: rgba(${COLORS.BLACK_RGB}, 0.2);
+  color: ${COLORS.WHITE};
+  font-family: ${FONT_FAMILY.PRIMARY};
   animation: zoom 0 3s linear;
   &:hover {
-    color: #000000;
-    background: rgba(0, 0, 0, 0 4);
+    color: ${COLORS.BLACK};
+    background: rgba(${COLORS.BLACK_RGB}, 0.4);
   }
   ${zoom}
 `;
@@ -107,7 +106,7 @@ export const ContactInfoItem = styled.div`
     width: fit-content;
     margin-left: 1em;
     margin: 0 auto;
-    color: #ffffff;
+    color: ${COLORS.WHITE};
     font-weight: 900;
     background: linear-gradient(180deg, #32b772 0, #00a54f 100%);
     text-transform: uppercase;
@@ -116,9 +115,9 @@ export const ContactInfoItem = styled.div`
     padding: 0 3em 0 8em;
     font-size: 0 8em;
     cursor: pointer;
-    box-shadow: 0 0 1em 0 5em 0 rgba(0, 0, 0, 0 3);
+    box-shadow: 0 0 1em 0 5em 0 rgba(${COLORS.BLACK_RGB}, 0 3);
     &:hover {
-      box-shadow: 0 0 2em 0 5em 0 rgba(0, 0, 0, 0 5);
+      box-shadow: 0 0 2em 0 5em 0 rgba(${COLORS.BLACK_RGB}, 0 5);
     }
   }
   p {
