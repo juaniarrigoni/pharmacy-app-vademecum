@@ -91,9 +91,17 @@ export const ModalContent = styled.div`
   }
 `;
 
-export const ContactInfoItem = styled.div`
-  text-align: center;
+export const ContentBox = styled.div`
   display: block;
+  margin: auto;
+  width: 95%;
+`;
+
+export const ContactInfoItem = styled.div`
+  text-align: left;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5em;
   a {
     display: block;
     width: fit-content;
@@ -131,17 +139,4 @@ export const ContactInfoIcon = styled.div`
     width: 30px;
     padding: 0 4em;
   }
-`;
-
-export const ContactModal__Content__Box = styled.div`
-  display: block;
-  margin: auto;
-  width: 95%;
-`;
-
-export const ContactModal__Content__Contact = styled.div`
-  text-align: left;
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.5em;
 `;
