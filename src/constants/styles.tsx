@@ -3,7 +3,8 @@
 export const COLORS = {
   WHITE: "#ffffff",
   BLACK: "#000000",
-  PRIMARY: "#f2faf6",
+  PRIMARY: "#00a54f",
+  GREEN_WHITE: "#f2faf6",
   BLACK_RGB: "0, 0, 0",
   PRIMARY_RGB: "0, 165, 79",
 };

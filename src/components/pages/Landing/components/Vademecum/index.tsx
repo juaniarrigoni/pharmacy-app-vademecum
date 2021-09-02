@@ -1,15 +1,19 @@
+// Import dependencies
 import { FC, useState, useEffect } from "react";
 import axios from "axios";
 import dotenv from "dotenv";
 
+// Import inner components
 import SearchBar from "./SearchBar";
 import Category from "./Category";
 import ProductModal from "./ProductModal";
 import RequestData from "./RequestData";
 
-import Loader from "components/general/Loader";
+// Import styled components
+import { Container, List } from "./styled";
 
-import style from "./style.module.css";
+// Import external components
+import Loader from "components/general/Loader";
 
 dotenv.config();
 
@@ -68,12 +72,12 @@ const Vademecum: FC = () => {
   });
 
   return (
-    <div id="Vademecum" className={style.Vademecum}>
+    <Container id="Vademecum">
       <h2>Vademécum</h2>
       <h3>Nuestras fórmulas</h3>
       <SearchBar search={search} setSearch={setSearch} />
       <Loader state={loading} />
-      <div className={style.Vademecum__Flex}>{content}</div>
+      <List>{content}</List>
       <ProductModal
         name={name}
         formula={formula}
@@ -88,7 +92,7 @@ const Vademecum: FC = () => {
         username={username}
         setUsername={setUsername}
       />
-    </div>
+    </Container>
   );
 };
 
