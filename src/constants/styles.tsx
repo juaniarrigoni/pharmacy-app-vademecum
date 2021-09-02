@@ -5,6 +5,7 @@ export const COLORS = {
   BLACK: "#000000",
   PRIMARY: "#f2faf6",
   BLACK_RGB: "0, 0, 0",
+  PRIMARY_RGB: "0, 165, 79",
 };
 
 export const FONT_FAMILY = {

@@ -1,9 +1,12 @@
+// Import dependencies
 import { FC, useState, useEffect } from "react";
 import axios from "axios";
 
+// Import external components
 import Loader from "components/general/Loader";
 
-import style from "./style.module.css";
+// Import styled components
+import { Container, List, ActivoText, ActivoButton } from "./styled";
 
 const Activos: FC = () => {
   const [data, setData] = useState([]);
@@ -30,37 +33,32 @@ const Activos: FC = () => {
   let content: JSX.Element[] = data.map((el: IData, idx: number) => {
     if (el.gsx$link.$t.indexOf("https://drive.google.com/") === -1) {
       return (
-        <p
-          key={idx}
-          id={el.gsx$nombre.$t.replace(/\s+/g, "-")}
-          className={style.Activos__Flex__Activo}
-        >
+        <ActivoText key={idx} id={el.gsx$nombre.$t.replace(/\s+/g, "-")}>
           {el.gsx$nombre.$t}
-        </p>
+        </ActivoText>
       );
     } else {
       return (
-        <a
+        <ActivoButton
           key={idx}
           id={el.gsx$nombre.$t.replace(/\s+/g, "-")}
-          className={style.Activos__Flex__Activo}
           href={el.gsx$link.$t}
           target="_blank"
           rel="noreferrer"
         >
           {el.gsx$nombre.$t}
-        </a>
+        </ActivoButton>
       );
     }
   });
 
   return (
-    <div id="Activos" className={style.Activos}>
+    <Container id="Activos">
       <h2>Activos</h2>
       <h3>Calidad asegurada</h3>
       <Loader state={loading} />
-      <div className={style.Activos__Flex}>{content}</div>
-    </div>
+      <List>{content}</List>
+    </Container>
   );
 };
 
