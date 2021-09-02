@@ -1,7 +1,9 @@
+// Import dependencies
 import { FC, useState, useRef } from "react";
 import emailjs from "emailjs-com";
 
-import style from "./style.module.css";
+// Import styled components
+import { Container, Form, Error, FlexBox, Submit } from "./styled";
 
 const Contact: FC = () => {
   const [name, setName] = useState("");
@@ -58,19 +60,13 @@ const Contact: FC = () => {
   };
 
   return (
-    <div id="Contact" className={style.Contact}>
+    <Container id="Contact">
       <h2>Contacto</h2>
       <h3>Estamos para ayudarte</h3>
-      <div
-        ref={divElement}
-        className={style.Contact__Content__Box__ContactForm}
-      >
+      <Form ref={divElement}>
         <form ref={formElement} onSubmit={(e) => handleSubmit(e)}>
-          <p
-            ref={messageElement}
-            className={style.Contact__Content__Box__ContactForm__Error}
-          ></p>
-          <div className={style.Contact__Content__Box__ContactForm__UserData}>
+          <Error ref={messageElement}></Error>
+          <FlexBox>
             <input
               type="text"
               placeholder="Nombre"
@@ -85,21 +81,17 @@ const Contact: FC = () => {
               value={email}
               onChange={(e) => setEmail(e.currentTarget.value)}
             />
-          </div>
+          </FlexBox>
           <textarea
             placeholder="¿Cómo podemos ayudarte?"
             name="message"
             value={message}
             onChange={(e) => setMessage(e.currentTarget.value)}
           />
-          <input
-            className={style.Contact__Content__Box__ContactForm__Submit}
-            type="submit"
-            value="Send"
-          />
+          <Submit type="submit" value="Send" />
         </form>
-      </div>
-    </div>
+      </Form>
+    </Container>
   );
 };
 
