@@ -15,19 +15,21 @@ export const Container = styled.div`
   h2,
   h3,
   p {
-    color: #000000;
+    color: ${COLORS.BLACK};
   }
 `;
 
 export const Form = styled.div`
-  background: linear-gradient(90deg, #00a54f 21px, transparent 1%) center,
-    linear-gradient(#00a54f 21px, transparent 1%) center, #ffffff;
+  background: linear-gradient(90deg, ${COLORS.PRIMARY} 21px, transparent 1%)
+      center,
+    linear-gradient(${COLORS.PRIMARY} 21px, transparent 1%) center,
+    ${COLORS.WHITE};
   background-size: 22px 22px;
   display: flex;
   flex-direction: column;
   text-align: center;
   vertical-align: middle;
-  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 15px 0 rgba(${COLORS.BLACK_RGB}, 0.3);
   max-width: 600px;
   padding: 8vh;
   margin: 0 auto;
@@ -35,7 +37,7 @@ export const Form = styled.div`
 
   h2 {
     margin-bottom: 0px;
-    color: #ffffff;
+    color: ${COLORS.WHITE};
   }
 
   input,
@@ -46,15 +48,17 @@ export const Form = styled.div`
     font-weight: 700;
     padding: 10px;
     margin: 0 auto 15px;
-    box-shadow: 0 0 5px 0 rgb(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px 0 rgba(${COLORS.BLACK_RGB}, 0.2);
     width: 100%;
-    color: #000000;
-    background: linear-gradient(90deg, #ffffff 21px, transparent 1%) center,
-      linear-gradient(#ffffff 21px, transparent 1%) center, #ffffff;
+    color: ${COLORS.BLACK};
+    background: linear-gradient(90deg, ${COLORS.WHITE} 21px, transparent 1%)
+        center,
+      linear-gradient(${COLORS.WHITE} 21px, transparent 1%) center,
+      ${COLORS.WHITE};
     background-size: 22px 22px;
 
     &:focus {
-      box-shadow: 0 0 5px 0 rgb(65, 23, 171, 0.8);
+      box-shadow: 0 0 5px 0 rgba(${COLORS.VIOLET_RGB}, 0.8);
     }
   }
 
@@ -70,7 +74,7 @@ export const Form = styled.div`
 `;
 
 export const Error = styled.p`
-  color: #ffffff;
+  color: ${COLORS.WHITE};
   font-weight: 900;
   margin-bottom: 2rem;
 `;
@@ -91,18 +95,22 @@ export const Submit = styled.input`
   background: transparent;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  box-shadow: 0 6px 10px -3px rgba(65, 23, 171, 0.5);
+  color: ${COLORS.WHITE};
+  border: 2px solid ${COLORS.WHITE};
+  box-shadow: 0 6px 10px -3px rgba(${COLORS.VIOLET_RGB}, 0.5);
   text-transform: uppercase;
-  background: linear-gradient(90deg, #00a54f 21px, transparent 1%) center,
-    linear-gradient(#00a54f 21px, transparent 1%) center, #ffffff;
+  background: linear-gradient(90deg, ${COLORS.PRIMARY} 21px, transparent 1%)
+      center,
+    linear-gradient(${COLORS.PRIMARY} 21px, transparent 1%) center,
+    ${COLORS.WHITE};
   background-size: 22px 22px;
 
   &:hover {
-    color: #00a54f;
-    background: linear-gradient(90deg, #ffffff 21px, transparent 1%) center,
-      linear-gradient(#ffffff 21px, transparent 1%) center, #00a54f;
+    color: ${COLORS.PRIMARY};
+    background: linear-gradient(90deg, ${COLORS.WHITE} 21px, transparent 1%)
+        center,
+      linear-gradient(${COLORS.WHITE} 21px, transparent 1%) center,
+      ${COLORS.PRIMARY};
     background-size: 22px 22px;
   }
 `;

@@ -7,6 +7,7 @@ export const COLORS = {
   GREEN_WHITE: "#f2faf6",
   BLACK_RGB: "0, 0, 0",
   PRIMARY_RGB: "0, 165, 79",
+  VIOLET_RGB: "65, 23, 171",
 };
 
 export const FONT_FAMILY = {
