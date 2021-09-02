@@ -6,6 +6,7 @@ import { COLORS } from "constants/styles";
 
 export const Container = styled.div`
   padding: 10vh 0;
+
   h3 {
     margin-bottom: 20px;
   }
@@ -40,6 +41,7 @@ export const ActivoButton = styled.a`
   ${activoStyles}
   font-weight: 900;
   cursor: pointer;
+
   &:hover {
     box-shadow: inset 0 0 0.8em 0 rgba(${COLORS.PRIMARY_RGB}, 0.3);
   }

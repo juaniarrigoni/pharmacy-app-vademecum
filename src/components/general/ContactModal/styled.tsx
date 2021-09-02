@@ -51,12 +51,15 @@ export const Modal = styled.div`
   margin: auto;
   display: flex;
   padding: 45px;
+
   h3 {
     margin-bottom: 20px;
   }
+
   [data-state="true"] {
     animation: fadeInTop 1s linear;
   }
+
   ${fadeInTop}
 `;
 
@@ -75,10 +78,12 @@ export const ModalClose = styled.div`
   color: ${COLORS.WHITE};
   font-family: ${FONT_FAMILY.PRIMARY};
   animation: zoom 0 3s linear;
+
   &:hover {
     color: ${COLORS.BLACK};
     background: rgba(${COLORS.BLACK_RGB}, 0.4);
   }
+
   ${zoom}
 `;
 
@@ -101,6 +106,7 @@ export const ContactInfoItem = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 1.5em;
+
   a {
     display: block;
     width: fit-content;
@@ -116,10 +122,12 @@ export const ContactInfoItem = styled.div`
     font-size: 0 8em;
     cursor: pointer;
     box-shadow: 0 0 1em 0 5em 0 rgba(${COLORS.BLACK_RGB}, 0 3);
+
     &:hover {
       box-shadow: 0 0 2em 0 5em 0 rgba(${COLORS.BLACK_RGB}, 0 5);
     }
   }
+
   p {
     margin: 1em auto;
   }
@@ -134,6 +142,7 @@ export const ContactInfoIcon = styled.div`
   width: 30px;
   height: 30px;
   line-height: 30px;
+
   img {
     width: 30px;
     padding: 0 4em;
