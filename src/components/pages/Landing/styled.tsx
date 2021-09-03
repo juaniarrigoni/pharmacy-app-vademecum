@@ -19,14 +19,14 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled.img`
-  background: #ffffff;
+  background: ${COLORS.WHITE};
   display: block;
   width: 200px;
   height: 200px;
   margin: 30px auto;
   border-radius: 50%;
-  box-shadow: 0 0 10px 0 rgba(0, 165, 79, 0.3);
-  animation: shockwaveJump 2.5s ease-out infinite;
+  box-shadow: 0 0 10px 0 rgba(${COLORS.PRIMARY_RGB}, 0.3);
+  animation: heartBeat 2.5s ease-out infinite;
 
   @media only screen and (max-width: 600px) {
     width: 40vw;
@@ -42,7 +42,7 @@ export const Content = styled.div`
   width: 800px;
   h1,
   h2 {
-    color: #00a54f;
+    color: ${COLORS.PRIMARY};
   }
 `;
 
@@ -63,14 +63,14 @@ export const Button = styled.div`
   max-width: 200px;
   min-width: 80px;
   width: auto;
-  box-shadow: 0 2.5px 10px -2.5px rgba(0, 165, 79, 0.15);
+  box-shadow: 0 2.5px 10px -2.5px rgba(${COLORS.PRIMARY_RGB}, 0.15);
   margin: 20px;
   border-radius: 20px;
-  background: #ffffff;
+  background: ${COLORS.WHITE};
   padding: 1em;
 
   &:hover {
-    box-shadow: 0 5px 15px -2.5px rgba(0, 165, 79, 0.3);
+    box-shadow: 0 5px 15px -2.5px rgba(${COLORS.PRIMARY_RGB}, 0.3);
   }
 
   @media only screen and (max-width: 600px) {
@@ -91,7 +91,7 @@ export const Button = styled.div`
   p {
     cursor: pointer;
     font-weight: 700;
-    color: #00a54f;
+    color: ${COLORS.PRIMARY};
     margin-top: 0.5em;
     @media only screen and (max-width: 600px) {
       margin: 0;
@@ -100,7 +100,7 @@ export const Button = styled.div`
 
   span {
     cursor: pointer;
-    color: #00a54f;
+    color: ${COLORS.PRIMARY};
     display: block;
     font-size: 0.75em;
   }
