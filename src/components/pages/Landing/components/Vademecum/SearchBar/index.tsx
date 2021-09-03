@@ -1,23 +1,24 @@
+// Import dependencies
 import type { FC } from "react";
 
-import style from "./style.module.css";
+// Import styled components
+import { Container, Form, Input } from "./styled";
 
 const SearchBar: FC<{ search: string; setSearch: Function }> = ({
   search,
   setSearch,
 }) => {
   return (
-    <div id="SearchBar" className={style.SearchBar}>
-      <form className={style.SearchBar__Box}>
-        <input
+    <Container id="SearchBar">
+      <Form>
+        <Input
           type="text"
-          className={style.SearchBar__Box__Input}
           placeholder="Buscar un producto"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-      </form>
-    </div>
+      </Form>
+    </Container>
   );
 };
 
