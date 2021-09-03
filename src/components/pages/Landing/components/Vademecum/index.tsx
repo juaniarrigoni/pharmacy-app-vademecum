@@ -4,10 +4,10 @@ import axios from "axios";
 import dotenv from "dotenv";
 
 // Import inner components
-import SearchBar from "./SearchBar";
-import Category from "./Category";
-import ProductModal from "./ProductModal";
-import RequestData from "./RequestData";
+import SearchBar from "./components/SearchBar";
+import Category from "./components/Category";
+import ProductModal from "./components/ProductModal";
+import RequestDataModal from "./components/RequestDataModal";
 
 // Import styled components
 import { Container, List } from "./styled";
@@ -86,7 +86,7 @@ const Vademecum: FC = () => {
         setOpenRequestDataModal={setOpenRequestDataModal}
         username={username}
       />
-      <RequestData
+      <RequestDataModal
         state={openRequestDataModal}
         setOpenRequestDataModal={setOpenRequestDataModal}
         username={username}

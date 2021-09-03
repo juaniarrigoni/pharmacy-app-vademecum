@@ -25,8 +25,11 @@ export const Container = styled.div`
         transparent
       )
       32.5px 32.5px,
-    linear-gradient(${COLORS.GREEN_WHITE} 2.6px, transparent 2.6px) 0 -1.3px,
-    linear-gradient(90deg, ${COLORS.GREEN_WHITE} 2.6px, ${COLORS.WHITE} 2.6px) -1.3px
-      0;
+    linear-gradient(${COLORS.PRIMARY_LIGHTEST} 2.6px, transparent 2.6px) 0 -1.3px,
+    linear-gradient(
+        90deg,
+        ${COLORS.PRIMARY_LIGHTEST} 2.6px,
+        ${COLORS.WHITE} 2.6px
+      ) -1.3px 0;
   background-size: 65px 65px, 65px 65px, 32.5px 32.5px, 32.5px 32.5px;
 `;

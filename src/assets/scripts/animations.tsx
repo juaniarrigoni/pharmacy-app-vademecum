@@ -15,6 +15,21 @@ export const fadeInTop = `
     }
 }`;
 
+// Used in components/pages/Landing/components/Vademecum/components/RequestDataModal
+export const fadeIn = `
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+`;
+
 // Used in components/general/ContactModal
 export const zoom = `
 @keyframes zoom {
