@@ -39,3 +39,26 @@ export const loader = `
   }
 }
 `;
+
+// Used in components/pages/Landing
+export const heartBeat = `
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.08);
+  }
+  50% {
+    transform: scale(0.98);
+  }
+  55% {
+    transform: scale(1.02);
+  }
+  60% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;

@@ -1,9 +1,20 @@
+// Import dependencies
 import { FC, useState } from "react";
 
-import style from "./style.module.css";
+// Import styled components
+import {
+  Container,
+  Content,
+  Logo,
+  ButtonsWrapper,
+  Button,
+  ScrollButton,
+} from "./styled";
 
+// Import external components
 import ContactModal from "components/general/ContactModal";
 
+// Import assets
 import logo from "assets/media/Logo.jpg";
 import scroll from "assets/media/Scroll-down.gif";
 import vademecum from "assets/media/Vademecum.png";
@@ -14,56 +25,43 @@ const Landing: FC = () => {
   const [modal, setModal] = useState(false);
 
   return (
-    <div id="Landing" className={style.Landing}>
-      <div className={style.Landing__Box}>
-        <h1 className={style.Landing__Box__Green}>Farmacéuticos Asociados</h1>
-        <h2 className={style.Landing__Box__Green}>Laboratorio de Formulas</h2>
-        <img
-          src={logo}
-          alt="Farmacéuticos Asociados"
-          className={style.Landing__Box__Logo}
-        />
-        <div id="buttons" className={style.Landing__Box__Buttons}>
-          <a
-            href="#Vademecum"
+    <Container id="Landing">
+      <Content>
+        <h1>Farmacéuticos Asociados</h1>
+        <h2>Laboratorio de Formulas</h2>
+        <Logo src={logo} alt="Farmacéuticos Asociados" />
+        <ButtonsWrapper>
+          <Button
+            onClick={() => (window.location.href = "/#Vademecum")}
             data-scroll="smooth"
-            className={style.Landing__Box__Buttons__Button}
           >
             <img src={vademecum} alt="Vademecum" />
             <p>
               VADEMÉCUM<span>Nuestras fórmulas</span>
             </p>
-          </a>
-          <a
-            href="#Activos"
+          </Button>
+          <Button
+            onClick={() => (window.location.href = "/#Activos")}
             data-scroll="smooth"
-            className={style.Landing__Box__Buttons__Button}
           >
             <img src={activos} alt="Activos" />
             <p>
               ACTIVOS<span>Calidad asegurada</span>
             </p>
-          </a>
-          <div
-            onClick={() => setModal(true)}
-            className={style.Landing__Box__Buttons__Button}
-          >
+          </Button>
+          <Button onClick={() => setModal(true)}>
             <img src={contacto} alt="Contacto" />
             <p>
               CONTACTO<span>Dónde encontrarnos</span>
             </p>
-          </div>
-        </div>
-      </div>
-      <a
-        href="#Vademecum"
-        data-scroll="smooth"
-        className={style.Landing__Scroll}
-      >
+          </Button>
+        </ButtonsWrapper>
+      </Content>
+      <ScrollButton href="#Vademecum" data-scroll="smooth">
         <img src={scroll} alt="Scroll down" />
-      </a>
+      </ScrollButton>
       <ContactModal modal={modal} setModal={setModal} />
-    </div>
+    </Container>
   );
 };
 
