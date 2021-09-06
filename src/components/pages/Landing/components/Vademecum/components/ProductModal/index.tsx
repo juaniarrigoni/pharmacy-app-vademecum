@@ -1,9 +1,24 @@
+// Import dependencies
 import { FC, useRef } from "react";
 import dotenv from "dotenv";
 
-import style from "./style.module.css";
+// Import styled components
+import {
+  Container,
+  Modal,
+  ModalClose,
+  Content,
+  Formula,
+  ButtonsWrapper,
+  Button,
+  Notes,
+  User,
+  UserName,
+  Icon,
+} from "./styled";
 
-import edit from "../../assets/Edit.png";
+// Import assets
+import edit from "assets/media/Edit.png";
 
 dotenv.config();
 
@@ -69,83 +84,61 @@ const ProductModal: FC<{
   let referral: JSX.Element[] = [];
   if (username !== null) {
     referral.push(
-      <div className={style.ProductModal__Content__Box__Buttons__Button__Notes}>
+      <Notes>
         <p>Recomendado por:</p>
-        <div
-          className={
-            style.ProductModal__Content__Box__Buttons__Button__Notes__User
-          }
-          onClick={() => setOpenRequestDataModal(true)}
-        >
-          <p
-            className={
-              style.ProductModal__Content__Box__Buttons__Button__Notes__User__Name
-            }
-          >
-            {username}
-          </p>
-          <div
-            className={
-              style.ProductModal__Content__Box__Buttons__Button__Notes__User__Icon
-            }
-          >
+        <User onClick={() => setOpenRequestDataModal(true)}>
+          <UserName id="product-modal-username">{username}</UserName>
+          <Icon id="product-modal-username-icon">
             <img src={edit} alt="edit" />
-          </div>
-        </div>
-      </div>
+          </Icon>
+        </User>
+      </Notes>
     );
   }
 
   if (modal) {
     return (
-      <div id="ProductModal" data-state={modal} className={style.ProductModal}>
-        <div className={style.ProductModal__Content}>
-          <span
-            onClick={(e) => openModal(e, false)}
-            data-type="close"
-            className={style.ProductModal__Content__Close}
-          >
+      <Container id="ProductModal" data-state={modal}>
+        <Modal id="product-modal">
+          <ModalClose onClick={(e) => openModal(e, false)} data-type="close">
             x
-          </span>
-          <div className={style.ProductModal__Content__Box}>
+          </ModalClose>
+          <Content>
             <h2>{name}</h2>
-            <textarea
+            <Formula
               ref={formulaElement}
               rows={4}
-              className={style.ProductModal__Content__Box__Formula}
               onInput={() =>
                 'style.height = "";style.height = scrollHeight + 3 + "px"'
               }
             >
               {formula}
-            </textarea>
-            <div className={style.ProductModal__Content__Box__Buttons}>
+            </Formula>
+            <ButtonsWrapper>
               <div>
-                <a
-                  className={style.ProductModal__Content__Box__Buttons__Button}
+                <Button
                   onClick={(e) => getPrice(e)}
                   href="#vademecum"
                   target="_blank"
                   rel="noopener"
                 >
                   CONSULTAR<span>PRECIO</span>
-                </a>
+                </Button>
               </div>
               <div>
-                <a
-                  className={style.ProductModal__Content__Box__Buttons__Button}
+                <Button
                   onClick={(e) => shareLink(e)}
                   href="#vademecum"
                   rel="noopener"
                 >
                   RECOMENDAR<span>A ALGUIEN</span>
-                </a>
+                </Button>
                 {referral}
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            </ButtonsWrapper>
+          </Content>
+        </Modal>
+      </Container>
     );
   } else return null;
 };

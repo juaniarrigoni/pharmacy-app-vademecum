@@ -1,4 +1,11 @@
-.ProductModal {
+// Import dependencies
+import styled from "styled-components";
+
+// Import assets
+import { COLORS, FONT_FAMILY } from "constants/styles";
+import { fadeInTop, zoom } from "assets/scripts/animations";
+
+export const Container = styled.div`
   background: rgba(0, 0, 0, 0.85);
   width: 100vw;
   height: 100vh;
@@ -6,9 +13,13 @@
   left: 0;
   top: 0;
   z-index: 9;
-}
 
-.ProductModal__Content {
+  [data-state="true"] #product-modal {
+    animation: fadeInTop 1s linear;
+  }
+`;
+
+export const Modal = styled.div`
   background-color: #ffffff;
   background: radial-gradient(
       circle,
@@ -42,26 +53,11 @@
   bottom: 0;
   margin: auto;
   display: flex;
-}
-.ProductModal[data-state="true"] .ProductModal__Content {
-  animation: abrakadabra 1s linear;
-}
-@keyframes abrakadabra {
-  0% {
-    opacity: 0;
-    top: -10%;
-  }
-  50% {
-    opacity: 1;
-    top: 0;
-  }
-  100% {
-    opacity: 1;
-    top: 0;
-  }
-}
 
-.ProductModal__Content__Close {
+  ${fadeInTop}
+`;
+
+export const ModalClose = styled.span`
   position: absolute;
   cursor: pointer;
   z-index: 1;
@@ -72,32 +68,25 @@
   line-height: 30px;
   font-size: 18px;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.2);
-  color: #ffffff;
-  font-family: "Fredoka One", cursive;
+  background-color: rgba(${COLORS.BLACK_RGB}, 0.2);
+  color: ${COLORS.WHITE};
+  font-family: ${FONT_FAMILY.PRIMARY};
   animation: zoom 0.3s linear;
-}
-@keyframes zoom {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-.ProductModal__Content__Close:hover {
-  color: #000000;
-  background: rgba(0, 0, 0, 0.4);
-}
 
-.ProductModal__Content__Box {
+  &:hover {
+    color: #000000;
+    background: rgba(${COLORS.BLACK_RGB}, 0.4);
+  }
+
+  ${zoom}
+`;
+
+export const Content = styled.div`
   display: block;
   margin: auto;
-}
+`;
 
-textarea.ProductModal__Content__Box__Formula {
+export const Formula = styled.textarea`
   display: block;
   color: #000000;
   line-height: 1.5em;
@@ -113,22 +102,22 @@ textarea.ProductModal__Content__Box__Formula {
   border-radius: 20px;
   padding: 1em;
   margin: 20px auto;
-}
-textarea.ProductModal__Content__Box__Formula:hover,
-textarea.ProductModal__Content__Box__Formula:focus {
-  background: linear-gradient(90deg, #ffffff 11px, transparent 1%) center,
-    linear-gradient(#ffffff 11px, transparent 1%) center, #00a54f;
-  background-size: 12px 12px;
-  box-shadow: 0 0 15px -5px rgba(0, 165, 79, 0.5);
-}
 
-.ProductModal__Content__Box__Buttons {
+  &:hover,
+  &:focus {
+    background: linear-gradient(90deg, #ffffff 11px, transparent 1%) center,
+      linear-gradient(#ffffff 11px, transparent 1%) center, #00a54f;
+    background-size: 12px 12px;
+    box-shadow: 0 0 15px -5px rgba(0, 165, 79, 0.5);
+  }
+`;
+export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-}
+`;
 
-a.ProductModal__Content__Box__Buttons__Button {
+export const Button = styled.a`
   color: #ffffff;
   font-weight: 900;
   background: linear-gradient(180deg, #32b772 0, #00a54f 100%);
@@ -140,42 +129,43 @@ a.ProductModal__Content__Box__Buttons__Button {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   display: block;
   margin: 20px;
-}
-a.ProductModal__Content__Box__Buttons__Button:hover {
-  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
-}
 
-a.ProductModal__Content__Box__Buttons__Button span {
-  display: block;
-  font-size: 0.75em;
-  color: #ffffff;
-}
+  &:hover {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
+  }
 
-.ProductModal__Content__Box__Buttons__Button__Notes {
+  span {
+    display: block;
+    font-size: 0.75em;
+    color: #ffffff;
+  }
+`;
+
+export const Notes = styled.div`
   margin-top: -10px;
-}
 
-.ProductModal__Content__Box__Buttons__Button__Notes p {
-  font-size: 10px;
-}
+  p {
+    font-size: 10px;
+  }
+`;
 
-.ProductModal__Content__Box__Buttons__Button__Notes__User {
+export const User = styled.div`
   cursor: pointer;
   position: relative;
   cursor: pointer;
   width: fit-content;
   margin: 0 auto;
-}
-.ProductModal__Content__Box__Buttons__Button__Notes__User:hover
-  p.ProductModal__Content__Box__Buttons__Button__Notes__User__Name {
-  background: rgba(0, 165, 79, 0.1);
-}
-.ProductModal__Content__Box__Buttons__Button__Notes__User:hover
-  .ProductModal__Content__Box__Buttons__Button__Notes__User__Icon {
-  background: rgba(0, 165, 79, 0.3);
-}
 
-p.ProductModal__Content__Box__Buttons__Button__Notes__User__Name {
+  &:hover #product-modal-username {
+    background: rgba(0, 165, 79, 0.1);
+  }
+
+  &:hover #product-modal-username-icon {
+    background: rgba(0, 165, 79, 0.3);
+  }
+`;
+
+export const UserName = styled.p`
   cursor: pointer;
   display: inline-block;
   font-weight: bold;
@@ -186,9 +176,9 @@ p.ProductModal__Content__Box__Buttons__Button__Notes__User__Name {
   border-radius: 50px;
   min-width: 100px;
   min-height: 1rem;
-}
+`;
 
-.ProductModal__Content__Box__Buttons__Button__Notes__User__Icon {
+export const Icon = styled.div`
   cursor: pointer;
   position: absolute;
   box-sizing: border-box;
@@ -197,10 +187,10 @@ p.ProductModal__Content__Box__Buttons__Button__Notes__User__Name {
   height: 20px;
   top: 0;
   right: -25px;
-}
 
-.ProductModal__Content__Box__Buttons__Button__Notes__User__Icon img {
-  cursor: pointer;
-  width: 20px;
-  padding: 6px;
-}
+  img {
+    cursor: pointer;
+    width: 20px;
+    padding: 6px;
+  }
+`;
