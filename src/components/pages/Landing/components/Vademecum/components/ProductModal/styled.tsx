@@ -6,7 +6,7 @@ import { COLORS, FONT_FAMILY } from "constants/styles";
 import { fadeInTop, zoom } from "assets/scripts/animations";
 
 export const Container = styled.div`
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(${COLORS.BLACK_RGB}, 0.85);
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -20,26 +20,30 @@ export const Container = styled.div`
 `;
 
 export const Modal = styled.div`
-  background-color: #ffffff;
+  background-color: ${COLORS.WHITE};
   background: radial-gradient(
       circle,
       transparent 20%,
-      #ffffff 20%,
-      #ffffff 80%,
+      ${COLORS.WHITE} 20%,
+      ${COLORS.WHITE} 80%,
       transparent 80%,
       transparent
     ),
     radial-gradient(
         circle,
         transparent 20%,
-        #ffffff 20%,
-        #ffffff 80%,
+        ${COLORS.WHITE} 20%,
+        ${COLORS.WHITE} 80%,
         transparent 80%,
         transparent
       )
       32.5px 32.5px,
-    linear-gradient(#f2faf6 2.6px, transparent 2.6px) 0 -1.3px,
-    linear-gradient(90deg, #f2faf6 2.6px, #ffffff 2.6px) -1.3px 0;
+    linear-gradient(${COLORS.PRIMARY_LIGHTEST} 2.6px, transparent 2.6px) 0 -1.3px,
+    linear-gradient(
+        90deg,
+        ${COLORS.PRIMARY_LIGHTEST} 2.6px,
+        ${COLORS.WHITE} 2.6px
+      ) -1.3px 0;
   background-size: 65px 65px, 65px 65px, 32.5px 32.5px, 32.5px 32.5px;
   border-radius: 20px;
   width: 90%;
@@ -74,7 +78,7 @@ export const ModalClose = styled.span`
   animation: zoom 0.3s linear;
 
   &:hover {
-    color: #000000;
+    color: ${COLORS.BLACK};
     background: rgba(${COLORS.BLACK_RGB}, 0.4);
   }
 
@@ -88,15 +92,17 @@ export const Content = styled.div`
 
 export const Formula = styled.textarea`
   display: block;
-  color: #000000;
+  color: ${COLORS.BLACK};
   line-height: 1.5em;
   font-weight: 700;
   border: 0;
   width: 90%;
-  background: linear-gradient(90deg, #ffffff 11px, transparent 1%) center,
-    linear-gradient(#ffffff 11px, transparent 1%) center, #ffffff;
+  background: linear-gradient(90deg, ${COLORS.WHITE} 11px, transparent 1%)
+      center,
+    linear-gradient(${COLORS.WHITE} 11px, transparent 1%) center,
+    ${COLORS.WHITE};
   background-size: 12px 12px;
-  box-shadow: 0 0 5px 0 rgba(0, 165, 79, 0.1);
+  box-shadow: 0 0 5px 0 rgba(${COLORS.PRIMARY_RGB}, 0.1);
   text-align: center;
   cursor: pointer;
   border-radius: 20px;
@@ -105,10 +111,12 @@ export const Formula = styled.textarea`
 
   &:hover,
   &:focus {
-    background: linear-gradient(90deg, #ffffff 11px, transparent 1%) center,
-      linear-gradient(#ffffff 11px, transparent 1%) center, #00a54f;
+    background: linear-gradient(90deg, ${COLORS.WHITE} 11px, transparent 1%)
+        center,
+      linear-gradient(${COLORS.WHITE} 11px, transparent 1%) center,
+      ${COLORS.PRIMARY};
     background-size: 12px 12px;
-    box-shadow: 0 0 15px -5px rgba(0, 165, 79, 0.5);
+    box-shadow: 0 0 15px -5px rgba(${COLORS.PRIMARY_RGB}, 0.5);
   }
 `;
 export const ButtonsWrapper = styled.div`
@@ -118,26 +126,30 @@ export const ButtonsWrapper = styled.div`
 `;
 
 export const Button = styled.a`
-  color: #ffffff;
+  color: ${COLORS.WHITE};
   font-weight: 900;
-  background: linear-gradient(180deg, #32b772 0, #00a54f 100%);
+  background: linear-gradient(
+    180deg,
+    ${COLORS.PRIMARY_LIGHTER} 0,
+    ${COLORS.PRIMARY} 100%
+  );
   text-transform: uppercase;
   border: 0;
   border-radius: 15px;
   padding: 1em 1.5em;
   cursor: pointer;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px 0 rgba(${COLORS.BLACK_RGB}, 0.3);
   display: block;
   margin: 20px;
 
   &:hover {
-    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 15px 0 rgba(${COLORS.BLACK_RGB}, 0.5);
   }
 
   span {
     display: block;
     font-size: 0.75em;
-    color: #ffffff;
+    color: ${COLORS.WHITE};
   }
 `;
 
@@ -157,11 +169,11 @@ export const User = styled.div`
   margin: 0 auto;
 
   &:hover #product-modal-username {
-    background: rgba(0, 165, 79, 0.1);
+    background: rgba(${COLORS.PRIMARY_RGB}, 0.1);
   }
 
   &:hover #product-modal-username-icon {
-    background: rgba(0, 165, 79, 0.3);
+    background: rgba(${COLORS.PRIMARY_RGB}, 0.3);
   }
 `;
 
@@ -172,7 +184,7 @@ export const UserName = styled.p`
   font-size: 12px;
   width: fit-content;
   padding: 2px 10px;
-  border-bottom: 1px dashed #00a54f;
+  border-bottom: 1px dashed ${COLORS.PRIMARY};
   border-radius: 50px;
   min-width: 100px;
   min-height: 1rem;
