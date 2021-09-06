@@ -1,9 +1,12 @@
+// Import dependencies
 import { FC, useState } from "react";
 
+// Import inner components
 import Result from "./components/Result";
 import Product from "./components/Product";
 
-import style from "./style.module.css";
+// Import styled components
+import { Container, Tab, Content } from "./styled";
 
 const Category: FC<{
   category: string;
@@ -16,7 +19,7 @@ const Category: FC<{
   const handleToggle = (e) => {
     document
       .getElementById(e.currentTarget.parentNode.id)!
-      .classList.toggle(style.active);
+      .classList.toggle("active");
   };
 
   const handleResult = (arg) => {
@@ -24,22 +27,22 @@ const Category: FC<{
   };
 
   return (
-    <div id="Category" className={style.Category}>
-      <div id={category.replace(/\s+/g, "-")} className={style.Category_Tab}>
+    <Container id="Category">
+      <Tab id={category.replace(/\s+/g, "-")}>
         <Result search={search} result={result} />
-        <h3 className={style.Category_Tab__Label} onClick={handleToggle}>
+        <h3 id="category-label" onClick={handleToggle}>
           {category}
         </h3>
-        <div className={style.Category_Tab__Content}>
+        <Content id="category-content">
           <Product
             search={search}
             data={data}
             openModal={openModal}
             handleResult={handleResult}
           />
-        </div>
-      </div>
-    </div>
+        </Content>
+      </Tab>
+    </Container>
   );
 };
 
