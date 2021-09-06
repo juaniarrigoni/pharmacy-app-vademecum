@@ -30,8 +30,8 @@ const RequestDataModal: FC<{
 
   if (state) {
     return (
-      <Container id="RequestData" data-state={state}>
-        <Modal id="request-data">
+      <Container id="RequestDataModal" data-state={state}>
+        <Modal id="request-data-modal">
           <ModalClose onClick={() => setOpenRequestDataModal(false)}>
             x
           </ModalClose>

@@ -14,7 +14,7 @@ export const Container = styled.div`
   top: 0;
   z-index: 9;
 
-  [data-state="true"] #request-data {
+  [data-state="true"] #request-data-modal {
     animation: fadeIn 1s linear;
   }
 
@@ -78,7 +78,7 @@ export const ModalClose = styled.span`
   font-family: ${FONT_FAMILY.PRIMARY};
   animation: zoom 0.3s linear;
 
-  :hover {
+  &:hover {
     color: #000000;
     background: rgba(${COLORS.BLACK_RGB}, 0.4);
   }
