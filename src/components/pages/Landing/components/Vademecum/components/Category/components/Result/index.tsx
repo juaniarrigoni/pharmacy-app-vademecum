@@ -1,6 +1,8 @@
+// Import dependencies
 import type { FC } from "react";
 
-import style from "./style.module.css";
+// Import styled components
+import { Container } from "./styled";
 
 const Result: FC<{ search: string; result: number | null }> = ({
   search,
@@ -9,11 +11,7 @@ const Result: FC<{ search: string; result: number | null }> = ({
   if (search === "" || result === null) {
     return null;
   } else {
-    return (
-      <span id="Result" className={style.Result}>
-        {result}
-      </span>
-    );
+    return <Container id="Result">{result}</Container>;
   }
 };
 
