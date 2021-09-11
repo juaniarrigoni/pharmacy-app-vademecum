@@ -1,6 +1,8 @@
+// Import dependencies
 import type { FC } from "react";
 
-import style from "./style.module.css";
+// Import styled components
+import { ProductFound, NotFound } from "./styled";
 
 const Product: FC<{
   data: any[];
@@ -9,40 +11,37 @@ const Product: FC<{
   handleResult: Function;
 }> = ({ data, search, openModal, handleResult }) => {
   let productList: JSX.Element[] = [];
+
   data.forEach((product, idx) => {
     let name = product.gsx$nombre.$t;
     let formula = product.gsx$formula.$t;
     if (name.toLowerCase().indexOf(search.toLowerCase()) === -1) return;
     productList.push(
-      <p
+      <ProductFound
         key={idx}
         onClick={(e) => openModal(e, true)}
         data-name={name}
         data-formula={formula}
-        className={style.Products__Product}
       >
         {name}
-      </p>
+      </ProductFound>
     );
   });
+
   if (productList.length === 0) {
     if (search !== "") {
       handleResult(null);
     }
     return (
-      <div id="Products" className={style.Products}>
-        <p className={style.Products__NotFound}>No hay resultados</p>
+      <div id="Products">
+        <NotFound>No hay resultados</NotFound>
       </div>
     );
   } else {
     if (search !== "") {
       handleResult(productList.length);
     }
-    return (
-      <div id="Products" className={style.Products}>
-        {productList}
-      </div>
-    );
+    return <div id="Products">{productList}</div>;
   }
 };
 
