@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 // Import assets
-import { COLORS } from "constants/styles";
+import { COLORS } from "assets/constants/styles";
 
 export const Container = styled.div`
   width: 100%;

@@ -13,7 +13,7 @@ import {
 } from "./styled";
 
 // Import assets
-import { location, chat, mail, phone } from "constants/contact";
+import { location, chat, mail, phone } from "assets/constants/contact";
 
 const contactInfo: Array<{
   type: string;
@@ -33,7 +33,7 @@ const ContactModal: FC<{
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({ modal, setModal }) => {
   const ContactInfo = contactInfo.map((item) => (
-    <ContactInfoItem>
+    <ContactInfoItem key={item.type}>
       <ContactInfoIcon>
         <img src={item.icon} alt="icon" />
       </ContactInfoIcon>
@@ -55,20 +55,19 @@ const ContactModal: FC<{
     </ContactInfoItem>
   ));
 
+  if (!modal) return null;
   return (
     <Container data-state={modal}>
-      {modal && (
-        <Modal>
-          <ModalContent>
-            <ModalClose onClick={() => setModal(false)}>x</ModalClose>
-            <ContentBox>
-              <h2>CONTACTO</h2>
-              <h3>Dónde encontrarnos</h3>
-              {ContactInfo}
-            </ContentBox>
-          </ModalContent>
-        </Modal>
-      )}
+      <Modal>
+        <ModalContent>
+          <ModalClose onClick={() => setModal(false)}>x</ModalClose>
+          <ContentBox>
+            <h2>CONTACTO</h2>
+            <h3>Dónde encontrarnos</h3>
+            {ContactInfo}
+          </ContentBox>
+        </ModalContent>
+      </Modal>
     </Container>
   );
 };

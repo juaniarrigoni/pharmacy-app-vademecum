@@ -1,7 +1,6 @@
 // Import dependencies
 import { FC, useState, useEffect } from "react";
 import axios from "axios";
-import dotenv from "dotenv";
 
 // Import inner components
 import SearchBar from "./components/SearchBar";
@@ -15,43 +14,48 @@ import { Container, List } from "./styled";
 // Import external components
 import Loader from "components/general/Loader";
 
-dotenv.config();
+// Import assets
+import type { SpreadsheetData } from "assets/types";
+import { path, spreadsheetIds, parameters } from "assets/constants/contact";
 
 const Vademecum: FC = () => {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<Array<SpreadsheetData>>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [modal, setModal] = useState(false);
   const [name, setName] = useState("Nombre pendiente");
   const [formula, setFormula] = useState("Fórmula pendiente");
-  const [username, setUsername] = useState(localStorage.getItem("username"));
+  const [username, setUsername] = useState(
+    localStorage.getItem("username") || ""
+  );
   const [openRequestDataModal, setOpenRequestDataModal] = useState(false);
 
   useEffect(() => {
-    const getData = (sheetNUM: number, data: any[]) => {
-      const path = process.env.REACT_APP_GOOGLE_PATH;
-      const spreadsheetID = process.env.REACT_APP_GOOGLE_SHEETID;
-      const parameters = process.env.REACT_APP_GOOGLE_PARAMETERS;
-      const url = `${path}/${spreadsheetID}/${sheetNUM}/${parameters}`;
+    const getData = (sheetId: number, reducer: Array<SpreadsheetData>) => {
+      const url = `${path}/${spreadsheetIds.vademecum}/${sheetId}/${parameters}`;
       axios
         .get(url)
         .then((response) => {
-          getData(++sheetNUM, data.concat(response.data.feed));
+          // eslint-disable-next-line no-param-reassign
+          getData(++sheetId, reducer.concat(response.data.feed));
         })
         .catch(() => {
-          setData(data);
+          setData(reducer);
           setLoading(false);
         });
     };
     getData(1, []);
   }, []);
 
-  const openModal = (e, open: boolean) => {
+  const openModal = (
+    event: React.SyntheticEvent<HTMLElement>,
+    open: boolean
+  ) => {
     if (open) {
-      e.currentTarget as HTMLElement;
+      event.currentTarget as HTMLElement;
       setModal(true);
-      setName(e.currentTarget.dataset.name);
-      setFormula(e.currentTarget.dataset.formula);
+      setName(event.currentTarget?.dataset.name || "");
+      setFormula(event.currentTarget?.dataset.formula || "");
     } else {
       setModal(false);
       setName("Nombre pendiente");
@@ -59,12 +63,12 @@ const Vademecum: FC = () => {
     }
   };
 
-  let content: JSX.Element[] = data.map((el, idx) => {
+  const content: Array<JSX.Element> = data.map((item) => {
     return (
       <Category
-        key={idx}
-        category={el.title.$t}
-        data={el.entry}
+        key={item.title.$t}
+        category={item.title.$t}
+        data={item.entry}
         openModal={openModal}
         search={search}
       />

@@ -2,33 +2,35 @@
 import { FC, useState, useEffect } from "react";
 import axios from "axios";
 
+// Import styled components
+import { Container, List, ActivoText, ActivoButton } from "./styled";
+
 // Import external components
 import Loader from "components/general/Loader";
 
-// Import styled components
-import { Container, List, ActivoText, ActivoButton } from "./styled";
+// Import assets
+import { path, spreadsheetIds, parameters } from "assets/constants/contact";
+
+interface IData {
+  gsx$link: {
+    $t: string;
+  };
+  gsx$nombre: {
+    $t: string;
+  };
+}
 
 const Activos: FC = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let spreadsheetID = "1S0mXgKbdX8EPRkXEf7PKx8W63AoHTG5boDY-Ii2ke7c";
-    let url = `https://spreadsheets.google.com/feeds/list/${spreadsheetID}/1/public/values?alt=json`;
+    const url = `${path}/${spreadsheetIds.activos}/1/${parameters}`;
     axios.get(url).then((response) => {
       setData(response.data.feed.entry);
       setLoading(false);
     });
   }, []);
-
-  interface IData {
-    gsx$link: {
-      $t: string;
-    };
-    gsx$nombre: {
-      $t: string;
-    };
-  }
 
   let content: JSX.Element[] = data.map((el: IData, idx: number) => {
     if (el.gsx$link.$t.indexOf("https://drive.google.com/") === -1) {

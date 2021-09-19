@@ -1,6 +1,8 @@
 # Farmacéuticos Asociados
 
 Order of imports:
+// Rules
+
 // Import dependencies
 
 // Import mui components

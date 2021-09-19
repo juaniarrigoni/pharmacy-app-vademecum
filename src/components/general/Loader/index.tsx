@@ -20,7 +20,8 @@ const Loader: FC<{ state: boolean }> = ({ state }) => {
         </LoaderContent>
       </Container>
     );
-  } else return null;
+  }
+  return null;
 };
 
 export default Loader;

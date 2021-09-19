@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 // Import assets
-import { COLORS } from "constants/styles";
+import { COLORS } from "assets/constants/styles";
 import { heartBeat } from "assets/scripts/animations";
 
 export const Container = styled.div`
@@ -57,7 +57,7 @@ export const ButtonsWrapper = styled.div`
   }
 `;
 
-export const Button = styled.div`
+export const Button = styled.a`
   cursor: pointer;
   display: block;
   max-width: 200px;

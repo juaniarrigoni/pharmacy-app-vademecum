@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 // Import assets
-import { COLORS, FONT_FAMILY } from "constants/styles";
+import { COLORS, FONT_FAMILY } from "assets/constants/styles";
 import { zoom } from "assets/scripts/animations";
 
 export const Container = styled.div`

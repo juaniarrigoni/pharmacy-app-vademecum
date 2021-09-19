@@ -1,9 +1,11 @@
+// eslint-disable-next-line func-names
 export default window.onload = function () {
+  // eslint-disable-next-line func-names
   const easeInCubic: (t: number) => number = function (t: number) {
     return t * t * t;
   };
 
-  /* eslint-disable no-restricted-properties */
+  // eslint-disable-next-line no-restricted-properties
   const scrollElems: NodeListOf<Element> = document.querySelectorAll(
     '[data-scroll="smooth"]'
   );
@@ -38,6 +40,7 @@ export default window.onload = function () {
     const element: Element = scrollElement;
     let scrollElementId: string;
     let scrollEndElement: HTMLElement | null;
+    // eslint-disable-next-line func-names
     element.addEventListener("click", function (event: Event) {
       event.preventDefault();
       if (event.currentTarget) {

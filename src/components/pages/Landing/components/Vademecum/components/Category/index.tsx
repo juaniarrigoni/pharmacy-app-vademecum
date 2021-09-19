@@ -1,40 +1,39 @@
 // Import dependencies
-import { FC, useState } from "react";
+import { FC, useState, useRef } from "react";
 
 // Import inner components
 import Result from "./components/Result";
-import Product from "./components/Product";
+import Products from "./components/Products";
 
 // Import styled components
 import { Container, Tab, Content } from "./styled";
 
+// Import assets
+import type { SpreadsheetDataProducts } from "assets/types";
+
 const Category: FC<{
   category: string;
-  data: any[];
-  openModal: Function;
+  data: Array<SpreadsheetDataProducts>;
+  openModal: (event: React.SyntheticEvent<HTMLElement>, open: boolean) => void;
   search: string;
 }> = ({ category, data, openModal, search }) => {
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState<null | number>(null);
+  const toggleRef = useRef<null | HTMLElement>(null);
 
-  const handleToggle = (e) => {
-    document
-      .getElementById(e.currentTarget.parentNode.id)!
-      .classList.toggle("active");
-  };
-
-  const handleResult = (arg) => {
-    if (result !== arg) setResult(arg);
+  const handleToggle = () => toggleRef.current?.classList.toggle("active");
+  const handleResult = (argument: null | number) => {
+    if (result !== argument) setResult(argument);
   };
 
   return (
     <Container id="Category">
-      <Tab id={category.replace(/\s+/g, "-")}>
+      <Tab id={category.replace(/\s+/g, "-")} ref={toggleRef}>
         <Result search={search} result={result} />
         <h3 id="category-label" onClick={handleToggle}>
           {category}
         </h3>
         <Content id="category-content">
-          <Product
+          <Products
             search={search}
             data={data}
             openModal={openModal}

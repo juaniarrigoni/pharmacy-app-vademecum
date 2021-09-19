@@ -7,7 +7,7 @@ import { Container } from "./styled";
 // Import assets
 import lenses from "./assets/Francisco.png";
 import smile from "./assets/Arrigoni.png";
-import { developerWebsite } from "constants/contact";
+import { developerWebsite } from "assets/constants/contact";
 
 const Signature: FC = () => {
   return (

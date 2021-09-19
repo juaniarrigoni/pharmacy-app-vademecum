@@ -4,10 +4,10 @@ import type { FC } from "react";
 // Import styled components
 import { Container, Form, Input } from "./styled";
 
-const SearchBar: FC<{ search: string; setSearch: Function }> = ({
-  search,
-  setSearch,
-}) => {
+const SearchBar: FC<{
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+}> = ({ search, setSearch }) => {
   return (
     <Container id="SearchBar">
       <Form>
@@ -15,7 +15,7 @@ const SearchBar: FC<{ search: string; setSearch: Function }> = ({
           type="text"
           placeholder="Buscar un producto"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(event) => setSearch(event.target.value)}
         />
       </Form>
     </Container>

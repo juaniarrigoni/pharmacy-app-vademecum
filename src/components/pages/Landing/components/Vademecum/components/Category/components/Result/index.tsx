@@ -8,11 +8,8 @@ const Result: FC<{ search: string; result: number | null }> = ({
   search,
   result,
 }) => {
-  if (search === "" || result === null) {
-    return null;
-  } else {
-    return <Container id="Result">{result}</Container>;
-  }
+  if (search === "" || result === null) return null;
+  return <Container id="Result">{result}</Container>;
 };
 
 export default Result;
