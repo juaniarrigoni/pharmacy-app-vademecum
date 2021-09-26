@@ -5,47 +5,36 @@ import type { FC } from "react";
 import { ProductFound, NotFound } from "./styled";
 
 // Import assets
-import type { SpreadsheetDataProducts } from "assets/types";
+import type { ProductData } from "assets/types";
 
 const Products: FC<{
-  data: Array<SpreadsheetDataProducts>;
+  products: Array<ProductData>;
   search: string;
   openModal: (event: React.SyntheticEvent<HTMLElement>, open: boolean) => void;
   handleResult: (argument: null | number) => void;
-}> = ({ data, search, openModal, handleResult }) => {
-  const productList: Array<JSX.Element> = [];
-
-  data.forEach((product) => {
-    const name = product.gsx$nombre.$t;
-    const formula = product.gsx$formula.$t;
-    if (!name.toLowerCase().includes(search.toLowerCase())) return;
-    productList.push(
-      <ProductFound
-        key={product.gsx$nombre.$t}
-        onClick={(event: React.SyntheticEvent<HTMLElement>) =>
-          openModal(event, true)
-        }
-        data-name={name}
-        data-formula={formula}
-      >
-        {name}
-      </ProductFound>
-    );
-  });
-
-  if (productList.length === 0) {
-    if (search !== "") {
-      handleResult(null);
-    }
-    return (
-      <div id="Products">
-        <NotFound>No hay resultados</NotFound>
-      </div>
-    );
-  }
+}> = ({ products, search, openModal, handleResult }) => {
+  let productList: Array<JSX.Element | undefined> = products
+    .filter(({ name }) => name.toLowerCase().includes(search.toLowerCase()))
+    .map(({ name, formula }) => {
+      return (
+        <ProductFound
+          key={name}
+          onClick={(event: React.SyntheticEvent<HTMLElement>) =>
+            openModal(event, true)
+          }
+          data-name={name}
+          data-formula={formula}
+        >
+          {name}
+        </ProductFound>
+      );
+    });
 
   if (search !== "") {
-    handleResult(productList.length);
+    if (productList.length === 0) {
+      handleResult(null);
+      productList = [<NotFound key="not-found">No hay resultados</NotFound>];
+    } else handleResult(productList.length);
   }
 
   return <div id="Products">{productList}</div>;

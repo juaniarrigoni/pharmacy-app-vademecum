@@ -1,5 +1,5 @@
 // Import dependencies
-import { FC, useState, useRef } from "react";
+import { FC, useState } from "react";
 
 // Import inner components
 import Result from "./components/Result";
@@ -9,33 +9,32 @@ import Products from "./components/Products";
 import { Container, Tab, Content } from "./styled";
 
 // Import assets
-import type { SpreadsheetDataProducts } from "assets/types";
+import type { ProductData } from "assets/types";
 
 const Category: FC<{
   category: string;
-  data: Array<SpreadsheetDataProducts>;
+  products: Array<ProductData>;
   openModal: (event: React.SyntheticEvent<HTMLElement>, open: boolean) => void;
   search: string;
-}> = ({ category, data, openModal, search }) => {
+}> = ({ category, products, openModal, search }) => {
+  const [isActive, setIsActive] = useState(false);
   const [result, setResult] = useState<null | number>(null);
-  const toggleRef = useRef<null | HTMLElement>(null);
 
-  const handleToggle = () => toggleRef.current?.classList.toggle("active");
   const handleResult = (argument: null | number) => {
     if (result !== argument) setResult(argument);
   };
 
   return (
     <Container id="Category">
-      <Tab id={category.replace(/\s+/g, "-")} ref={toggleRef}>
+      <Tab className={isActive && "active"} id={category.replace(/\s+/g, "-")}>
         <Result search={search} result={result} />
-        <h3 id="category-label" onClick={handleToggle}>
+        <h3 id="category-label" onClick={() => setIsActive(!isActive)}>
           {category}
         </h3>
         <Content id="category-content">
           <Products
             search={search}
-            data={data}
+            products={products}
             openModal={openModal}
             handleResult={handleResult}
           />

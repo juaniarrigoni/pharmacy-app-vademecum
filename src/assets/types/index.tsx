@@ -1,13 +1,9 @@
-export type SpreadsheetDataField = {
-  $t: string;
+export type ProductData = {
+  name: string;
+  formula: string;
 };
 
-export type SpreadsheetDataProducts = {
-  gsx$nombre: SpreadsheetDataField;
-  gsx$formula: SpreadsheetDataField;
+export type CategoryData = {
+  name: string;
+  products: Array<ProductData>;
 };
-
-export interface SpreadsheetData {
-  title: SpreadsheetDataField;
-  entry: Array<SpreadsheetDataProducts>;
-}

@@ -1,6 +1,5 @@
 // Import dependencies
 import { FC, useState, useEffect } from "react";
-import axios from "axios";
 
 // Import inner components
 import SearchBar from "./components/SearchBar";
@@ -15,11 +14,11 @@ import { Container, List } from "./styled";
 import Loader from "components/general/Loader";
 
 // Import assets
-import type { SpreadsheetData } from "assets/types";
-import { path, spreadsheetIds, parameters } from "assets/constants/contact";
+import type { CategoryData } from "assets/types";
+import { path, spreadsheetIds } from "assets/constants/contact";
 
 const Vademecum: FC = () => {
-  const [data, setData] = useState<Array<SpreadsheetData>>([]);
+  const [data, setData] = useState<Array<CategoryData>>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [modal, setModal] = useState(false);
@@ -31,20 +30,38 @@ const Vademecum: FC = () => {
   const [openRequestDataModal, setOpenRequestDataModal] = useState(false);
 
   useEffect(() => {
-    const getData = (sheetId: number, reducer: Array<SpreadsheetData>) => {
-      const url = `${path}/${spreadsheetIds.vademecum}/${sheetId}/${parameters}`;
-      axios
-        .get(url)
-        .then((response) => {
-          // eslint-disable-next-line no-param-reassign
-          getData(++sheetId, reducer.concat(response.data.feed));
-        })
-        .catch(() => {
-          setData(reducer);
-          setLoading(false);
+    const url = `${path}/${spreadsheetIds.vademecum}/gviz/tq?tqx=out:json`;
+    fetch(url)
+      .then((response) => response.text())
+      .then((text) => {
+        const json = JSON.parse(text.substr(47).slice(0, -2));
+        return json.table.rows.slice(1).map((row) => row.c[0].v);
+      })
+      .then((sheetsNames: Array<string>) => {
+        sheetsNames.forEach((sheetName) => {
+          fetch(`${url}&sheet=${sheetName}`)
+            .then((response) => response.text())
+            .then((text) => {
+              const sheetData = JSON.parse(text.substr(47).slice(0, -2))
+                .table.rows.slice(1)
+                .map((row) => row.c);
+              return sheetData.map((product) => ({
+                name: product[0]?.v,
+                formula: product[1]?.v,
+              }));
+            })
+            .then((productsList) => {
+              setData((previousState) => [
+                ...previousState,
+                {
+                  name: sheetName,
+                  products: productsList,
+                },
+              ]);
+              setLoading(false);
+            });
         });
-    };
-    getData(1, []);
+      });
   }, []);
 
   const openModal = (
@@ -63,25 +80,26 @@ const Vademecum: FC = () => {
     }
   };
 
-  const content: Array<JSX.Element> = data.map((item) => {
-    return (
-      <Category
-        key={item.title.$t}
-        category={item.title.$t}
-        data={item.entry}
-        openModal={openModal}
-        search={search}
-      />
-    );
-  });
-
   return (
     <Container id="Vademecum">
       <h2>Vademécum</h2>
       <h3>Nuestras fórmulas</h3>
       <SearchBar search={search} setSearch={setSearch} />
-      <Loader state={loading} />
-      <List>{content}</List>
+      {loading ? (
+        <Loader />
+      ) : (
+        <List>
+          {data.map((category) => (
+            <Category
+              key={category.name}
+              category={category.name}
+              products={category.products}
+              openModal={openModal}
+              search={search}
+            />
+          ))}
+        </List>
+      )}
       <ProductModal
         name={name}
         formula={formula}

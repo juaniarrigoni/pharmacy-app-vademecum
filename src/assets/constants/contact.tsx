@@ -9,6 +9,8 @@ import phoneIcon from "assets/media/Phone.png";
 
 dotenv.config();
 
+export const phoneNumber = "5492995799121";
+
 export const developerWebsite = "https://franarrigoni.vercel.app/";
 
 export const location = {
@@ -39,9 +41,9 @@ export const phone = {
 };
 
 // Google Spreadsheet
-export const path = "https://spreadsheets.google.com/feeds/list";
+export const path = "https://docs.google.com/spreadsheets/d";
 export const parameters = "public/values?alt=json";
 export const spreadsheetIds = {
-  activos: "1S0mXgKbdX8EPRkXEf7PKx8W63AoHTG5boDY-Ii2ke7c",
   vademecum: "1t-IbQFLlWPNsdF1DNIqVuP5vSaGHBwCFtvS0Tz9ZnDM",
+  activos: "1S0mXgKbdX8EPRkXEf7PKx8W63AoHTG5boDY-Ii2ke7c",
 };

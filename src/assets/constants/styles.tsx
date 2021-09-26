@@ -14,3 +14,7 @@ export const COLORS = {
 export const FONT_FAMILY = {
   PRIMARY: '"Fredoka One", cursive',
 };
+
+export const BREAKPOINTS = {
+  mobile: "600px",
+};

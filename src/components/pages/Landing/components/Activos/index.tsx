@@ -11,7 +11,7 @@ import Loader from "components/general/Loader";
 // Import assets
 import { path, spreadsheetIds, parameters } from "assets/constants/contact";
 
-interface IData {
+interface Data {
   gsx$link: {
     $t: string;
   };
@@ -32,34 +32,35 @@ const Activos: FC = () => {
     });
   }, []);
 
-  let content: JSX.Element[] = data.map((el: IData, idx: number) => {
-    if (el.gsx$link.$t.indexOf("https://drive.google.com/") === -1) {
-      return (
-        <ActivoText key={idx} id={el.gsx$nombre.$t.replace(/\s+/g, "-")}>
-          {el.gsx$nombre.$t}
-        </ActivoText>
-      );
-    } else {
+  const content: Array<JSX.Element> = data.map((item: Data) => {
+    if (item.gsx$link.$t.includes("https://drive.google.com/")) {
       return (
         <ActivoButton
-          key={idx}
-          id={el.gsx$nombre.$t.replace(/\s+/g, "-")}
-          href={el.gsx$link.$t}
+          key={item.gsx$nombre.$t.replace(/\s+/g, "-")}
+          id={item.gsx$nombre.$t.replace(/\s+/g, "-")}
+          href={item.gsx$link.$t}
           target="_blank"
           rel="noreferrer"
         >
-          {el.gsx$nombre.$t}
+          {item.gsx$nombre.$t}
         </ActivoButton>
       );
     }
+    return (
+      <ActivoText
+        key={item.gsx$nombre.$t.replace(/\s+/g, "-")}
+        id={item.gsx$nombre.$t.replace(/\s+/g, "-")}
+      >
+        {item.gsx$nombre.$t}
+      </ActivoText>
+    );
   });
 
   return (
     <Container id="Activos">
       <h2>Activos</h2>
       <h3>Calidad asegurada</h3>
-      <Loader state={loading} />
-      <List>{content}</List>
+      {loading ? <Loader /> : <List>{content}</List>}
     </Container>
   );
 };

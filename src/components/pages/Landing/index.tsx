@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 
 // Import inner components
 import Vademecum from "./components/Vademecum";
-import Activos from "./components/Activos";
+// import Activos from "./components/Activos";
 import Contact from "./components/Contact";
 
 // Import styled components
@@ -75,7 +75,7 @@ const Landing: FC = () => {
         <ContactModal modal={modal} setModal={setModal} />
       </Container>
       <Vademecum />
-      <Activos />
+      {/* <Activos /> */}
       <Contact />
     </>
   );

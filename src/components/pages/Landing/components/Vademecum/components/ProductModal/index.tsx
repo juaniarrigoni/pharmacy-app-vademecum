@@ -1,6 +1,5 @@
 // Import dependencies
 import { FC, useRef } from "react";
-import dotenv from "dotenv";
 
 // Import styled components
 import {
@@ -19,8 +18,7 @@ import {
 
 // Import assets
 import edit from "assets/media/Edit.png";
-
-dotenv.config();
+import { phoneNumber } from "assets/constants/contact";
 
 const ProductModal: FC<{
   name: string;
@@ -37,7 +35,6 @@ const ProductModal: FC<{
   setOpenRequestDataModal,
   username,
 }) => {
-  const phone = process.env.REACT_APP_PHONE;
   const formulaElement = useRef<HTMLTextAreaElement>(null);
 
   const getPrice = (event: React.SyntheticEvent<HTMLAnchorElement>) => {
@@ -51,7 +48,7 @@ const ProductModal: FC<{
     );
     const message = `${request}%0a%0a${nameCustom}%0a${formulaCustom}`;
     // eslint-disable-next-line no-param-reassign
-    event.currentTarget!.href = `https://wa.me/${phone}?text=${message}`;
+    event.currentTarget!.href = `https://wa.me/${phoneNumber}?text=${message}`;
   };
 
   const shareLink = (event: React.SyntheticEvent<HTMLAnchorElement>) => {
@@ -64,7 +61,7 @@ const ProductModal: FC<{
       `Hola! Quisiera consultar el precio del siguiente producto, recomendado por ${username}:`
     );
     const requestLink = encodeURIComponent(
-      `wa.me/${phone}?text=${request}%0a%0a${nameCustom}%0a${formulaCustom}`
+      `wa.me/${phoneNumber}?text=${request}%0a%0a${nameCustom}%0a${formulaCustom}`
     );
     const suggestion1 = encodeURIComponent(
       "Hola! Quisiera recomendarte el siguiente producto"

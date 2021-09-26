@@ -8,6 +8,7 @@ import {
   ModalClose,
   ModalContent,
   ContentBox,
+  ContactInfo,
   ContactInfoItem,
   ContactInfoIcon,
 } from "./styled";
@@ -15,7 +16,7 @@ import {
 // Import assets
 import { location, chat, mail, phone } from "assets/constants/contact";
 
-const contactInfo: Array<{
+const contactInfoFields: Array<{
   type: string;
   title: string;
   icon: string;
@@ -32,11 +33,13 @@ const ContactModal: FC<{
   modal: boolean;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({ modal, setModal }) => {
-  const ContactInfo = contactInfo.map((item) => (
+  const contactInfo = contactInfoFields.map((item) => (
     <ContactInfoItem key={item.type}>
-      <ContactInfoIcon>
-        <img src={item.icon} alt="icon" />
-      </ContactInfoIcon>
+      <div className="icon">
+        <ContactInfoIcon>
+          <img src={item.icon} alt="icon" />
+        </ContactInfoIcon>
+      </div>
       <p>{item.title}</p>
       {!(item.type === "phone") &&
         (item.type === "mail" ? (
@@ -64,7 +67,7 @@ const ContactModal: FC<{
           <ContentBox>
             <h2>CONTACTO</h2>
             <h3>Dónde encontrarnos</h3>
-            {ContactInfo}
+            <ContactInfo>{contactInfo}</ContactInfo>
           </ContentBox>
         </ModalContent>
       </Modal>

@@ -39,7 +39,7 @@ const RequestDataModal: FC<{
           <Form onSubmit={handleSubmit}>
             <Input
               type="text"
-              placeholder="Nombre y apellido"
+              placeholder="ej: Juan Perez"
               value={user}
               onChange={(event) => setUser(event.target.value)}
             />
