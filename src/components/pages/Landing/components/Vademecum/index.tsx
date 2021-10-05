@@ -22,8 +22,12 @@ const Vademecum: FC = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [modal, setModal] = useState(false);
-  const [name, setName] = useState("Nombre pendiente");
-  const [formula, setFormula] = useState("Fórmula pendiente");
+  const [nombre, setNombre] = useState("-");
+  const [formula, setFormula] = useState("-");
+  const [descripcion, setDescripcion] = useState("-");
+  const [presentacion, setPresentacion] = useState("-");
+  const [modoDeUso, setModoDeUso] = useState("-");
+  const [precio, setPrecio] = useState("-");
   const [username, setUsername] = useState(
     localStorage.getItem("username") || ""
   );
@@ -46,8 +50,12 @@ const Vademecum: FC = () => {
                 .table.rows.slice(1)
                 .map((row) => row.c);
               return sheetData.map((product) => ({
-                name: product[0]?.v,
+                nombre: product[0]?.v,
                 formula: product[1]?.v,
+                presentacion: product[2]?.v,
+                descripcion: product[3]?.v,
+                modoDeUso: product[4]?.v,
+                precio: product[5]?.v,
               }));
             })
             .then((productsList) => {
@@ -71,12 +79,20 @@ const Vademecum: FC = () => {
     if (open) {
       event.currentTarget as HTMLElement;
       setModal(true);
-      setName(event.currentTarget?.dataset.name || "");
-      setFormula(event.currentTarget?.dataset.formula || "");
+      setNombre(event.currentTarget?.dataset.nombre || "-");
+      setFormula(event.currentTarget?.dataset.formula || "-");
+      setDescripcion(event.currentTarget?.dataset.descripcion || "-");
+      setPresentacion(event.currentTarget?.dataset.presentacion || "-");
+      setModoDeUso(event.currentTarget?.dataset.mododeuso || "-");
+      setPrecio(event.currentTarget?.dataset.precio || "-");
     } else {
       setModal(false);
-      setName("Nombre pendiente");
-      setFormula("Fórmula pendiente");
+      setNombre("-");
+      setFormula("-");
+      setDescripcion("-");
+      setPresentacion("-");
+      setModoDeUso("-");
+      setPrecio("-");
     }
   };
 
@@ -101,8 +117,12 @@ const Vademecum: FC = () => {
         </List>
       )}
       <ProductModal
-        name={name}
+        nombre={nombre}
         formula={formula}
+        presentacion={presentacion}
+        descripcion={descripcion}
+        modoDeUso={modoDeUso}
+        precio={precio}
         modal={modal}
         openModal={openModal}
         setOpenRequestDataModal={setOpenRequestDataModal}

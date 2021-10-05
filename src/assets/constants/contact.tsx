@@ -44,6 +44,6 @@ export const phone = {
 export const path = "https://docs.google.com/spreadsheets/d";
 export const parameters = "public/values?alt=json";
 export const spreadsheetIds = {
-  vademecum: "1t-IbQFLlWPNsdF1DNIqVuP5vSaGHBwCFtvS0Tz9ZnDM",
+  vademecum: "1AmqkawFDgVSRrsUiIVm3u2Lb7dlF2pZYHmI15R0Ej6k",
   activos: "1S0mXgKbdX8EPRkXEf7PKx8W63AoHTG5boDY-Ii2ke7c",
 };

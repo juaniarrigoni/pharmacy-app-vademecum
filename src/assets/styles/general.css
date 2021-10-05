@@ -34,7 +34,8 @@ p,
 a,
 span,
 input,
-textarea {
+textarea,
+div {
   font-family: "Nunito", sans-serif;
   line-height: 1.2em;
   text-align: center;
@@ -43,9 +44,14 @@ textarea {
   text-shadow: 0 0.1em 0.1em rgb(0, 0, 0, 0.08);
 }
 
+strong {
+  font-weight: 900;
+}
+
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: "Fredoka One", cursive;
   letter-spacing: 1.5px;
 }
@@ -68,13 +74,18 @@ button {
     font-size: 20px;
   }
 
+  h4 {
+    font-size: 18px;
+  }
+
   p,
   a,
   span,
   label,
   input,
   textarea,
-  button {
+  button,
+  div {
     font-size: 15px;
   }
 }
@@ -92,13 +103,18 @@ button {
     font-size: 18px;
   }
 
+  h4 {
+    font-size: 16px;
+  }
+
   p,
   a,
   span,
   label,
   input,
   textarea,
-  button {
+  button,
+  div {
     font-size: 14px;
   }
 }

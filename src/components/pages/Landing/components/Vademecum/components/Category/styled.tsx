@@ -59,6 +59,6 @@ export const Content = styled.div`
   max-height: 0;
   padding: 0 1em;
   background: ${COLORS.WHITE};
-  transition: all 0.5s;
+  transition: all 0.3s;
   overflow: auto;
 `;

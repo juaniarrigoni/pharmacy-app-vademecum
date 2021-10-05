@@ -114,6 +114,30 @@ export const ContactInfoItem = styled.div`
   align-items: center;
   margin-bottom: 1.5rem;
 
+  a {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 0 1rem;
+    color: ${COLORS.WHITE};
+    font-weight: 900;
+    background: linear-gradient(180deg, #32b772 0, #00a54f 100%);
+    text-transform: uppercase;
+    border: 0;
+    border-radius: 5px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    box-shadow: 0 0.1rem 0.5rem 0 rgba(${COLORS.BLACK_RGB}, 0.3);
+
+    &:hover {
+      box-shadow: 0 0.2rem 0.5rem 0 rgba(${COLORS.BLACK_RGB}, 0.5);
+    }
+  }
+
+  p {
+    margin: 1rem 0;
+  }
+
   @media only screen and (max-width: ${BREAKPOINTS.mobile}) {
     text-align: left;
     flex-wrap: wrap;
@@ -127,31 +151,10 @@ export const ContactInfoItem = styled.div`
       text-align: left;
       width: 85%;
     }
-  }
 
-  a {
-    display: block;
-    width: fit-content;
-    margin-left: 1rem;
-    margin: 0 auto;
-    color: ${COLORS.WHITE};
-    font-weight: 900;
-    background: linear-gradient(180deg, #32b772 0, #00a54f 100%);
-    text-transform: uppercase;
-    border: 0;
-    border-radius: 5px;
-    padding: 0.3rem 0.8rem;
-    font-size: 0.8rem;
-    cursor: pointer;
-    box-shadow: 0.1rem 0.5rem 0rgba (${COLORS.BLACK_RGB}, 0.3);
-
-    &:hover {
-      box-shadow: 0.2rem 0.5rem 0 rgba(${COLORS.BLACK_RGB}, 0.5);
+    a {
+      margin: 0 auto;
     }
-  }
-
-  p {
-    margin: 1rem 0;
   }
 `;
 

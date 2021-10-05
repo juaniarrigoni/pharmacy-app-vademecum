@@ -1,6 +1,10 @@
 export type ProductData = {
-  name: string;
+  nombre: string;
   formula: string;
+  presentacion: string;
+  descripcion: string;
+  modoDeUso: string;
+  precio: string;
 };
 
 export type CategoryData = {

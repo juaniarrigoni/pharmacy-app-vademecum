@@ -47,9 +47,10 @@ export const Modal = styled.div`
   background-size: 65px 65px, 65px 65px, 32.5px 32.5px, 32.5px 32.5px;
   border-radius: 20px;
   width: 90%;
-  height: 90%;
+  height: fit-content;
   max-width: 800px;
-  max-height: 500px;
+  max-height: 80vh;
+  padding: 5rem;
   position: fixed;
   left: 0;
   right: 0;
@@ -205,4 +206,67 @@ export const Icon = styled.div`
     width: 20px;
     padding: 6px;
   }
+`;
+
+export const Tabs = styled.div`
+  display: flex;
+`;
+
+export const TabContainer = styled.div`
+  position: relative;
+  padding: 20px;
+  display: block;
+  max-width: 300px;
+  width: 100%;
+`;
+
+export const Tab = styled.div`
+  color: ${COLORS.BLACK};
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 2.5px 10px -2.5px rgba(${COLORS.BLACK_RGB}, 0.15);
+  border-radius: 15px;
+
+  &:hover {
+    box-shadow: 0 5px 15px -2.5px rgba(${COLORS.BLACK_RGB}, 0.3);
+  }
+
+  h4 {
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    background: ${COLORS.WHITE};
+    font-weight: bold;
+    cursor: pointer;
+
+    &:after {
+      position: absolute;
+      right: 1em;
+      content: "\\276F";
+      width: 1em;
+      height: 1em;
+      text-align: center;
+      transition: all 0.35s;
+    }
+  }
+
+  &.active #tab-label:after {
+    transform: rotate(90deg);
+  }
+
+  &.active #tab-content {
+    max-height: 30vh;
+    padding: 1em;
+  }
+`;
+
+export const TabContent = styled.div`
+  max-height: 0;
+  padding: 0 1em;
+  background: ${COLORS.WHITE};
+  transition: all 0.3s;
+  overflow: auto;
 `;

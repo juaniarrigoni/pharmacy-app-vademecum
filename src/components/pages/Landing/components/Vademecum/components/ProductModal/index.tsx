@@ -1,5 +1,5 @@
 // Import dependencies
-import { FC, useRef } from "react";
+import { FC, useRef, useState } from "react";
 
 // Import styled components
 import {
@@ -14,6 +14,10 @@ import {
   User,
   UserName,
   Icon,
+  Tabs,
+  TabContainer,
+  Tab,
+  TabContent,
 } from "./styled";
 
 // Import assets
@@ -21,24 +25,34 @@ import edit from "assets/media/Edit.png";
 import { phoneNumber } from "assets/constants/contact";
 
 const ProductModal: FC<{
-  name: string;
+  nombre: string;
   formula: string;
+  presentacion: string;
+  descripcion: string;
+  modoDeUso: string;
+  precio: string;
   modal: boolean;
   openModal: (event: React.SyntheticEvent<HTMLElement>, open: boolean) => void;
   setOpenRequestDataModal: React.Dispatch<React.SetStateAction<boolean>>;
   username: string | null;
 }> = ({
-  name,
+  nombre,
   formula,
+  presentacion,
+  descripcion,
+  modoDeUso,
+  precio,
   modal,
   openModal,
   setOpenRequestDataModal,
   username,
 }) => {
+  const [isActiveDescripcion, setIsActiveDescripcion] = useState(false);
+  const [isActiveModoDeUso, setIsActiveModoDeUso] = useState(false);
   const formulaElement = useRef<HTMLTextAreaElement>(null);
 
   const getPrice = (event: React.SyntheticEvent<HTMLAnchorElement>) => {
-    let nameCustom = encodeURIComponent(`*${name}*`);
+    let nameCustom = encodeURIComponent(`*${nombre}*`);
     if (formulaElement.current!.value !== formula) {
       nameCustom += encodeURIComponent(" (Fórmula personalizada)");
     }
@@ -52,7 +66,7 @@ const ProductModal: FC<{
   };
 
   const shareLink = (event: React.SyntheticEvent<HTMLAnchorElement>) => {
-    let nameCustom = encodeURIComponent(`*${name}*`);
+    let nameCustom = encodeURIComponent(`*${nombre}*`);
     if (formulaElement.current!.value !== formula) {
       nameCustom += encodeURIComponent(" (Fórmula personalizada)");
     }
@@ -109,7 +123,7 @@ const ProductModal: FC<{
           x
         </ModalClose>
         <Content>
-          <h2>{name}</h2>
+          <h2>{nombre}</h2>
           <Formula
             ref={formulaElement}
             rows={4}
@@ -119,6 +133,41 @@ const ProductModal: FC<{
           >
             {formula}
           </Formula>
+          <Tabs>
+            <TabContainer>
+              <Tab
+                className={isActiveDescripcion && "active"}
+                id={descripcion.replace(/\s+/g, "-")}
+              >
+                <h4
+                  id="tab-label"
+                  onClick={() => setIsActiveDescripcion(!isActiveDescripcion)}
+                >
+                  Descripcion
+                </h4>
+                <TabContent id="tab-content">{descripcion}</TabContent>
+              </Tab>
+            </TabContainer>
+            <TabContainer>
+              <Tab
+                className={isActiveModoDeUso && "active"}
+                id={modoDeUso.replace(/\s+/g, "-")}
+              >
+                <h4
+                  id="tab-label"
+                  onClick={() => setIsActiveModoDeUso(!isActiveModoDeUso)}
+                >
+                  Modo de uso
+                </h4>
+                <TabContent id="tab-content">{modoDeUso}</TabContent>
+              </Tab>
+            </TabContainer>
+          </Tabs>
+          <p>
+            {presentacion}
+            <br />
+            <strong>$ {precio}</strong>
+          </p>
           <ButtonsWrapper>
             <div>
               <Button
