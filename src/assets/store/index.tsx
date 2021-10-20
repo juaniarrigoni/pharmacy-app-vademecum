@@ -17,7 +17,7 @@ const reducer: Reducer<State, Dispatch> = (
     case "ADD":
       return [...state, action.payload];
     case "REMOVE":
-      return [...state, action.payload];
+      return state.filter(({ nombre }) => nombre !== action.payload.nombre);
     case "REMOVE_ALL":
       return [];
     default:

@@ -12,6 +12,11 @@ export type CategoryData = {
   products: Array<ProductData>;
 };
 
+export type ActivoData = {
+  nombre: string;
+  link?: string;
+};
+
 export type ReducerAction = {
   type: string;
   payload: ProductData;

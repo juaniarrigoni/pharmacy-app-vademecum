@@ -3,7 +3,7 @@ import { useState } from "react";
 
 // Import inner components
 import Vademecum from "./components/Vademecum";
-// import Activos from "./components/Activos";
+import Activos from "./components/Activos";
 import Contact from "./components/Contact";
 
 // Import styled components
@@ -84,7 +84,7 @@ const Landing: React.FC = () => {
         <ContactModal open={openContactModal} setOpen={setOpenContactModal} />
       </Container>
       <Vademecum />
-      {/* <Activos /> */}
+      <Activos />
       <Contact />
       {cart.length > 0 && (
         <Cart
