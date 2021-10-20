@@ -1,13 +1,10 @@
-// Import dependencies
-import type { FC } from "react";
-
 // Import styled components
 import { ProductFound, NotFound } from "./styled";
 
 // Import assets
 import type { ProductData } from "assets/types";
 
-const Products: FC<{
+const Products: React.FC<{
   products: Array<ProductData>;
   search: string;
   openModal: (event: React.SyntheticEvent<HTMLElement>, open: boolean) => void;

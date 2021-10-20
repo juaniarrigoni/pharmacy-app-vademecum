@@ -1,5 +1,5 @@
 // Import dependencies
-import type { FC } from "react";
+import { Provider } from "react-redux";
 
 // Import inner components
 import Landing from "./pages/Landing";
@@ -7,11 +7,16 @@ import Landing from "./pages/Landing";
 // Import styled components
 import { Container } from "./styled";
 
-const App: FC = () => {
+// Import assets
+import store from "assets/store";
+
+const App: React.FC = () => {
   return (
-    <Container>
-      <Landing />
-    </Container>
+    <Provider store={store}>
+      <Container id="App">
+        <Landing />
+      </Container>
+    </Provider>
   );
 };
 

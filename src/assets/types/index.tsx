@@ -11,3 +11,15 @@ export type CategoryData = {
   name: string;
   products: Array<ProductData>;
 };
+
+export type ReducerAction = {
+  type: string;
+  payload: ProductData;
+};
+
+export type State = Array<ProductData>;
+
+export type Dispatch = {
+  type: string;
+  payload: ProductData;
+};

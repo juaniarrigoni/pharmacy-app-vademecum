@@ -11,3 +11,5 @@ Order of imports:
 // Import external components
 
 // Import assets
+
+// Types definitions

@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 // Import assets
-import { COLORS } from "assets/constants/styles";
+import { COLORS, MEDIA_QUERIES } from "assets/constants/styles";
 
 export const Container = styled.div`
   position: relative;
@@ -62,7 +62,7 @@ export const Form = styled.div`
     }
   }
 
-  @media only screen and (min-width: 801px) {
+  ${MEDIA_QUERIES.TABLET} {
     input {
       width: 49% !important;
     }

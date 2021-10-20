@@ -1,5 +1,5 @@
 // Import dependencies
-import { FC, useState } from "react";
+import { useState } from "react";
 
 // Import inner components
 import Vademecum from "./components/Vademecum";
@@ -17,17 +17,26 @@ import {
 } from "./styled";
 
 // Import external components
-import ContactModal from "components/general/ContactModal";
+import ContactModal from "components/layouts/ContactModal";
+import Cart from "components/layouts/Cart";
+import RequestUserDataModal from "components/layouts/RequestUserDataModal";
 
 // Import assets
+import { useAppSelector } from "assets/store";
 import logo from "assets/media/Logo.jpg";
 import scroll from "assets/media/Scroll-down.gif";
 import vademecum from "assets/media/Vademecum.png";
 import activos from "assets/media/Activos.png";
 import contacto from "assets/media/Contacto.png";
+import type { ProductData } from "assets/types";
 
-const Landing: FC = () => {
-  const [modal, setModal] = useState(false);
+const Landing: React.FC = () => {
+  const [openContactModal, setOpenContactModal] = useState(false);
+  const cart: Array<ProductData> = useAppSelector((state) => state);
+  const [username, setUsername] = useState(
+    localStorage.getItem("username") || ""
+  );
+  const [openRequestDataModal, setOpenRequestDataModal] = useState(false);
 
   return (
     <>
@@ -57,7 +66,7 @@ const Landing: FC = () => {
                 ACTIVOS<span>Calidad asegurada</span>
               </p>
             </Button>
-            <Button onClick={() => setModal(true)}>
+            <Button onClick={() => setOpenContactModal(true)}>
               <img src={contacto} alt="Contacto" />
               <p>
                 CONTACTO<span>Dónde encontrarnos</span>
@@ -72,11 +81,23 @@ const Landing: FC = () => {
         >
           <img src={scroll} alt="Scroll down" />
         </ScrollButton>
-        <ContactModal modal={modal} setModal={setModal} />
+        <ContactModal open={openContactModal} setOpen={setOpenContactModal} />
       </Container>
       <Vademecum />
       {/* <Activos /> */}
       <Contact />
+      {cart.length > 0 && (
+        <Cart
+          username={username}
+          setOpenRequestDataModal={setOpenRequestDataModal}
+        />
+      )}
+      <RequestUserDataModal
+        open={openRequestDataModal}
+        setOpen={setOpenRequestDataModal}
+        username={username}
+        setUsername={setUsername}
+      />
     </>
   );
 };

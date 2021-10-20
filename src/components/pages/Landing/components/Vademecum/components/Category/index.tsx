@@ -1,5 +1,5 @@
 // Import dependencies
-import { FC, useState } from "react";
+import { useState } from "react";
 
 // Import inner components
 import Result from "./components/Result";
@@ -11,7 +11,7 @@ import { Container, Tab, Content } from "./styled";
 // Import assets
 import type { ProductData } from "assets/types";
 
-const Category: FC<{
+const Category: React.FC<{
   category: string;
   products: Array<ProductData>;
   openModal: (event: React.SyntheticEvent<HTMLElement>, open: boolean) => void;

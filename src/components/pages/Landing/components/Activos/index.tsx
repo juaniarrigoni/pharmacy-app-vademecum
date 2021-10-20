@@ -1,5 +1,5 @@
 // Import dependencies
-import { FC, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 // Import styled components
@@ -20,7 +20,7 @@ interface Data {
   };
 }
 
-const Activos: FC = () => {
+const Activos: React.FC = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 

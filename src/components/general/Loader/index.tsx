@@ -1,10 +1,7 @@
-// Import dependencies
-import type { FC } from "react";
-
 // Import styled components
 import { Container, LoaderContent } from "./styled";
 
-const Loader: FC = () => (
+const Loader: React.FC = () => (
   <Container>
     <LoaderContent>
       <div></div>

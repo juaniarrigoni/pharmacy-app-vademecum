@@ -1,11 +1,11 @@
 // Import dependencies
-import { FC, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import emailjs from "emailjs-com";
 
 // Import styled components
 import { Container, Form, Error, FlexBox, Submit } from "./styled";
 
-const Contact: FC = () => {
+const Contact: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");

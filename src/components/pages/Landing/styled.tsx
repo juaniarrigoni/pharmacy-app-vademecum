@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 // Import assets
-import { COLORS } from "assets/constants/styles";
+import { COLORS, MEDIA_QUERIES } from "assets/constants/styles";
 import { heartBeat } from "assets/scripts/animations";
 
 export const Container = styled.div`
@@ -13,7 +13,7 @@ export const Container = styled.div`
   flex-direction: column;
   vertical-align: middle;
 
-  @media only screen and (max-width: 600px) {
+  ${MEDIA_QUERIES.MOBILE} {
     padding: 5vh 0;
   }
 `;
@@ -28,7 +28,7 @@ export const Logo = styled.img`
   box-shadow: 0 0 10px 0 rgba(${COLORS.PRIMARY_RGB}, 0.3);
   animation: heartBeat 2.5s ease-out infinite;
 
-  @media only screen and (max-width: 600px) {
+  ${MEDIA_QUERIES.MOBILE} {
     width: 40vw;
     height: 40vw;
   }
@@ -52,7 +52,7 @@ export const ButtonsWrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
 
-  @media only screen and (max-width: 600px) {
+  ${MEDIA_QUERIES.MOBILE} {
     display: block;
   }
 `;
@@ -73,7 +73,7 @@ export const Button = styled.a`
     box-shadow: 0 5px 15px -2.5px rgba(${COLORS.PRIMARY_RGB}, 0.3);
   }
 
-  @media only screen and (max-width: 600px) {
+  ${MEDIA_QUERIES.MOBILE} {
     width: 100%;
     margin: 20px auto;
   }
@@ -83,7 +83,7 @@ export const Button = styled.a`
     display: block;
     width: 50px;
     margin: 0 auto;
-    @media only screen and (max-width: 600px) {
+    ${MEDIA_QUERIES.MOBILE} {
       display: none;
     }
   }
@@ -93,7 +93,7 @@ export const Button = styled.a`
     font-weight: 700;
     color: ${COLORS.PRIMARY};
     margin-top: 0.5em;
-    @media only screen and (max-width: 600px) {
+    ${MEDIA_QUERIES.MOBILE} {
       margin: 0;
     }
   }
@@ -115,7 +115,7 @@ export const ScrollButton = styled.a`
   max-width: 50px;
   margin: 0 auto;
   cursor: pointer;
-  @media only screen and (max-width: 600px) {
+  ${MEDIA_QUERIES.MOBILE} {
     position: unset;
     margin-top: 0px;
   }
@@ -128,7 +128,7 @@ export const ScrollButton = styled.a`
     max-width: 50px;
     margin: 0 auto;
     cursor: pointer;
-    @media only screen and (max-width: 600px) {
+    ${MEDIA_QUERIES.MOBILE} {
       position: unset;
       margin-top: 0px;
     }

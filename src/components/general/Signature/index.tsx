@@ -1,6 +1,3 @@
-// Import dependencies
-import type { FC } from "react";
-
 // Import styled components
 import { Container } from "./styled";
 
@@ -9,7 +6,7 @@ import lenses from "./assets/Francisco.png";
 import smile from "./assets/Arrigoni.png";
 import { developerWebsite } from "assets/constants/contact";
 
-const Signature: FC = () => {
+const Signature: React.FC = () => {
   return (
     <Container>
       <a href={developerWebsite} target="_blank" rel="noreferrer">

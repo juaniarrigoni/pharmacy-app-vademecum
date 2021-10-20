@@ -1,10 +1,7 @@
-// Import dependencies
-import type { FC } from "react";
-
 // Import styled components
 import { Container } from "./styled";
 
-const Result: FC<{ search: string; result: number | null }> = ({
+const Result: React.FC<{ search: string; result: number | null }> = ({
   search,
   result,
 }) => {

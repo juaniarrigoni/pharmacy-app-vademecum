@@ -6,6 +6,7 @@ module.exports = {
   rules: {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
+    "react/button-has-type": "off",
     "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
     "no-console": ["warn"],
     "@typescript-eslint/no-unused-vars": ["warn"],

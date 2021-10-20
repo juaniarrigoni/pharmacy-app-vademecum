@@ -1,4 +1,3 @@
-// Used in components/general/ContactModal
 export const fadeInTop = `
 @keyframes fadeInTop {
     0% {
@@ -15,7 +14,6 @@ export const fadeInTop = `
     }
 }`;
 
-// Used in components/pages/Landing/components/Vademecum/components/RequestDataModal
 export const fadeIn = `
 @keyframes fadeIn {
   0% {
@@ -30,7 +28,6 @@ export const fadeIn = `
 }
 `;
 
-// Used in components/general/ContactModal
 export const zoom = `
 @keyframes zoom {
   0% {
@@ -43,7 +40,6 @@ export const zoom = `
   }
 `;
 
-// Used in components/general/Loader
 export const loader = `
 @keyframes loader {
   0% {
@@ -55,7 +51,6 @@ export const loader = `
 }
 `;
 
-// Used in components/pages/Landing
 export const heartBeat = `
 @keyframes heartBeat {
   0% {

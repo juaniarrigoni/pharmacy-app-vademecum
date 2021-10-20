@@ -1,17 +1,8 @@
-// Import dependencies
-import type { FC } from "react";
-
 // Import styled components
-import {
-  Container,
-  Modal,
-  ModalClose,
-  ModalContent,
-  ContentBox,
-  ContactInfo,
-  ContactInfoItem,
-  ContactInfoIcon,
-} from "./styled";
+import { ContactInfo, ContactInfoItem, ContactInfoIcon } from "./styled";
+
+// Import external components
+import Modal from "components/general/Modal";
 
 // Import assets
 import { location, chat, mail, phone } from "assets/constants/contact";
@@ -29,10 +20,10 @@ const contactInfoFields: Array<{
   { ...phone },
 ];
 
-const ContactModal: FC<{
-  modal: boolean;
-  setModal: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ modal, setModal }) => {
+const ContactModal: React.FC<{
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ open, setOpen }) => {
   const contactInfo = contactInfoFields.map((item) => (
     <ContactInfoItem key={item.type}>
       <div className="icon">
@@ -46,7 +37,7 @@ const ContactModal: FC<{
           <a
             href={item.link}
             data-scroll="smooth"
-            onClick={() => setModal(false)}
+            onClick={() => setOpen(false)}
           >
             {item.button}
           </a>
@@ -58,20 +49,12 @@ const ContactModal: FC<{
     </ContactInfoItem>
   ));
 
-  if (!modal) return null;
   return (
-    <Container data-state={modal}>
-      <Modal>
-        <ModalContent>
-          <ModalClose onClick={() => setModal(false)}>x</ModalClose>
-          <ContentBox>
-            <h2>CONTACTO</h2>
-            <h3>Dónde encontrarnos</h3>
-            <ContactInfo>{contactInfo}</ContactInfo>
-          </ContentBox>
-        </ModalContent>
-      </Modal>
-    </Container>
+    <Modal id="ContactModal" open={open} setOpen={setOpen} fitContent>
+      <h2>CONTACTO</h2>
+      <h3>Dónde encontrarnos</h3>
+      <ContactInfo>{contactInfo}</ContactInfo>
+    </Modal>
   );
 };
 
