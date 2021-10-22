@@ -22,8 +22,7 @@ const reducer: Reducer<State, Dispatch> = (
     case "REMOVE_ALL":
       return [];
     default:
-      // eslint-disable-next-line no-console
-      console.error("assets/store", "Action type not supported");
+    // do nothing
   }
   return state;
 };

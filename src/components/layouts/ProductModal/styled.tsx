@@ -59,7 +59,7 @@ export const Button = styled.button`
   box-shadow: 0 0 10px 0 rgba(${COLORS.BLACK_RGB}, 0.3);
   display: block;
   margin: 0 auto;
-  cursor: ${(props) => (props.disabled ? "not-allowed" : "cursor")};
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   filter: grayscale(${(props) => (props.disabled ? "1" : "0")});
 
   &:hover {

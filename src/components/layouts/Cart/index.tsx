@@ -81,12 +81,12 @@ const Cart: React.FC = () => {
     else {
       setShortenedUrlModal(true);
       axios
-        .post<{ shortenedUrl: string }>(
-          `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${"12345678"}`,
+        .post<{ shortLink: string }>(
+          `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${process.env.REACT_APP_GOOGLEDYNAMICLINKS_APIKEY}`,
           {
-            longDynamicLink: customerLink,
-            suffix: {
-              option: "SHORT",
+            dynamicLinkInfo: {
+              domainUriPrefix: "https://farmaceuticos.page.link",
+              link: customerLink,
             },
           }
         )
@@ -94,7 +94,7 @@ const Cart: React.FC = () => {
           setShortenedUrlData({
             loading: false,
             error: false,
-            link: finalLink + data.shortenedUrl,
+            link: finalLink + data.shortLink,
           });
         })
         .catch((error) => {
@@ -141,7 +141,7 @@ const Cart: React.FC = () => {
             <>
               <ProductList>
                 {cart.map((product) => (
-                  <Product key={product.nombre} product={product} />
+                  <Product key={product.id} product={product} />
                 ))}
               </ProductList>
               <ButtonsWrapper>
