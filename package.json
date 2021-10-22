@@ -10,20 +10,16 @@
     "@testing-library/user-event": "^12.8.3",
     "@types/jest": "^26.0.23",
     "@types/node": "^12.20.13",
-    "@types/node-sass": "^4.11.1",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.5",
-    "@types/sass": "^1.16.0",
     "axios": "^0.21.1",
     "dotenv": "^9.0.2",
     "emailjs-com": "^2.6.4",
-    "node-sass": "^6.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
     "react-scripts": "^4.0.3",
     "redux": "^4.1.1",
-    "sass": "^1.32.13",
     "typescript": "^4.2.4",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
@@ -54,10 +50,7 @@
     ]
   },
   "devDependencies": {
-    "@material-ui/core": "^4.12.3",
     "@mediamonks/eslint-config-react": "^1.0.2",
-    "husky": "^7.0.1",
-    "lint-staged": "^11.1.2",
     "styled-components": "^5.3.0"
   }
 }
