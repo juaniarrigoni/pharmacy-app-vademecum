@@ -56,13 +56,17 @@ export const Button = styled.button`
   border: 0;
   border-radius: 15px;
   padding: 1em 1.5em;
-  cursor: pointer;
   box-shadow: 0 0 10px 0 rgba(${COLORS.BLACK_RGB}, 0.3);
   display: block;
   margin: 0 auto;
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "cursor")};
+  filter: grayscale(${(props) => (props.disabled ? "1" : "0")});
 
   &:hover {
-    box-shadow: 0 5px 15px 0 rgba(${COLORS.BLACK_RGB}, 0.5);
+    box-shadow: ${(props) =>
+      props.disabled
+        ? `0 0 10px 0 rgba(${COLORS.BLACK_RGB}, 0.3)`
+        : `0 5px 15px 0 rgba(${COLORS.BLACK_RGB}, 0.5)`};
   }
 `;
 

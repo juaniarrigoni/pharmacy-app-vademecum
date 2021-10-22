@@ -35,3 +35,31 @@ export const BOX_SHADOW = {
 export const BORDER_RADIUS = {
   SQUARE: "20px",
 };
+
+export const BUTTON_STYLE = `
+  cursor: pointer;
+  color: ${COLORS.WHITE};
+  display: block;
+  width: fit-content;
+  font-weight: 900;
+  background: linear-gradient(
+    180deg,
+    ${COLORS.PRIMARY_LIGHTER} 0,
+    ${COLORS.PRIMARY} 100%
+  );
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 15px;
+  padding: 1em 1.5em;
+  box-shadow: 0 0 10px 0 rgba(${COLORS.BLACK_RGB}, 0.3);
+  display: block;
+  margin: 0 auto;
+
+  &:hover {
+    box-shadow: 0 5px 15px 0 rgba(${COLORS.BLACK_RGB}, 0.5);
+  }
+
+  * {
+    cursor: pointer;
+  }
+`;

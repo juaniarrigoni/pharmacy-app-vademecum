@@ -13,13 +13,22 @@ const Products: React.FC<{
   let productList: Array<JSX.Element | undefined> = products
     .filter(({ nombre }) => nombre.toLowerCase().includes(search.toLowerCase()))
     .map(
-      ({ nombre, formula, presentacion, descripcion, modoDeUso, precio }) => {
+      ({
+        id,
+        nombre,
+        formula,
+        presentacion,
+        descripcion,
+        modoDeUso,
+        precio,
+      }) => {
         return (
           <ProductFound
             key={nombre}
             onClick={(event: React.SyntheticEvent<HTMLElement>) =>
               openModal(event, true)
             }
+            data-id={id}
             data-nombre={nombre}
             data-formula={formula}
             data-presentacion={presentacion}

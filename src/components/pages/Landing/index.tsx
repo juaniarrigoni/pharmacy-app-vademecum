@@ -19,24 +19,16 @@ import {
 // Import external components
 import ContactModal from "components/layouts/ContactModal";
 import Cart from "components/layouts/Cart";
-import RequestUserDataModal from "components/layouts/RequestUserDataModal";
 
 // Import assets
-import { useAppSelector } from "assets/store";
 import logo from "assets/media/Logo.jpg";
 import scroll from "assets/media/Scroll-down.gif";
 import vademecum from "assets/media/Vademecum.png";
 import activos from "assets/media/Activos.png";
 import contacto from "assets/media/Contacto.png";
-import type { ProductData } from "assets/types";
 
 const Landing: React.FC = () => {
   const [openContactModal, setOpenContactModal] = useState(false);
-  const cart: Array<ProductData> = useAppSelector((state) => state);
-  const [username, setUsername] = useState(
-    localStorage.getItem("username") || ""
-  );
-  const [openRequestDataModal, setOpenRequestDataModal] = useState(false);
 
   return (
     <>
@@ -86,18 +78,7 @@ const Landing: React.FC = () => {
       <Vademecum />
       <Activos />
       <Contact />
-      {cart.length > 0 && (
-        <Cart
-          username={username}
-          setOpenRequestDataModal={setOpenRequestDataModal}
-        />
-      )}
-      <RequestUserDataModal
-        open={openRequestDataModal}
-        setOpen={setOpenRequestDataModal}
-        username={username}
-        setUsername={setUsername}
-      />
+      <Cart />
     </>
   );
 };

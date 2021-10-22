@@ -1,5 +1,5 @@
 // Import dependencies
-import { useRef, useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 // Import styled components
@@ -17,27 +17,31 @@ import {
 import Modal from "components/general/Modal";
 
 // Import assets
+import { formulaPersonalizadaId } from "assets/constants/contact";
 import type { ProductData, ReducerAction } from "assets/types";
 
 const ProductModal: React.FC<{
   product: ProductData;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ product, open, setOpen }) => {
+  edit?: boolean;
+}> = ({ product, open, setOpen, edit }) => {
   const [isActiveDescripcion, setIsActiveDescripcion] = useState(false);
   const [isActiveModoDeUso, setIsActiveModoDeUso] = useState(false);
-  const formulaElement = useRef<HTMLTextAreaElement>(null);
+  const [formula, setFormula] = useState(product.formula);
   const dispatch = useDispatch();
+
+  useEffect(() => setFormula(product.formula), [product]);
 
   const AddToCart = () => {
     const nombreCustom =
-      formulaElement.current!.value !== product.formula
-        ? `${product.nombre} (Fórmula personalizada)`
+      !product.nombre.includes(formulaPersonalizadaId) &&
+      formula !== product.formula
+        ? `${product.nombre}${formulaPersonalizadaId}`
         : product.nombre;
-    const formulaCustom = formulaElement.current!.value;
     const action: ReducerAction = {
       type: "ADD",
-      payload: { ...product, nombre: nombreCustom, formula: formulaCustom },
+      payload: { ...product, formula, nombre: nombreCustom },
     };
     dispatch(action);
     setOpen(false);
@@ -48,8 +52,8 @@ const ProductModal: React.FC<{
       <Content>
         <h2>{product.nombre}</h2>
         <Formula
-          ref={formulaElement}
           defaultValue={product.formula}
+          onChange={(event) => setFormula(event.target.value)}
           rows={4}
           onInput={() =>
             'style.height = "";style.height = scrollHeight + 3 + "px"'
@@ -90,7 +94,21 @@ const ProductModal: React.FC<{
           <br />
           <strong>$ {product.precio}</strong>
         </p>
-        <Button onClick={() => AddToCart()}>AGREGAR AL CARRITO</Button>
+        {edit ? (
+          <Button
+            onClick={() => {
+              if (formula !== product.formula) {
+                dispatch({ type: "REMOVE", payload: product });
+                AddToCart();
+              }
+            }}
+            disabled={!(formula !== product.formula)}
+          >
+            GUARDAR CAMBIOS
+          </Button>
+        ) : (
+          <Button onClick={() => AddToCart()}>AGREGAR AL CARRITO</Button>
+        )}
       </Content>
     </Modal>
   );

@@ -1,4 +1,5 @@
 export type ProductData = {
+  id?: string;
   nombre: string;
   formula: string;
   presentacion: string;
@@ -27,4 +28,10 @@ export type State = Array<ProductData>;
 export type Dispatch = {
   type: string;
   payload: ProductData;
+};
+
+export type ShortenUrlData = {
+  loading: boolean;
+  error: boolean;
+  link: string;
 };

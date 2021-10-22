@@ -1,9 +1,9 @@
 // Import styled components
 import { Container, LoaderContent } from "./styled";
 
-const Loader: React.FC = () => (
+const Loader: React.FC<{ className?: string }> = ({ className }) => (
   <Container>
-    <LoaderContent>
+    <LoaderContent className={className}>
       <div></div>
       <div></div>
       <div></div>

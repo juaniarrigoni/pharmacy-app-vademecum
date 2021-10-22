@@ -47,3 +47,5 @@ export const spreadsheetIds = {
   vademecum: "1t-IbQFLlWPNsdF1DNIqVuP5vSaGHBwCFtvS0Tz9ZnDM",
   activos: "1S0mXgKbdX8EPRkXEf7PKx8W63AoHTG5boDY-Ii2ke7c",
 };
+
+export const formulaPersonalizadaId = " (Fórmula personalizada)";

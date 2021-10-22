@@ -1,6 +1,7 @@
 // Import dependencies
 import { createStore, Store, Reducer } from "redux";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 // Import assets
 import type { State, Dispatch, ReducerAction } from "assets/types";
@@ -15,9 +16,9 @@ const reducer: Reducer<State, Dispatch> = (
 ) => {
   switch (action.type) {
     case "ADD":
-      return [...state, action.payload];
+      return [...state, { ...action.payload, id: uuidv4() }];
     case "REMOVE":
-      return state.filter(({ nombre }) => nombre !== action.payload.nombre);
+      return state.filter(({ id }) => id !== action.payload.id);
     case "REMOVE_ALL":
       return [];
     default:
