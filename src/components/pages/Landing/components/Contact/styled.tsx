@@ -5,13 +5,10 @@ import styled from "styled-components";
 import { COLORS, MEDIA_QUERIES } from "assets/constants/styles";
 
 export const Container = styled.div`
-  position: relative;
   padding: 10vh 0 20vh;
-
   h3 {
     margin-bottom: 20px;
   }
-
   h2,
   h3,
   p {
@@ -19,77 +16,81 @@ export const Container = styled.div`
   }
 `;
 
-export const Form = styled.div`
+export const FormWrapper = styled.div`
   background: linear-gradient(90deg, ${COLORS.PRIMARY} 21px, transparent 1%)
       center,
     linear-gradient(${COLORS.PRIMARY} 21px, transparent 1%) center,
     ${COLORS.WHITE};
   background-size: 22px 22px;
   display: flex;
-  flex-direction: column;
-  text-align: center;
-  vertical-align: middle;
+  justify-content: space-between;
   box-shadow: 0 0 15px 0 rgba(${COLORS.BLACK_RGB}, 0.3);
   max-width: 600px;
-  padding: 8vh;
+  padding: 3rem;
   margin: 0 auto;
   border-radius: 20px;
+  text-align: center;
+`;
 
-  h2 {
-    margin-bottom: 0px;
-    color: ${COLORS.WHITE};
+export const Form = styled.form`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  > *:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  input {
+    width: 48%;
+
+    ${MEDIA_QUERIES.MOBILE} {
+      width: 100%;
+    }
+  }
+
+  textarea {
+    width: 100%;
   }
 
   input,
   textarea {
-    cursor: text;
-    border-radius: 10px;
-    border: 0;
+    cursor: pointer;
+    border-radius: 0.5rem;
     font-weight: 700;
-    padding: 10px;
-    margin: 0 auto 15px;
-    box-shadow: 0 0 5px 0 rgba(${COLORS.BLACK_RGB}, 0.2);
-    width: 100%;
+    padding: 1rem;
     color: ${COLORS.BLACK};
-    background: linear-gradient(90deg, ${COLORS.WHITE} 21px, transparent 1%)
+    background: linear-gradient(90deg, ${COLORS.WHITE} 11px, transparent 1%)
         center,
-      linear-gradient(${COLORS.WHITE} 21px, transparent 1%) center,
+      linear-gradient(${COLORS.WHITE} 11px, transparent 1%) center,
       ${COLORS.WHITE};
-    background-size: 22px 22px;
+    background-size: 12px 12px;
+    box-shadow: 0 2.5px 10px -2.5px rgba(${COLORS.BLACK_RGB}, 0.15);
 
+    &:hover,
     &:focus {
-      box-shadow: 0 0 5px 0 rgba(${COLORS.VIOLET_RGB}, 0.8);
+      background: linear-gradient(90deg, ${COLORS.WHITE} 11px, transparent 1%)
+          center,
+        linear-gradient(${COLORS.WHITE} 11px, transparent 1%) center,
+        ${COLORS.PRIMARY};
+      background-size: 12px 12px;
+      box-shadow: 0 5px 15px -2.5px rgba(${COLORS.BLACK_RGB}, 0.3);
     }
-  }
-
-  ${MEDIA_QUERIES.TABLET} {
-    input {
-      width: 49% !important;
-    }
-  }
-
-  textarea {
-    width: 100%;
   }
 `;
 
-export const Error = styled.p`
+export const Error = styled.h4`
   color: ${COLORS.WHITE};
-  font-weight: 900;
-  margin-bottom: 2rem;
-`;
-
-export const FlexBox = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  margin: auto;
+  padding-bottom: 1rem;
+  text-shadow: 0 0.1rem 0.1rem rgba(${COLORS.BLACK_RGB}, 0.2);
 `;
 
 export const Submit = styled.input`
-  cursor: pointer;
   display: block;
   width: fit-content;
-  margin: 10px auto 0;
+  margin: 0 auto;
   padding: 10px 30px;
   border-radius: 10px;
   background: transparent;
