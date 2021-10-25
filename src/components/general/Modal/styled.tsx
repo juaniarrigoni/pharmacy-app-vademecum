@@ -58,7 +58,7 @@ export const Box = styled.div`
   border-radius: 20px;
   width: 90%;
   height: fit-content;
-  padding: 5%;
+  padding: 2rem;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -68,6 +68,7 @@ export const Box = styled.div`
   display: flex;
   max-width: 800px;
   max-height: 80vh;
+  overflow: scroll;
 
   &[data-style-fit-content="true"] {
     width: fit-content;

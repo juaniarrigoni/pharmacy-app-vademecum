@@ -6,6 +6,7 @@ import { Container, List, ActivoText, ActivoButton } from "./styled";
 
 // Import external components
 import Loader from "components/general/Loader";
+import LinkIcon from "components/general/Icons/Link";
 
 // Import assets
 import { path, spreadsheetIds } from "assets/constants/contact";
@@ -41,6 +42,7 @@ const Activos: React.FC = () => {
         rel="noreferrer"
       >
         {item.nombre}
+        <LinkIcon />
       </ActivoButton>
     ) : (
       <ActivoText

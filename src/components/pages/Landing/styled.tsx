@@ -73,18 +73,15 @@ export const Button = styled.a`
     box-shadow: 0 5px 15px -2.5px rgba(${COLORS.PRIMARY_RGB}, 0.3);
   }
 
-  ${MEDIA_QUERIES.MOBILE} {
-    width: 100%;
-    margin: 20px auto;
-  }
-
   img {
     cursor: pointer;
     display: block;
     width: 50px;
     margin: 0 auto;
+
     ${MEDIA_QUERIES.MOBILE} {
-      display: none;
+      width: auto;
+      height: 2rem;
     }
   }
 
@@ -94,7 +91,9 @@ export const Button = styled.a`
     color: ${COLORS.PRIMARY};
     margin-top: 0.5em;
     ${MEDIA_QUERIES.MOBILE} {
-      margin: 0;
+      margin: 0 0 0 1rem;
+      text-align: left;
+      flex-grow: 1;
     }
   }
 
@@ -103,6 +102,17 @@ export const Button = styled.a`
     color: ${COLORS.PRIMARY};
     display: block;
     font-size: 0.75em;
+    ${MEDIA_QUERIES.MOBILE} {
+      text-align: left;
+    }
+  }
+
+  ${MEDIA_QUERIES.MOBILE} {
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
   }
 `;
 
