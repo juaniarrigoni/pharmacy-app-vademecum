@@ -16,9 +16,12 @@ export const Button = styled.button`
   cursor: pointer;
   box-sizing: border-box;
   border-radius: 50px;
-  width: 2rem;
-  height: 2rem;
+  min-width: 2rem;
+  min-height: 2rem;
+  max-width: 2rem;
+  max-height: 2rem;
   margin: 0.5rem;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -47,4 +50,5 @@ export const Button = styled.button`
 export const ProductName = styled.p`
   flex-grow: 1;
   text-align: left;
+  padding: 1rem 0;
 `;

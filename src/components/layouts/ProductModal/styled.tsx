@@ -10,14 +10,18 @@ export const Content = styled.div`
   margin: auto;
 
   > *:not(:last-child) {
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
+  }
+
+  .copy p {
+    margin-top: 0.3rem;
   }
 `;
 
 export const Formula = styled.textarea`
   display: block;
   color: ${COLORS.BLACK};
-  line-height: 1.5em;
+  line-height: 1.25rem;
   font-weight: 700;
   border: 0;
   width: 100%;
@@ -29,8 +33,8 @@ export const Formula = styled.textarea`
   box-shadow: 0 2.5px 10px -2.5px rgba(${COLORS.BLACK_RGB}, 0.15);
   text-align: center;
   cursor: pointer;
-  border-radius: 20px;
-  padding: 1.5rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
   margin: 0 auto;
 
   &:hover,
@@ -54,7 +58,7 @@ export const Button = styled.button`
   );
   text-transform: uppercase;
   border: 0;
-  border-radius: 15px;
+  border-radius: 0.5rem;
   padding: 1em 1.5em;
   box-shadow: 0 0 10px 0 rgba(${COLORS.BLACK_RGB}, 0.3);
   display: block;
@@ -78,6 +82,9 @@ export const Tabs = styled.div`
 
   ${MEDIA_QUERIES.MOBILE} {
     flex-wrap: wrap;
+    > *:not(:last-child) {
+      margin-bottom: 20px;
+    }
   }
 `;
 
@@ -88,7 +95,6 @@ export const TabContainer = styled.div`
 
   ${MEDIA_QUERIES.MOBILE} {
     width: 100%;
-    padding: 0 0 20px 0;
   }
 `;
 
@@ -97,29 +103,29 @@ export const Tab = styled.div`
   cursor: pointer;
   overflow: hidden;
   box-shadow: 0 2.5px 10px -2.5px rgba(${COLORS.BLACK_RGB}, 0.15);
-  border-radius: 15px;
+  border-radius: 0.5rem;
 
   &:hover {
     box-shadow: 0 5px 15px -2.5px rgba(${COLORS.BLACK_RGB}, 0.3);
   }
 
-  h4 {
+  p {
     cursor: pointer;
     position: relative;
     text-align: center;
     display: flex;
     justify-content: center;
-    padding: 1em;
+    padding: 1rem;
     background: ${COLORS.WHITE};
     font-weight: bold;
     cursor: pointer;
 
     &:after {
       position: absolute;
-      right: 1em;
+      right: 1rem;
       content: "\\276F";
-      width: 1em;
-      height: 1em;
+      width: 1rem;
+      height: 1rem;
       text-align: center;
       transition: all 0.35s;
     }
@@ -131,13 +137,12 @@ export const Tab = styled.div`
 
   &.active #tab-content {
     max-height: 30vh;
-    padding: 1em;
+    padding: 0 1rem 1rem 1rem;
   }
 `;
 
 export const TabContent = styled.div`
   max-height: 0;
-  padding: 0 1em;
   background: ${COLORS.WHITE};
   transition: all 0.3s;
   overflow: auto;

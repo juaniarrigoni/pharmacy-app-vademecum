@@ -2,14 +2,18 @@
 import styled from "styled-components";
 
 // Import assets
-import { COLORS } from "assets/constants/styles";
+import { COLORS, MEDIA_QUERIES } from "assets/constants/styles";
 
 export const Container = styled.div`
   position: relative;
-  padding: 20px;
+  padding: 1rem;
   display: block;
   max-width: 450px;
   width: 100%;
+
+  ${MEDIA_QUERIES.MOBILE} {
+    padding: 0.5rem;
+  }
 `;
 
 export const Tab = styled.div`
@@ -23,13 +27,13 @@ export const Tab = styled.div`
     box-shadow: 0 5px 15px -2.5px rgba(${COLORS.BLACK_RGB}, 0.3);
   }
 
-  h3 {
+  h4 {
     cursor: pointer;
     position: relative;
     text-align: center;
     display: flex;
     justify-content: center;
-    padding: 1em;
+    padding: 1.5rem;
     background: ${COLORS.WHITE};
     font-weight: bold;
     cursor: pointer;
@@ -38,8 +42,8 @@ export const Tab = styled.div`
       position: absolute;
       right: 1em;
       content: "\\276F";
-      width: 1em;
-      height: 1em;
+      width: 1rem;
+      height: 1rem;
       text-align: center;
       transition: all 0.35s;
     }

@@ -11,6 +11,7 @@ export const COLORS = {
   PRIMARY_RGB: "0, 165, 79",
   VIOLET_RGB: "65, 23, 171",
   RED_RGB: "255, 40, 0",
+  PLACEHOLDER: "#8e8e8e",
 };
 
 export const FONT_FAMILY = {

@@ -28,9 +28,9 @@ const Category: React.FC<{
     <Container id="Category">
       <Tab className={isActive && "active"} id={category.replace(/\s+/g, "-")}>
         <Result search={search} result={result} />
-        <h3 id="category-label" onClick={() => setIsActive(!isActive)}>
+        <h4 id="category-label" onClick={() => setIsActive(!isActive)}>
           {category}
-        </h3>
+        </h4>
         <Content id="category-content">
           <Products
             search={search}

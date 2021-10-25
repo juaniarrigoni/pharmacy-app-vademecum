@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 // Import assets
-import { BUTTON_STYLE, COLORS } from "assets/constants/styles";
+import { BUTTON_STYLE, COLORS, MEDIA_QUERIES } from "assets/constants/styles";
 
 export const Container = styled.div`
   display: block;
@@ -27,7 +27,7 @@ export const EmptyCartButton = styled.a`
 
 export const ProductList = styled.div`
   max-height: 30vh;
-  overflow: scroll;
+  overflow: overlay;
   & > div:not(:last-child) {
     border-bottom: 0.3px solid rgba(${COLORS.BLACK_RGB}, 0.3);
   }
@@ -39,9 +39,13 @@ export const ButtonsWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export const FinishButton = styled.button`
+export const ConsultarPrecioAnchor = styled.a`
   ${BUTTON_STYLE}
-  margin: 20px;
+  margin: 1rem;
+
+  ${MEDIA_QUERIES.MOBILE} {
+    margin: 0;
+  }
 
   span {
     display: block;
@@ -50,9 +54,9 @@ export const FinishButton = styled.button`
   }
 `;
 
-export const FinishAnchor = styled.a`
+export const RecomendarButton = styled.button`
   ${BUTTON_STYLE}
-  margin: 20px;
+  margin: 1rem;
 
   span {
     display: block;

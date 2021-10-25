@@ -14,7 +14,7 @@ export const OpenCartButton = styled.button`
   width: 80px;
   height: 80px;
   padding: 20px;
-  background: rgba(${COLORS.WHITE_RGB}, 0.9);
+  background: ${COLORS.WHITE};
   box-shadow: ${BOX_SHADOW.SQUARE};
   border-radius: ${BORDER_RADIUS.SQUARE};
   animation: heartBeat 2.5s ease-out infinite;

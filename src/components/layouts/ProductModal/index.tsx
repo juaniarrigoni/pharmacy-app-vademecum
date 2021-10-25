@@ -50,7 +50,14 @@ const ProductModal: React.FC<{
   return (
     <Modal id="ContactModal" open={open} setOpen={setOpen}>
       <Content>
-        <h2>{product.nombre}</h2>
+        <div className="copy">
+          <h2>{product.nombre}</h2>
+          <p>
+            {product.presentacion}
+            <br />
+            <strong>$ {product.precio}</strong>
+          </p>
+        </div>
         <Formula
           defaultValue={product.formula}
           onChange={(event) => setFormula(event.target.value)}
@@ -65,12 +72,12 @@ const ProductModal: React.FC<{
               className={isActiveDescripcion && "active"}
               id={product.descripcion.replace(/\s+/g, "-")}
             >
-              <h4
+              <p
                 id="tab-label"
                 onClick={() => setIsActiveDescripcion(!isActiveDescripcion)}
               >
                 Descripcion
-              </h4>
+              </p>
               <TabContent id="tab-content">{product.descripcion}</TabContent>
             </Tab>
           </TabContainer>
@@ -79,21 +86,16 @@ const ProductModal: React.FC<{
               className={isActiveModoDeUso && "active"}
               id={product.modoDeUso.replace(/\s+/g, "-")}
             >
-              <h4
+              <p
                 id="tab-label"
                 onClick={() => setIsActiveModoDeUso(!isActiveModoDeUso)}
               >
                 Modo de uso
-              </h4>
+              </p>
               <TabContent id="tab-content">{product.modoDeUso}</TabContent>
             </Tab>
           </TabContainer>
         </Tabs>
-        <p>
-          {product.presentacion}
-          <br />
-          <strong>$ {product.precio}</strong>
-        </p>
         {edit ? (
           <Button
             onClick={() => {

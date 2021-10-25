@@ -2,37 +2,46 @@
 import styled from "styled-components";
 
 // Import assets
-import { COLORS } from "assets/constants/styles";
+import { BOX_SHADOW, COLORS, MEDIA_QUERIES } from "assets/constants/styles";
 
 export const Container = styled.div`
-  width: 100%;
-`;
-
-export const Form = styled.form`
+  position: relative;
   max-width: 450px;
   width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 1rem;
+
+  ${MEDIA_QUERIES.MOBILE} {
+    padding: 0.5rem;
+  }
+
+  svg {
+    fill: ${COLORS.PLACEHOLDER};
+    position: absolute;
+    width: 1.25rem;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 `;
 
 export const Input = styled.input`
   display: block;
   border: 0px;
   width: 100%;
-  color: #000;
-  overflow: hidden;
-  box-shadow: 0 2.5px 10px -2.5px rgba(${COLORS.BLACK_RGB}, 0.15);
+  color: ${COLORS.BLACK};
   border-radius: 15px;
-  position: relative;
   text-align: center;
-  padding: 1em;
+  padding: 1.5rem;
   margin: 0px;
   background: ${COLORS.WHITE};
   font-weight: bold;
   cursor: pointer;
+  -webkit-appearance: none;
+  box-shadow: ${BOX_SHADOW.SQUARE};
 
   :hover,
   :focus {
-    box-shadow: 0 5px 15px -2.5px rgba(${COLORS.BLACK_RGB}, 0.3);
+    box-shadow: ${BOX_SHADOW.SQUARE_HOVER};
   }
 `;

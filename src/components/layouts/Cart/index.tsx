@@ -9,8 +9,8 @@ import {
   EmptyCartButton,
   ProductList,
   ButtonsWrapper,
-  FinishButton,
-  FinishAnchor,
+  RecomendarButton,
+  ConsultarPrecioAnchor,
 } from "./styled";
 
 // Import inner components
@@ -146,7 +146,7 @@ const Cart: React.FC = () => {
               </ProductList>
               <ButtonsWrapper>
                 <div>
-                  <FinishAnchor
+                  <ConsultarPrecioAnchor
                     onClick={(event: React.SyntheticEvent<HTMLAnchorElement>) =>
                       getPrice(event)
                     }
@@ -155,12 +155,12 @@ const Cart: React.FC = () => {
                     rel="noopener"
                   >
                     CONSULTAR<span>PRECIO</span>
-                  </FinishAnchor>
+                  </ConsultarPrecioAnchor>
                 </div>
                 <div>
-                  <FinishButton onClick={() => shareLink()}>
+                  <RecomendarButton onClick={() => shareLink()}>
                     RECOMENDAR<span>A ALGUIEN</span>
-                  </FinishButton>
+                  </RecomendarButton>
                   <Referral
                     username={username}
                     setOpenRequestDataModal={setOpenRequestDataModal}

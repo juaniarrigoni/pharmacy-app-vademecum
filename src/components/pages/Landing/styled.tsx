@@ -60,8 +60,8 @@ export const ButtonsWrapper = styled.div`
 export const Button = styled.a`
   cursor: pointer;
   display: block;
-  max-width: 200px;
   min-width: 80px;
+  max-width: 200px;
   width: auto;
   box-shadow: 0 2.5px 10px -2.5px rgba(${COLORS.PRIMARY_RGB}, 0.15);
   margin: 20px;
@@ -80,6 +80,7 @@ export const Button = styled.a`
     margin: 0 auto;
 
     ${MEDIA_QUERIES.MOBILE} {
+      position: absolute;
       width: auto;
       height: 2rem;
     }
@@ -91,8 +92,6 @@ export const Button = styled.a`
     color: ${COLORS.PRIMARY};
     margin-top: 0.5em;
     ${MEDIA_QUERIES.MOBILE} {
-      margin: 0 0 0 1rem;
-      text-align: left;
       flex-grow: 1;
     }
   }
@@ -102,13 +101,12 @@ export const Button = styled.a`
     color: ${COLORS.PRIMARY};
     display: block;
     font-size: 0.75em;
-    ${MEDIA_QUERIES.MOBILE} {
-      text-align: left;
-    }
   }
 
   ${MEDIA_QUERIES.MOBILE} {
     width: 100%;
+    max-width: 100%;
+    max-width: 250px;
     margin: 20px auto;
     display: flex;
     flex-direction: row;

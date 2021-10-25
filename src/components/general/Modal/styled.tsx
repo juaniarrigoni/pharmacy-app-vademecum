@@ -68,7 +68,7 @@ export const Box = styled.div`
   display: flex;
   max-width: 800px;
   max-height: 80vh;
-  overflow: scroll;
+  overflow: overlay;
 
   &[data-style-fit-content="true"] {
     width: fit-content;
@@ -76,8 +76,8 @@ export const Box = styled.div`
   }
 
   ${MEDIA_QUERIES.MOBILE} {
-    max-width: 90vw;
-    max-height: 90vh;
+    max-width: 85vw;
+    max-height: 80vh;
   }
 
   ${fadeInTop};
