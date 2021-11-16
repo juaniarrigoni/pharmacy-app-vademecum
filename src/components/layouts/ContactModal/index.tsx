@@ -5,7 +5,7 @@ import { ContactInfo, ContactInfoItem, ContactInfoIcon } from "./styled";
 import Modal from "components/general/Modal";
 
 // Import assets
-import { location, chat, mail, phone } from "assets/constants/contact";
+import { location, chat, phone } from "assets/constants/contact";
 
 const contactInfoFields: Array<{
   type: string;
@@ -16,7 +16,6 @@ const contactInfoFields: Array<{
 }> = [
   { ...location, button: "VER MAPA" },
   { ...chat, button: "CHATEAR" },
-  { ...mail, button: "CONTACTAR" },
   { ...phone },
 ];
 
