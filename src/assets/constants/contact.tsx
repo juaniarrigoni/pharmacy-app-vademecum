@@ -14,7 +14,7 @@ export const developerWebsite = "https://franarrigoni.vercel.app/";
 
 export const location = {
   type: "location",
-  title: "Gral. San Martin 1284, Neuquén",
+  title: "Belgrano 2005, Neuquén",
   icon: locationIcon,
   link: "https://g.page/farmaceuticosasociados",
 };

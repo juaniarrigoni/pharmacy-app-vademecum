@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // Import inner components
-import Vademecum from "./components/Vademecum";
+import ProductSection from "./components/ProductSection";
 import Activos from "./components/Activos";
 import Contact from "./components/Contact";
 
@@ -14,6 +14,7 @@ import {
   ButtonsWrapper,
   Button,
   ScrollButton,
+  IconMask,
 } from "./styled";
 
 // Import external components
@@ -21,11 +22,13 @@ import ContactModal from "components/layouts/ContactModal";
 import Cart from "components/layouts/Cart";
 
 // Import assets
+// Icons imported
 import logo from "assets/media/Logo.jpg";
 import scroll from "assets/media/Scroll-down.gif";
 import vademecum from "assets/media/Vademecum.png";
 import activos from "assets/media/Activos.png";
 import contacto from "assets/media/Contacto.png";
+import { SECTIONS } from "assets/constants/sections";
 
 const Landing: React.FC = () => {
   const [openContactModal, setOpenContactModal] = useState(false);
@@ -40,26 +43,36 @@ const Landing: React.FC = () => {
           <ButtonsWrapper>
             <Button
               // eslint-disable-next-line no-return-assign
-              onClick={() => (window.location.href = "/#Vademecum")}
+              onClick={() => (window.location.href = "/#formulas")}
               data-scroll="smooth"
             >
-              <img src={vademecum} alt="Vademecum" />
+              <IconMask src={vademecum} />
               <p>
-                VADEMÉCUM<span>Nuestras fórmulas</span>
+                FÓRMULAS<span>Con receta</span>
               </p>
             </Button>
             <Button
               // eslint-disable-next-line no-return-assign
-              onClick={() => (window.location.href = "/#Activos")}
+              onClick={() => (window.location.href = "/#suplementos")}
               data-scroll="smooth"
             >
-              <img src={activos} alt="Activos" />
+              <IconMask src={activos} />
               <p>
-                ACTIVOS<span>Calidad asegurada</span>
+                SUPLEMENTOS<span>Calidad asegurada</span>
+              </p>
+            </Button>
+            <Button
+              // eslint-disable-next-line no-return-assign
+              onClick={() => (window.location.href = "/#nutricion")}
+              data-scroll="smooth"
+            >
+              <IconMask src={vademecum} />
+              <p>
+                NUTRICIÓN<span>Cuidado integral</span>
               </p>
             </Button>
             <Button onClick={() => setOpenContactModal(true)}>
-              <img src={contacto} alt="Contacto" />
+              <IconMask src={contacto} />
               <p>
                 CONTACTO<span>Dónde encontrarnos</span>
               </p>
@@ -68,14 +81,14 @@ const Landing: React.FC = () => {
         </Content>
         <ScrollButton
           // eslint-disable-next-line no-return-assign
-          onClick={() => (window.location.href = "/#Vademecum")}
+          onClick={() => (window.location.href = "/#formulas")}
           data-scroll="smooth"
-        >
-          <img src={scroll} alt="Scroll down" />
-        </ScrollButton>
+        />
         <ContactModal open={openContactModal} setOpen={setOpenContactModal} />
       </Container>
-      <Vademecum />
+      {SECTIONS.map((section) => (
+        <ProductSection key={section.id} sectionConfig={section} />
+      ))}
       <Activos />
       <Contact />
       <Cart />

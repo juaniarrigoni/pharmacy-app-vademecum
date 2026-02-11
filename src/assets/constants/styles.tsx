@@ -1,21 +1,31 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export const COLORS = {
-  WHITE: "#ffffff",
-  BLACK: "#000000",
-  PRIMARY: "#00a54f",
-  PRIMARY_LIGHTER: "#32b772",
-  PRIMARY_LIGHTEST: "#f2faf6",
-  BLACK_RGB: "0, 0, 0",
-  WHITE_RGB: "255, 255, 255",
-  PRIMARY_RGB: "0, 165, 79",
-  VIOLET_RGB: "65, 23, 171",
-  RED_RGB: "255, 40, 0",
-  PLACEHOLDER: "#8e8e8e",
+  // New palette from Figma
+  OFF_WHITE: "#F5EFE6",
+  BEIGE: "#E8AF3E",
+  SAGE: "#9D976B",
+  DARK_BROWN: "#3E3529",
+  BROWN: "#7C6A55",
+  DARK_GREEN: "#7C6A55",
+
+  // Mapped for backwards compatibility
+  WHITE: "#F5EFE6", // Off White
+  BLACK: "#3E3529", // Dark Brown
+  PRIMARY: "#9D976B", // Sage
+  PRIMARY_LIGHTER: "#9D976B",
+  PRIMARY_LIGHTEST: "#F5EFE6",
+  BLACK_RGB: "62, 53, 41", // Dark Brown RGB
+  WHITE_RGB: "245, 239, 230", // Off White RGB
+  PRIMARY_RGB: "157, 151, 107", // Sage RGB
+  VIOLET_RGB: "124, 106, 85", // Brown RGB
+  RED_RGB: "232, 175, 62", // Beige RGB
+  PLACEHOLDER: "#7C6A55",
 };
 
 export const FONT_FAMILY = {
-  PRIMARY: '"Fredoka One", cursive',
+  PRIMARY: "'Newsreader', serif",
+  BODY: "'Rethink Sans', sans-serif",
 };
 
 export const BREAKPOINTS = {

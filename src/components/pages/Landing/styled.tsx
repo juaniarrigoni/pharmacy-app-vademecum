@@ -19,18 +19,22 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled.img`
-  background: ${COLORS.WHITE};
+  background: transparent;
   display: block;
-  width: 200px;
-  height: 200px;
-  margin: 30px auto;
+  width: 320px;
+  height: 320px;
+  margin: 10px auto;
   border-radius: 50%;
   box-shadow: 0 0 10px 0 rgba(${COLORS.PRIMARY_RGB}, 0.3);
   animation: heartBeat 2.5s ease-out infinite;
+  object-fit: cover;
+  filter: brightness(1.1) contrast(1.1);
+  mix-blend-mode: multiply;
+  transform: scale(1.15);
 
   ${MEDIA_QUERIES.MOBILE} {
-    width: 40vw;
-    height: 40vw;
+    width: 60vw;
+    height: 60vw;
   }
 
   ${heartBeat}
@@ -48,16 +52,22 @@ export const Content = styled.div`
 
 export const ButtonsWrapper = styled.div`
   margin: 0px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-items: center;
+  max-width: 600px;
+  margin: 0 auto;
 
   ${MEDIA_QUERIES.MOBILE} {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
 export const Button = styled.a`
+  position: relative;
   cursor: pointer;
   display: block;
   min-width: 80px;
@@ -71,19 +81,6 @@ export const Button = styled.a`
 
   &:hover {
     box-shadow: 0 5px 15px -2.5px rgba(${COLORS.PRIMARY_RGB}, 0.3);
-  }
-
-  img {
-    cursor: pointer;
-    display: block;
-    width: 50px;
-    margin: 0 auto;
-
-    ${MEDIA_QUERIES.MOBILE} {
-      position: absolute;
-      width: auto;
-      height: 2rem;
-    }
   }
 
   p {
@@ -114,6 +111,30 @@ export const Button = styled.a`
   }
 `;
 
+export const IconMask = styled.div<{ src: string }>`
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  background-color: ${COLORS.PRIMARY};
+  mask-image: url(${props => props.src});
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url(${props => props.src});
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+
+  ${MEDIA_QUERIES.MOBILE} {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+`;
+
 export const ScrollButton = styled.a`
   position: absolute;
   left: 0;
@@ -127,18 +148,58 @@ export const ScrollButton = styled.a`
     position: unset;
     margin-top: 0px;
   }
-  img {
+  /* CSS Arrow to replace GIF */
+  &::after {
+    content: '';
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 50%;
     bottom: 20px;
-    display: block;
-    max-width: 50px;
-    margin: 0 auto;
-    cursor: pointer;
-    ${MEDIA_QUERIES.MOBILE} {
-      position: unset;
-      margin-top: 0px;
+    width: 20px;
+    height: 20px;
+    border-right: 3px solid ${COLORS.SAGE};
+    border-bottom: 3px solid ${COLORS.SAGE};
+    transform: translateX(-50%) rotate(45deg);
+    animation: scrollDown 2s infinite;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    width: 20px;
+    height: 20px;
+    border-right: 3px solid ${COLORS.SAGE}; /* Second arrow for double chevron effect */
+    border-bottom: 3px solid ${COLORS.SAGE};
+    transform: translateX(-50%) rotate(45deg);
+    animation: scrollDown 2s infinite;
+    animation-delay: 0.2s;
+  }
+
+  @keyframes scrollDown {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%) rotate(45deg) translate(-10px, -10px);
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-50%) rotate(45deg) translate(10px, 10px);
+    }
+  }
+
+  ${MEDIA_QUERIES.MOBILE} {
+    position: unset;
+    margin-top: 0px;
+    min-height: 50px;
+    
+    &::after, &::before {
+        bottom: 10px;
+    }
+    &::before {
+        bottom: 20px;
     }
   }
 `;

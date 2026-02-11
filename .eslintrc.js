@@ -10,5 +10,6 @@ module.exports = {
     "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
     "no-console": ["warn"],
     "@typescript-eslint/no-unused-vars": ["warn"],
+    "prettier/prettier": "off",
   },
 };
