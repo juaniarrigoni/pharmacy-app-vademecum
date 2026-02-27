@@ -1,5 +1,5 @@
 # ─── Stage 1: Build ───────────────────────────────────────────────────────────
-FROM node:18-alpine AS builder
+FROM node:16-alpine AS builder
 
 WORKDIR /app
 
@@ -8,6 +8,8 @@ COPY package.json package-lock.json ./
 RUN npm ci --legacy-peer-deps
 
 # Copy source and build
+# NODE_OPTIONS needed for CRA with Node 16+
+ENV NODE_OPTIONS=--openssl-legacy-provider
 COPY . .
 RUN npm run build
 
@@ -18,16 +20,16 @@ FROM nginx:alpine
 COPY --from=builder /app/build /usr/share/nginx/html
 
 # nginx config for React Router (SPA fallback)
-RUN echo 'server { \
-  listen 80; \
-  root /usr/share/nginx/html; \
-  index index.html; \
-  location / { \
-    try_files $uri $uri/ /index.html; \
-  } \
-  gzip on; \
-  gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript; \
-}' > /etc/nginx/conf.d/default.conf
+RUN printf 'server {\n\
+  listen 80;\n\
+  root /usr/share/nginx/html;\n\
+  index index.html;\n\
+  location / {\n\
+    try_files $uri $uri/ /index.html;\n\
+  }\n\
+  gzip on;\n\
+  gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;\n\
+}\n' > /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
