@@ -8,10 +8,8 @@ COPY package.json package-lock.json ./
 RUN npm ci --legacy-peer-deps
 
 # Copy source and build
-# NODE_OPTIONS needed for CRA with Node 16+
-ENV NODE_OPTIONS=--openssl-legacy-provider
 COPY . .
-RUN npm run build
+RUN NODE_OPTIONS=--openssl-legacy-provider npm run build
 
 # ─── Stage 2: Serve with nginx ────────────────────────────────────────────────
 FROM nginx:alpine
