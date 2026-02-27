@@ -9,7 +9,7 @@ RUN npm ci --legacy-peer-deps
 
 # Copy source and build
 COPY . .
-RUN node --openssl-legacy-provider ./node_modules/.bin/react-scripts build
+RUN npm run build
 
 # ─── Stage 2: Serve with nginx ────────────────────────────────────────────────
 FROM nginx:alpine
