@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 // Import assets
 import { loader } from "assets/scripts/animations";
+import { COLORS } from "assets/constants/styles";
 
 export const Container = styled.div`
   display: block;
@@ -27,7 +28,7 @@ export const LoaderContent = styled.div`
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #00a54f;
+      background: ${COLORS.PRIMARY};
       margin: -4px 0 0 -4px;
     }
 

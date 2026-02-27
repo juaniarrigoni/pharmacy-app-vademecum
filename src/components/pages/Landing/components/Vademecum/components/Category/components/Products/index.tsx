@@ -7,11 +7,12 @@ import type { ProductData } from "assets/types";
 const Products: React.FC<{
   products: Array<ProductData>;
   search: string;
+  category: string;
   openModal: (event: React.SyntheticEvent<HTMLElement>, open: boolean) => void;
   handleResult: (argument: null | number) => void;
-}> = ({ products, search, openModal, handleResult }) => {
+}> = ({ products, search, category, openModal, handleResult }) => {
   let productList: Array<JSX.Element | undefined> = products
-    .filter(({ nombre }) => nombre.toLowerCase().includes(search.toLowerCase()))
+    .filter(({ nombre }) => nombre && nombre.toLowerCase().includes(search.toLowerCase()))
     .map(
       ({
         id,
@@ -29,6 +30,7 @@ const Products: React.FC<{
               openModal(event, true)
             }
             data-id={id}
+            data-category={category}
             data-nombre={nombre}
             data-formula={formula}
             data-presentacion={presentacion}

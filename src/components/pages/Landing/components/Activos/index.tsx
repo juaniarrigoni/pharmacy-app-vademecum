@@ -29,6 +29,10 @@ const Activos: React.FC = () => {
           }))
         );
         setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching activos:", error);
+        setLoading(false);
       });
   }, []);
 

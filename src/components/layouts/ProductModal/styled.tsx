@@ -1,4 +1,4 @@
-// Import dependencies
+﻿// Import dependencies
 import styled from "styled-components";
 
 // Import assets
@@ -18,6 +18,32 @@ export const Content = styled.div`
   }
 `;
 
+export const FormulaWrapper = styled.div`
+  position: relative;
+  display: block;
+`;
+
+export const CopyButton = styled.button`
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(${COLORS.WHITE_RGB}, 0.85);
+  border: 1px solid rgba(${COLORS.PRIMARY_RGB}, 0.4);
+  border-radius: 6px;
+  color: ${COLORS.PRIMARY};
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 4px 8px;
+  transition: background 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    background: ${COLORS.PRIMARY};
+    color: ${COLORS.WHITE};
+    box-shadow: 0 2px 8px rgba(${COLORS.PRIMARY_RGB}, 0.4);
+  }
+`;
+
 export const Formula = styled.textarea`
   display: block;
   color: ${COLORS.BLACK};
@@ -25,10 +51,8 @@ export const Formula = styled.textarea`
   font-weight: 700;
   border: 0;
   width: 100%;
-  background: linear-gradient(90deg, ${COLORS.WHITE} 11px, transparent 1%)
-      center,
-    linear-gradient(${COLORS.WHITE} 11px, transparent 1%) center,
-    ${COLORS.WHITE};
+  background: linear-gradient(90deg, ${COLORS.WHITE} 11px, transparent 1%) center,
+    linear-gradient(${COLORS.WHITE} 11px, transparent 1%) center, ${COLORS.WHITE};
   background-size: 12px 12px;
   box-shadow: 0 2.5px 10px -2.5px rgba(${COLORS.BLACK_RGB}, 0.15);
   text-align: center;
@@ -39,10 +63,8 @@ export const Formula = styled.textarea`
 
   &:hover,
   &:focus {
-    background: linear-gradient(90deg, ${COLORS.WHITE} 11px, transparent 1%)
-        center,
-      linear-gradient(${COLORS.WHITE} 11px, transparent 1%) center,
-      ${COLORS.PRIMARY};
+    background: linear-gradient(90deg, ${COLORS.WHITE} 11px, transparent 1%) center,
+      linear-gradient(${COLORS.WHITE} 11px, transparent 1%) center, ${COLORS.PRIMARY};
     background-size: 12px 12px;
     box-shadow: 0 5px 15px -2.5px rgba(${COLORS.BLACK_RGB}, 0.3);
   }
@@ -51,11 +73,7 @@ export const Formula = styled.textarea`
 export const Button = styled.button`
   color: ${COLORS.WHITE};
   font-weight: 900;
-  background: linear-gradient(
-    180deg,
-    ${COLORS.PRIMARY_LIGHTER} 0,
-    ${COLORS.PRIMARY} 100%
-  );
+  background: linear-gradient(180deg, ${COLORS.PRIMARY_LIGHTER} 0, ${COLORS.PRIMARY} 100%);
   text-transform: uppercase;
   border: 0;
   border-radius: 0.5rem;
@@ -63,14 +81,10 @@ export const Button = styled.button`
   box-shadow: 0 0 10px 0 rgba(${COLORS.BLACK_RGB}, 0.3);
   display: block;
   margin: 0 auto;
-  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
-  filter: grayscale(${(props) => (props.disabled ? "1" : "0")});
+  cursor: pointer;
 
   &:hover {
-    box-shadow: ${(props) =>
-      props.disabled
-        ? `0 0 10px 0 rgba(${COLORS.BLACK_RGB}, 0.3)`
-        : `0 5px 15px 0 rgba(${COLORS.BLACK_RGB}, 0.5)`};
+    box-shadow: 0 5px 15px 0 rgba(${COLORS.BLACK_RGB}, 0.5);
   }
 `;
 
@@ -123,7 +137,7 @@ export const Tab = styled.div`
     &:after {
       position: absolute;
       right: 1rem;
-      content: "\\276F";
+      content: "\276F";
       width: 1rem;
       height: 1rem;
       text-align: center;

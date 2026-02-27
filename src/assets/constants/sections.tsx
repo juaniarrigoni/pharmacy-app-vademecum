@@ -11,8 +11,8 @@ export interface SectionConfig {
 export const SECTIONS: Array<SectionConfig> = [
     {
         id: 'formulas',
-        title: 'Fórmulas con Receta',
-        subtitle: 'Acceso rápido para profesionales médicos',
+        title: 'Fórmulas',
+        subtitle: 'Todas las formulas son susceptibles a las modificaciones/agregados que el profesional médico considere necesarios.',
         categories: [
             'Fórmulas Específicas',
             'Fórmulas Funcionales',
@@ -21,26 +21,24 @@ export const SECTIONS: Array<SectionConfig> = [
             'Limpieza Facial',
             'Faciales / Hidratantes / Antiage',
         ],
-    },
-    {
-        id: 'suplementos',
-        title: 'Suplementos',
-        subtitle: 'Colágenos, magnesios, proteicos y más',
-        categories: [
-            'Colágenos',
-            'Proteicos',
-            'Magnesios',
-            'Suplementos',
-        ],
-    },
-    {
-        id: 'nutricion',
-        title: 'Nutrición',
-        subtitle: 'Cuidado integral',
-        categories: [
-            'Protección Solar',
-            'Repelantes',
-            'SmartFood',
-        ],
-    },
+    }
+    // {
+    //     id: 'suplementos',
+    //     title: 'Suplementos',
+    //     subtitle: 'Colágenos, magnesios, proteicos y más',
+    //     categories: [
+    //         'Colágenos',
+    //         'Proteicos',
+    //         'Magnesios',
+    //         'Suplementos',
+    //     ],
+    // },
+    // {
+    //     id: 'nutricion',
+    //     title: 'Nutrición',
+    //     subtitle: 'Come bien, estés donde estés',
+    //     categories: [
+    //         'SmartFood',
+    //     ],
+    // },
 ];

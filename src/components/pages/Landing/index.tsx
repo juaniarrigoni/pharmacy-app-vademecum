@@ -48,7 +48,7 @@ const Landing: React.FC = () => {
             >
               <IconMask src={vademecum} />
               <p>
-                FÓRMULAS<span>Con receta</span>
+                FÓRMULAS<span>magistrales</span>
               </p>
             </Button>
             <Button
@@ -58,7 +58,7 @@ const Landing: React.FC = () => {
             >
               <IconMask src={activos} />
               <p>
-                SUPLEMENTOS<span>Calidad asegurada</span>
+                SUPLEMENTOS<span>en polvo</span>
               </p>
             </Button>
             <Button
@@ -68,7 +68,7 @@ const Landing: React.FC = () => {
             >
               <IconMask src={vademecum} />
               <p>
-                NUTRICIÓN<span>Cuidado integral</span>
+                NUTRICIÓN<span>Come bien, estés donde estés</span>
               </p>
             </Button>
             <Button onClick={() => setOpenContactModal(true)}>

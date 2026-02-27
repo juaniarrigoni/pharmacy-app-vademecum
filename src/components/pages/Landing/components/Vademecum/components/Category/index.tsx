@@ -34,6 +34,7 @@ const Category: React.FC<{
         <Content id="category-content">
           <Products
             search={search}
+            category={category}
             products={products}
             openModal={openModal}
             handleResult={handleResult}

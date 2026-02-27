@@ -14,6 +14,7 @@ import ProductModal from "components/layouts/ProductModal";
 
 // Import assets
 import { path, spreadsheetIds } from "assets/constants/contact";
+import { SECTIONS } from "assets/constants/sections";
 import { emptyProductData } from "assets/utils";
 import type { CategoryData, ProductData } from "assets/types";
 
@@ -24,6 +25,7 @@ const Vademecum: React.FC = () => {
   const [openProductModal, setOpenProductModal] = useState(false);
 
   const [productModal, setProductModal] = useState(emptyProductData);
+  const [currentSectionId, setCurrentSectionId] = useState<string>("");
 
   useEffect(() => {
     const url = `${path}/${spreadsheetIds.vademecum}/gviz/tq?tqx=out:json`;
@@ -45,6 +47,7 @@ const Vademecum: React.FC = () => {
               )
               .then((sheetData) =>
                 sheetData.map((product) => ({
+                  id: product[0]?.v?.toLowerCase().replace(/ /g, "-") || "",
                   nombre: product[0]?.v,
                   presentacion: product[1]?.v,
                   formula: product[2]?.v,
@@ -62,12 +65,20 @@ const Vademecum: React.FC = () => {
           setData(newData as Array<CategoryData>);
           setLoading(false);
         });
+      })
+      .catch((error) => {
+        console.error("Error fetching Vademecum:", error);
+        setLoading(false);
       });
   }, []);
 
   const openModal = (event: React.SyntheticEvent<HTMLElement>) => {
     event.currentTarget as HTMLElement;
+    const category = event.currentTarget?.dataset.category || "";
+    const section = SECTIONS.find((s) => s.categories.includes(category));
+
     const productModalData: ProductData = {
+      id: event.currentTarget?.dataset.id || "-",
       nombre: event.currentTarget?.dataset.nombre || "-",
       presentacion: event.currentTarget?.dataset.presentacion || "-",
       formula: event.currentTarget?.dataset.formula || "-",
@@ -75,6 +86,8 @@ const Vademecum: React.FC = () => {
       modoDeUso: event.currentTarget?.dataset.mododeuso || "-",
       precio: event.currentTarget?.dataset.precio || "-",
     };
+
+    setCurrentSectionId(section?.id || "");
     setProductModal(productModalData);
     setOpenProductModal(true);
   };
@@ -103,6 +116,7 @@ const Vademecum: React.FC = () => {
         product={productModal}
         open={openProductModal}
         setOpen={setOpenProductModal}
+        sectionId={currentSectionId}
       />
     </Container>
   );

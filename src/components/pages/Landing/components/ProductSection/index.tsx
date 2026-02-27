@@ -54,6 +54,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({ sectionConfig }) => {
                             )
                             .then((sheetData) =>
                                 sheetData.map((product) => ({
+                                    id: product[0]?.v?.toLowerCase().replace(/ /g, "-") || "",
                                     nombre: product[0]?.v,
                                     presentacion: product[1]?.v,
                                     formula: product[2]?.v,
@@ -61,6 +62,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({ sectionConfig }) => {
                                     modoDeUso: product[4]?.v,
                                     precio: product[5]?.v,
                                 }))
+                                    .filter((p) => p.nombre)
                             )
                             .then((productsList: ProductData) => ({
                                 name: sheetName,
@@ -70,6 +72,9 @@ const ProductSection: React.FC<ProductSectionProps> = ({ sectionConfig }) => {
                 ).then((newData) => {
                     setData(newData as Array<CategoryData>);
                     setLoading(false);
+                }).catch((error) => {
+                    console.error("Error fetching data:", error);
+                    setLoading(false);
                 });
             });
     }, [sectionConfig]);
@@ -77,6 +82,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({ sectionConfig }) => {
     const openModal = (event: React.SyntheticEvent<HTMLElement>) => {
         event.currentTarget as HTMLElement;
         const productModalData: ProductData = {
+            id: event.currentTarget?.dataset.id || "-",
             nombre: event.currentTarget?.dataset.nombre || "-",
             presentacion: event.currentTarget?.dataset.presentacion || "-",
             formula: event.currentTarget?.dataset.formula || "-",
@@ -112,6 +118,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({ sectionConfig }) => {
                 product={productModal}
                 open={openProductModal}
                 setOpen={setOpenProductModal}
+                sectionId={sectionConfig.id}
             />
         </Container>
     );

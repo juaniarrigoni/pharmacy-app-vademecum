@@ -2,10 +2,13 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
+
 // Import styled components
 import {
   Content,
   Formula,
+  FormulaWrapper,
+  CopyButton,
   Button,
   Tabs,
   TabContainer,
@@ -25,10 +28,12 @@ const ProductModal: React.FC<{
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   edit?: boolean;
-}> = ({ product, open, setOpen, edit }) => {
+  sectionId?: string;
+}> = ({ product, open, setOpen, edit, sectionId }) => {
   const [isActiveDescripcion, setIsActiveDescripcion] = useState(false);
   const [isActiveModoDeUso, setIsActiveModoDeUso] = useState(false);
   const [formula, setFormula] = useState(product.formula);
+  const [copied, setCopied] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => setFormula(product.formula), [product]);
@@ -36,7 +41,7 @@ const ProductModal: React.FC<{
   const AddToCart = () => {
     const nombreCustom =
       !product.nombre.includes(formulaPersonalizadaId) &&
-      formula !== product.formula
+        formula !== product.formula
         ? `${product.nombre}${formulaPersonalizadaId}`
         : product.nombre;
     const action: ReducerAction = {
@@ -45,6 +50,13 @@ const ProductModal: React.FC<{
     };
     dispatch(action);
     setOpen(false);
+  };
+
+  const copyFormula = () => {
+    navigator.clipboard.writeText(formula || "").then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
   };
 
   return (
@@ -58,14 +70,19 @@ const ProductModal: React.FC<{
             <strong>$ {product.precio}</strong>
           </p>
         </div>
-        <Formula
-          defaultValue={product.formula}
-          onChange={(event) => setFormula(event.target.value)}
-          rows={4}
-          onInput={() =>
-            'style.height = "";style.height = scrollHeight + 3 + "px"'
-          }
-        />
+        <FormulaWrapper>
+          <Formula
+            defaultValue={product.formula}
+            onChange={(event) => setFormula(event.target.value)}
+            rows={4}
+            onInput={() =>
+              'style.height = "";style.height = scrollHeight + 3 + "px"'
+            }
+          />
+          <CopyButton onClick={copyFormula} title="Copiar fórmula">
+            {copied ? "✓" : "⎘"}
+          </CopyButton>
+        </FormulaWrapper>
         <Tabs>
           <TabContainer>
             <Tab
@@ -109,7 +126,19 @@ const ProductModal: React.FC<{
             GUARDAR CAMBIOS
           </Button>
         ) : (
-          <Button onClick={() => AddToCart()}>AGREGAR AL CARRITO</Button>
+          <>
+            <Button onClick={() => AddToCart()}>AGREGAR AL CARRITO</Button>
+            {sectionId && product.id && (
+              <Button
+                onClick={() => {
+                  window.open(`/${sectionId}/${product.id}`, "_blank");
+                }}
+                style={{ marginTop: "10px" }}
+              >
+                VER MÁS
+              </Button>
+            )}
+          </>
         )}
       </Content>
     </Modal>
