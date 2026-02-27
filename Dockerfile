@@ -1,5 +1,5 @@
 # ─── Stage 1: Build ───────────────────────────────────────────────────────────
-FROM node:16-alpine AS builder
+FROM node:16.13.0-alpine3.14 AS builder
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ RUN npm ci --legacy-peer-deps
 
 # Copy source and build
 COPY . .
-RUN NODE_OPTIONS=--openssl-legacy-provider npm run build
+RUN node --openssl-legacy-provider ./node_modules/.bin/react-scripts build
 
 # ─── Stage 2: Serve with nginx ────────────────────────────────────────────────
 FROM nginx:alpine
