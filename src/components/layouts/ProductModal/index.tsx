@@ -80,7 +80,7 @@ const ProductModal: React.FC<{
             }
           />
           <CopyButton onClick={copyFormula} title="Copiar fórmula">
-            {copied ? "✓" : "⎘"}
+            {copied ? "✓ Copiada" : "⎘ Copiar fórmula"}
           </CopyButton>
         </FormulaWrapper>
         <Tabs>
@@ -125,21 +125,7 @@ const ProductModal: React.FC<{
           >
             GUARDAR CAMBIOS
           </Button>
-        ) : (
-          <>
-            <Button onClick={() => AddToCart()}>AGREGAR AL CARRITO</Button>
-            {sectionId && product.id && (
-              <Button
-                onClick={() => {
-                  window.open(`/${sectionId}/${product.id}`, "_blank");
-                }}
-                style={{ marginTop: "10px" }}
-              >
-                VER MÁS
-              </Button>
-            )}
-          </>
-        )}
+        ) : null /* Buttons hidden temporarily */}
       </Content>
     </Modal>
   );
