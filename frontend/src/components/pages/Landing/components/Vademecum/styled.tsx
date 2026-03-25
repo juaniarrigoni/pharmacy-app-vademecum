@@ -1,0 +1,15 @@
+// Import dependencies
+import styled from "styled-components";
+
+export const Container = styled.div`
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 2rem 0 10vh 0;
+`;
+
+export const List = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+`;

@@ -1,0 +1,90 @@
+// Import dependencies
+import { useState, useEffect } from "react";
+
+// Import inner components
+import SearchBar from "./components/SearchBar";
+import Category from "./components/Category";
+
+// Import styled components
+import { Container, List } from "./styled";
+
+// Import external components
+import Loader from "components/general/Loader";
+import ProductModal from "components/layouts/ProductModal";
+
+// Import assets
+import { SECTIONS } from "assets/constants/sections";
+import { emptyProductData } from "assets/utils";
+import { fetchAllCategories } from "services/sheetsService";
+import type { CategoryData, ProductData } from "assets/types";
+
+const Vademecum: React.FC = () => {
+  const [data, setData] = useState<Array<CategoryData>>([]);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  const [openProductModal, setOpenProductModal] = useState(false);
+  const [productModal, setProductModal] = useState(emptyProductData);
+  const [currentSectionId, setCurrentSectionId] = useState<string>("");
+
+  useEffect(() => {
+    fetchAllCategories()
+      .then((categories) => {
+        setData(categories);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("[Vademecum] Error al cargar categorías:", error);
+        setLoading(false);
+      });
+  }, []);
+
+  const openModal = (event: React.SyntheticEvent<HTMLElement>) => {
+    const category = event.currentTarget?.dataset.category || "";
+    const section = SECTIONS.find((s) => s.categories.includes(category));
+
+    const productModalData: ProductData = {
+      id:           event.currentTarget?.dataset.id || "-",
+      nombre:       event.currentTarget?.dataset.nombre || "-",
+      presentacion: event.currentTarget?.dataset.presentacion || "-",
+      formula:      event.currentTarget?.dataset.formula || "-",
+      descripcion:  event.currentTarget?.dataset.descripcion || "-",
+      modoDeUso:    event.currentTarget?.dataset.mododeuso || "-",
+      precio:       event.currentTarget?.dataset.precio || "-",
+    };
+
+    setCurrentSectionId(section?.id || "");
+    setProductModal(productModalData);
+    setOpenProductModal(true);
+  };
+
+  return (
+    <Container id="Vademecum">
+      <h2>Vademécum</h2>
+      <h3>Nuestras fórmulas</h3>
+      <SearchBar search={search} setSearch={setSearch} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <List>
+          {data.map((category) => (
+            <Category
+              key={category.name}
+              category={category.name}
+              products={category.products}
+              openModal={openModal}
+              search={search}
+            />
+          ))}
+        </List>
+      )}
+      <ProductModal
+        product={productModal}
+        open={openProductModal}
+        setOpen={setOpenProductModal}
+        sectionId={currentSectionId}
+      />
+    </Container>
+  );
+};
+
+export default Vademecum;
