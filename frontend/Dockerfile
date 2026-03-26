@@ -3,11 +3,11 @@ FROM node:20-alpine AS build
 WORKDIR /app
 
 # Install dependencies. Use wildcard to handle missing package-lock.json gracefully.
-COPY frontend/package.json frontend/package-lock.json* ./
+COPY package.json package-lock.json* ./
 RUN npm install
 
 # Copy everything from the frontend folder
-COPY frontend/ ./
+COPY . .
 
 # IMPORTANT: Fix for OpenSSL error in newer Node versions when using older React Scripts
 ENV NODE_OPTIONS=--openssl-legacy-provider
