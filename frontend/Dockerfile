@@ -3,7 +3,7 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
-# Build-time args (set in Dokploy → Environment → Build-time Variables)
+# Build-time args (Dokploy → Environment → Build-time Variables)
 ARG REACT_APP_SUPABASE_URL
 ARG REACT_APP_SUPABASE_ANON_KEY
 ARG REACT_APP_API_URL
@@ -11,18 +11,12 @@ ARG REACT_APP_API_URL
 ENV REACT_APP_SUPABASE_URL=$REACT_APP_SUPABASE_URL
 ENV REACT_APP_SUPABASE_ANON_KEY=$REACT_APP_SUPABASE_ANON_KEY
 ENV REACT_APP_API_URL=$REACT_APP_API_URL
-
-# Necesario para que CRA funcione con Node 20
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
-# Instalamos dependencias
-COPY frontend/package.json frontend/package-lock.json* ./
+# El contexto de Docker ES la carpeta frontend/ — los paths son relativos a ella
+COPY package.json package-lock.json* ./
 RUN npm install
-
-# Copiamos todo el código fuente de /frontend
-COPY frontend/ ./
-
-# Generamos la versión de producción
+COPY . ./
 RUN npm run build
 
 
