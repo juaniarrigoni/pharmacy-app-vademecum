@@ -4,7 +4,7 @@ import Activos from "./components/Activos";
 import Contact from "./components/Contact";
 
 // Import styled components
-import { Container, Content, Logo, ContactStrip, ContactItem, ContactItemIcon, ContactHint, ScrollButton, AuthButton } from "./styled";
+import { Container, Content, Logo, ContactStrip, ContactItem, ContactItemIcon, ContactHint, AuthButton } from "./styled";
 
 // Import external components
 import Cart from "components/layouts/Cart";

@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Import inner components
 import Landing from "./pages/Landing";
 import ProductPage from "./pages/Product";
-import ChatBot from "./layouts/ChatBot";
 import AuthModal from "./layouts/AuthModal";
 import AccountSidebar from "./layouts/AccountSidebar";
 

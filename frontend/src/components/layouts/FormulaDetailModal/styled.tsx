@@ -28,6 +28,22 @@ export const Label = styled.label`
   color: ${COLORS.SAGE};
 `;
 
+export const Input = styled.input`
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  border: 1.5px solid rgba(${COLORS.BLACK_RGB}, 0.15);
+  font-size: 0.9rem;
+  color: ${COLORS.DARK_BROWN};
+  background: ${COLORS.OFF_WHITE};
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+
+  &:focus {
+    border-color: ${COLORS.SAGE};
+  }
+`;
+
 export const Textarea = styled.textarea`
   padding: 0.7rem 0.9rem;
   border-radius: 10px;
@@ -80,36 +96,3 @@ export const SuccessMessage = styled.p`
   text-align: center;
 `;
 
-export const OriginalBlock = styled.div`
-  background: rgba(${COLORS.BLACK_RGB}, 0.04);
-  border-left: 3px solid ${COLORS.SAGE};
-  border-radius: 0 10px 10px 0;
-  padding: 0.75rem 1rem;
-  text-align: left;
-  margin-top: 0.25rem;
-`;
-
-export const OriginalBlockTitle = styled.p`
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: ${COLORS.SAGE};
-  margin-bottom: 0.4rem;
-`;
-
-export const OriginalBlockContent = styled.pre`
-  font-family: inherit;
-  font-size: 0.82rem;
-  color: ${COLORS.DARK_BROWN};
-  white-space: pre-wrap;
-  word-break: break-word;
-  line-height: 1.55;
-  margin: 0;
-`;
-
-export const SectionDivider = styled.hr`
-  border: none;
-  border-top: 1px solid rgba(${COLORS.BLACK_RGB}, 0.1);
-  margin: 0.5rem 0;
-`;

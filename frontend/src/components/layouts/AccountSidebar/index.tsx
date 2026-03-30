@@ -113,6 +113,7 @@ const AccountSidebar: React.FC = () => {
 
       {selectedFormula && (
         <FormulaDetailModal
+          key={selectedFormula.id}
           formula={selectedFormula}
           open={detailOpen}
           setOpen={setDetailOpen}

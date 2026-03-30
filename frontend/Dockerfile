@@ -3,18 +3,24 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
-# Copiamos el .env que está en la carpeta /frontend (el contexto de build es la raíz del repo)
-COPY frontend/.env ./.env
+# Build-time args (set in Dokploy → Environment → Build-time Variables)
+ARG REACT_APP_SUPABASE_URL
+ARG REACT_APP_SUPABASE_ANON_KEY
+ARG REACT_APP_API_URL
 
-# Instalamos dependencias (package.json está en /frontend)
+ENV REACT_APP_SUPABASE_URL=$REACT_APP_SUPABASE_URL
+ENV REACT_APP_SUPABASE_ANON_KEY=$REACT_APP_SUPABASE_ANON_KEY
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
+
+# Necesario para que CRA funcione con Node 20
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
+# Instalamos dependencias
 COPY frontend/package.json frontend/package-lock.json* ./
 RUN npm install
 
 # Copiamos todo el código fuente de /frontend
 COPY frontend/ ./
-
-# Necesario para que CRA funcione con Node 20
-ENV NODE_OPTIONS=--openssl-legacy-provider
 
 # Generamos la versión de producción
 RUN npm run build
@@ -24,14 +30,10 @@ RUN npm run build
 FROM node:20-alpine
 
 WORKDIR /app
-# Servimos la app estática con “serve”
 RUN npm install -g serve
 
-# Copiamos la carpeta build que se creó en la etapa anterior
 COPY --from=build /app/build ./build
 
-# El contenedor escucha en el puerto 3000 (el que usará Traefik/Dokploy)
 EXPOSE 3000
 
-# Arrancamos el servidor estático
 CMD ["serve", "-s", "build", "-p", "3000"]

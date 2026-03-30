@@ -11,10 +11,6 @@ import {
   SubmitButton,
   ErrorMessage,
   SuccessMessage,
-  OriginalBlock,
-  OriginalBlockTitle,
-  OriginalBlockContent,
-  SectionDivider,
 } from './styled';
 
 // Import inner components
@@ -61,7 +57,6 @@ const FormulaEditor: React.FC<{
       user_id: user.id,
       original_formula_name: product.nombre,
       original_category: product.id ?? '',
-      original_formula_content: originalFormulaContent,
       custom_name: customName,
       formula_content: editableContent,
       description: product.descripcion,

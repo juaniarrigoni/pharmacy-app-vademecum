@@ -6,14 +6,11 @@ import {
   Form,
   Field,
   Label,
+  Input,
   Textarea,
   SubmitButton,
   ErrorMessage,
   SuccessMessage,
-  OriginalBlock,
-  OriginalBlockTitle,
-  OriginalBlockContent,
-  SectionDivider,
 } from './styled';
 
 // Import inner components
@@ -29,6 +26,7 @@ const FormulaDetailModal: React.FC<{
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onUpdated: (updated: SavedFormula) => void;
 }> = ({ formula, open, setOpen, onUpdated }) => {
+  const [customName, setCustomName] = useState('');
   const [formulaContent, setFormulaContent] = useState('');
   const [notes, setNotes] = useState('');
   const [loading, setLoading] = useState(false);
@@ -37,12 +35,15 @@ const FormulaDetailModal: React.FC<{
 
   useEffect(() => {
     if (open) {
+      setCustomName(formula.custom_name === '-' ? '' : formula.custom_name);
       setFormulaContent(formula.formula_content === '-' ? '' : formula.formula_content);
       setNotes(formula.notes === '-' ? '' : (formula.notes ?? ''));
       setError('');
       setSuccess('');
     }
-  }, [open, formula]);
+    // formula.id is intentional — we only reset when a different formula is opened
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, formula.id]);
 
   const handleSubmit = async (formEvent: React.FormEvent) => {
     formEvent.preventDefault();
@@ -51,6 +52,7 @@ const FormulaDetailModal: React.FC<{
 
     /* eslint-disable @typescript-eslint/naming-convention */
     const { data, error: updateError } = await updateSavedFormula(formula.id, {
+      custom_name: customName,
       formula_content: formulaContent,
       notes,
     });
@@ -72,10 +74,19 @@ const FormulaDetailModal: React.FC<{
 
   return (
     <Modal id="FormulaDetailModal" open={open} setOpen={setOpen} fitContent>
-      <h2>Ver fórmula</h2>
-      <h3>{formula.custom_name}</h3>
-      
+      <h2>Editar fórmula</h2>
+      <h3>{formula.original_formula_name}</h3>
+
       <Form onSubmit={handleSubmit}>
+        <Field>
+          <Label>Nombre personalizado</Label>
+          <Input
+            type="text"
+            value={customName}
+            onChange={(changeEvent) => setCustomName(changeEvent.target.value)}
+            required
+          />
+        </Field>
         <Field>
           <Label>Fórmula (editable)</Label>
           <Textarea
