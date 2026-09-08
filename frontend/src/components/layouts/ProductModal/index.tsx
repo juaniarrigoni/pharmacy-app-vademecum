@@ -12,6 +12,7 @@ import {
   FormulaWrapper,
   CopyButton,
   Button,
+  ConsultButton,
   Tabs,
   TabContainer,
   Tab,
@@ -23,7 +24,12 @@ import Modal from "components/general/Modal";
 import FormulaEditor from "components/layouts/FormulaEditor";
 
 // Import assets
-import { formulaPersonalizadaId } from "assets/constants/contact";
+import {
+  formulaPersonalizadaId,
+  laboratoryInquiryIntro,
+  laboratoryInquiryPrompt,
+  laboratoryPhoneNumber,
+} from "assets/constants/contact";
 import { useAuth } from "contexts/AuthContext";
 import type { ProductData, ReducerAction } from "assets/types";
 
@@ -33,7 +39,8 @@ const ProductModal: React.FC<{
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   edit?: boolean;
   sectionId?: string;
-}> = ({ product, open, setOpen, edit }) => {
+  category?: string;
+}> = ({ product, open, setOpen, edit, category }) => {
   const [isActiveDescripcion, setIsActiveDescripcion] = useState(false);
   const [isActiveModoDeUso, setIsActiveModoDeUso] = useState(false);
   const [formula, setFormula] = useState(product.formula);
@@ -74,6 +81,33 @@ const ProductModal: React.FC<{
       setEditorOpen(true);
     }, 300);
   };
+
+  // Consulta al laboratorio. Se computa en cada render a partir del state, no
+  // de product.formula: lo que viaja es la fórmula tal como el profesional la
+  // tiene en pantalla en este instante, editada o no.
+  const inquiryName =
+    formula !== product.formula &&
+      !product.nombre.includes(formulaPersonalizadaId)
+      ? `${product.nombre}${formulaPersonalizadaId}`
+      : product.nombre;
+  // El parser de sheets rellena los faltantes con "-"; una línea que dice "-"
+  // es ruido en un WhatsApp, así que esa parte del subtítulo no se arma.
+  const inquirySubtitle = [category, product.presentacion]
+    .filter((part) => part && part !== "-")
+    .join(" · ");
+  const inquiryMessage = [
+    laboratoryInquiryIntro,
+    "",
+    `*${inquiryName}*`,
+    ...(inquirySubtitle ? [inquirySubtitle] : []),
+    "",
+    formula ?? "",
+    "",
+    laboratoryInquiryPrompt,
+  ].join("\n");
+  const laboratoryInquiryHref = `https://wa.me/${laboratoryPhoneNumber}?text=${encodeURIComponent(
+    inquiryMessage
+  )}`;
 
   return (
     <>
@@ -142,6 +176,16 @@ const ProductModal: React.FC<{
                   </Tab>
                 </TabContainer>
               </Tabs>
+
+              {/* Consulta al laboratorio por esta fórmula */}
+              <ConsultButton
+                as="a"
+                href={laboratoryInquiryHref}
+                target="_blank"
+                rel="noreferrer"
+              >
+                CONSULTAR AL LABORATORIO
+              </ConsultButton>
 
               {/* Edit / Cart buttons */}
               {edit ? (
