@@ -18,7 +18,9 @@ export const chat = {
   type: "chat",
   title: "Atención por WhatsApp",
   icon: chatIcon,
-  link: "https://wa.me/542995799121?text=Hola!%20Vengo%20del%20sitio%20web",
+  link: `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+    "Hola! Vengo del sitio web"
+  )}`,
 };
 
 export const phone = {
