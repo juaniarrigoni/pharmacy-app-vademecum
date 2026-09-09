@@ -6,9 +6,11 @@ import phoneIcon from "assets/media/Phone.png";
 export const phoneNumber = "5492995799121";
 
 // Destino de las consultas de profesionales sobre una fórmula del vademécum.
-// Hoy es el mismo número que atiende al público; el día que el laboratorio
-// tenga línea propia para profesionales, se cambia acá y nada más.
-export const laboratoryPhoneNumber = phoneNumber;
+// Línea propia del laboratorio (+54 9 299 419-5520), distinta de la que
+// atiende al público: una consulta de un profesional no entra por el mismo
+// canal que un pedido de mostrador. Si vuelve a cambiar, se cambia acá y
+// ningún componente se entera.
+export const laboratoryPhoneNumber = "5492994195520";
 
 // Copy del mensaje de consulta. Vive acá para que ajustarlo no obligue
 // a abrir un componente.
