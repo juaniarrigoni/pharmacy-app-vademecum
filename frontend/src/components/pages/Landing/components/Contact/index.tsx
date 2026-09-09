@@ -2,7 +2,7 @@
 import { Container, ContactGrid, ContactCard, ContactIcon, ContactLabel, ContactValue } from "./styled";
 
 // Import assets
-import { location, chat, phone } from "assets/constants/contact";
+import { location, chat, laboratoryConsult, phone } from "assets/constants/contact";
 import locationIcon from "assets/media/Location.png";
 import chatIcon from "assets/media/Chat.png";
 import phoneIcon from "assets/media/Phone.png";
@@ -20,6 +20,13 @@ const contactItems = [
     label: "WhatsApp",
     value: chat.title,
     href: chat.link,
+    external: true,
+  },
+  {
+    icon: chatIcon,
+    label: "Consulta profesional",
+    value: laboratoryConsult.title,
+    href: laboratoryConsult.link,
     external: true,
   },
   {

@@ -18,6 +18,11 @@ export const laboratoryInquiryIntro =
   "Hola! Consulta sobre una fórmula del vademécum:";
 export const laboratoryInquiryPrompt = "Mi consulta:";
 
+// Consulta suelta, sin una fórmula de por medio: el profesional que quiere
+// preguntar por un activo o una preparación no tiene que entrar a una fórmula
+// para poder escribir. Mismo destino que el botón del vademécum.
+export const laboratoryDirectInquiryIntro = "Hola! Consulta para el laboratorio:";
+
 export const developerWebsite = "https://franarrigoni.vercel.app/";
 
 export const location = {
@@ -33,6 +38,15 @@ export const chat = {
   icon: chatIcon,
   link: `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     "Hola! Vengo del sitio web"
+  )}`,
+};
+
+export const laboratoryConsult = {
+  type: "laboratory",
+  title: "Consulta al laboratorio",
+  icon: chatIcon,
+  link: `https://wa.me/${laboratoryPhoneNumber}?text=${encodeURIComponent(
+    laboratoryDirectInquiryIntro
   )}`,
 };
 

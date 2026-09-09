@@ -11,7 +11,7 @@ import Cart from "components/layouts/Cart";
 
 // Import assets
 import logo from "assets/media/Logo.jpg";
-import { location, chat, phone } from "assets/constants/contact";
+import { location, chat, laboratoryConsult, phone } from "assets/constants/contact";
 import { SECTIONS } from "assets/constants/sections";
 import { useAuth } from "contexts/AuthContext";
 
@@ -38,6 +38,11 @@ const Landing: React.FC = () => {
               <ContactItemIcon src={chat.icon} />
               {chat.title}
               <ContactHint>abrir WhatsApp ↗</ContactHint>
+            </ContactItem>
+            <ContactItem href={laboratoryConsult.link} target="_blank" rel="noreferrer">
+              <ContactItemIcon src={laboratoryConsult.icon} />
+              {laboratoryConsult.title}
+              <ContactHint>consulta profesional ↗</ContactHint>
             </ContactItem>
             <ContactItem href={`tel:+${phone.title.replace(/\s/g, "")}`}>
               <ContactItemIcon src={phone.icon} />
