@@ -3,6 +3,8 @@ import {
   FloatingButton,
   ChannelList,
   ChannelCard,
+  ChannelIcon,
+  ChannelText,
   ChannelTitle,
   ChannelDescription,
 } from "./styled";
@@ -10,6 +12,8 @@ import {
 // Import inner components
 import Modal from "components/general/Modal";
 import WhatsappIcon from "components/general/Icons/Whatsapp";
+import PersonIcon from "components/general/Icons/Person";
+import FlaskIcon from "components/general/Icons/Flask";
 
 // Import assets
 import { whatsappChannels } from "assets/constants/contact";
@@ -46,8 +50,15 @@ const ContactChannels: React.FC = () => {
               rel="noreferrer"
               onClick={closeChannels}
             >
-              <ChannelTitle>{channel.title}</ChannelTitle>
-              <ChannelDescription>{channel.description}</ChannelDescription>
+              {/* Dos canales, dos íconos: una persona para el que viene a
+                  comprar, un matraz para el que viene a formular. */}
+              <ChannelIcon>
+                {channel.id === "profesional" ? <FlaskIcon /> : <PersonIcon />}
+              </ChannelIcon>
+              <ChannelText>
+                <ChannelTitle>{channel.title}</ChannelTitle>
+                <ChannelDescription>{channel.description}</ChannelDescription>
+              </ChannelText>
             </ChannelCard>
           ))}
         </ChannelList>

@@ -55,8 +55,8 @@ export const ChannelList = styled.div`
 
 export const ChannelCard = styled.a`
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  align-items: center;
+  gap: 1.1rem;
   text-align: left;
   text-decoration: none;
   padding: 1.15rem 1.35rem;
@@ -69,6 +69,32 @@ export const ChannelCard = styled.a`
     box-shadow: 0 5px 15px -2.5px rgba(${COLORS.BLACK_RGB}, 0.3);
     transform: translateY(-2px);
   }
+`;
+
+/* El ícono es lo primero que se mira al elegir, así que va del tamaño del
+   texto de las dos líneas juntas y no de un renglón. */
+export const ChannelIcon = styled.span`
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  color: ${COLORS.SAGE};
+
+  svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+`;
+
+/* El Box del Modal en modo fitContent centra todo su contenido; acá la
+   alineación se declara de nuevo porque estas dos líneas se leen como bloque
+   y centradas quedan escalonadas contra el ícono. */
+export const ChannelText = styled.span`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  text-align: left;
 `;
 
 export const ChannelTitle = styled.span`
