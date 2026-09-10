@@ -9,6 +9,7 @@ import ProductPage from "./pages/Product";
 import NotFound from "./pages/NotFound";
 import AuthModal from "./layouts/AuthModal";
 import AccountSidebar from "./layouts/AccountSidebar";
+import ContactChannels from "./layouts/ContactChannels";
 
 // Import styled components
 import { Container } from "./styled";
@@ -16,6 +17,7 @@ import { Container } from "./styled";
 // Import assets
 import store from "assets/store";
 import { AuthProvider } from "contexts/AuthContext";
+import { ContactChannelsProvider } from "contexts/ContactChannelsContext";
 
 const ProductosRedirect: React.FC = () => {
   useEffect(() => {
@@ -28,19 +30,22 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <AuthProvider>
-        <Router>
-          <Container id="App">
-            <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/productos" element={<ProductosRedirect />} />
-              <Route path="/:sectionId/:productId" element={<ProductPage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            {/* <ChatBot /> Temporalmente desactivado */}
-            <AuthModal />
-            <AccountSidebar />
-          </Container>
-        </Router>
+        <ContactChannelsProvider>
+          <Router>
+            <Container id="App">
+              <Routes>
+                <Route path="/" element={<Landing />} />
+                <Route path="/productos" element={<ProductosRedirect />} />
+                <Route path="/:sectionId/:productId" element={<ProductPage />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+              {/* <ChatBot /> Temporalmente desactivado */}
+              <AuthModal />
+              <AccountSidebar />
+              <ContactChannels />
+            </Container>
+          </Router>
+        </ContactChannelsProvider>
       </AuthProvider>
     </Provider>
   );

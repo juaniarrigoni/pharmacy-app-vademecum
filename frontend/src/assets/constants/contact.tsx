@@ -50,6 +50,24 @@ export const laboratoryConsult = {
   )}`,
 };
 
+// Los dos canales de WhatsApp, juntos. La landing muestra una sola entrada de
+// WhatsApp y la división recién aparece acá, cuando el que escribe elige. El
+// orden es el de la pregunta: primero quién sos, después a dónde va.
+export const whatsappChannels = [
+  {
+    id: "publico",
+    title: "Atención al público",
+    description: "Pedidos, precios, turnos y consultas de pacientes.",
+    link: chat.link,
+  },
+  {
+    id: "profesional",
+    title: "Consulta profesional",
+    description: "Médicos: fórmulas, activos y preparaciones.",
+    link: laboratoryConsult.link,
+  },
+];
+
 export const phone = {
   type: "phone",
   title: "299 579 9121",
