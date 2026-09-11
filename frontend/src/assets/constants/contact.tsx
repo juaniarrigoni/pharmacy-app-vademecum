@@ -50,26 +50,6 @@ export const laboratoryConsult = {
   )}`,
 };
 
-// Los dos canales de WhatsApp, juntos. La landing muestra una sola entrada de
-// WhatsApp y la división recién aparece acá, cuando el que escribe elige.
-// En los dos te atiende un profesional: lo que cambia es con quién hablás, así
-// que cada opción se nombra por su destino y se describe por lo que se
-// consulta ahí, nunca por quién pregunta.
-export const whatsappChannels = [
-  {
-    id: "publico",
-    title: "Atención al público",
-    description: "Pedidos, precios y productos de la farmacia.",
-    link: chat.link,
-  },
-  {
-    id: "laboratorio",
-    title: "Laboratorio",
-    description: "Fórmulas magistrales, activos y preparaciones.",
-    link: laboratoryConsult.link,
-  },
-];
-
 export const phone = {
   type: "phone",
   title: "299 579 9121",

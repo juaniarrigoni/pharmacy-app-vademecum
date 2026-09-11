@@ -111,17 +111,8 @@ export const ContactItem = styled.a`
   align-items: center;
   gap: 0.5rem;
   color: ${COLORS.DARK_BROWN};
-  /* font-family explícito, no "font: inherit": el shorthand pisaría el
-     font-size y el font-weight de abajo. Va porque este mismo componente se
-     renderiza como <button> cuando abre el selector de canal, y el browser le
-     mete su propia tipografía. */
-  font-family: inherit;
   font-size: 0.85rem;
   font-weight: 500;
-  background: none;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
   text-decoration: none;
   opacity: 1;
   transition: opacity 0.2s;

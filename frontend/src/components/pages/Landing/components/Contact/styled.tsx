@@ -39,13 +39,6 @@ export const ContactCard = styled.a`
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  /* La tarjeta de WhatsApp se renderiza como <button> porque abre el selector
-     de canal en vez de navegar. Sin este reset el browser le pone su borde,
-     su fondo y su tipografía. */
-  font-family: inherit;
-  background: none;
-  border: 0;
-  cursor: pointer;
   background: ${COLORS.WHITE};
   border-radius: ${BORDER_RADIUS.SQUARE};
   box-shadow: ${BOX_SHADOW.SQUARE};
