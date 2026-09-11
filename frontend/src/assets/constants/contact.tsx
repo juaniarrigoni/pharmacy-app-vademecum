@@ -51,19 +51,21 @@ export const laboratoryConsult = {
 };
 
 // Los dos canales de WhatsApp, juntos. La landing muestra una sola entrada de
-// WhatsApp y la división recién aparece acá, cuando el que escribe elige. El
-// orden es el de la pregunta: primero quién sos, después a dónde va.
+// WhatsApp y la división recién aparece acá, cuando el que escribe elige.
+// En los dos te atiende un profesional: lo que cambia es con quién hablás, así
+// que cada opción se nombra por su destino y se describe por lo que se
+// consulta ahí, nunca por quién pregunta.
 export const whatsappChannels = [
   {
     id: "publico",
     title: "Atención al público",
-    description: "Pedidos, precios, turnos y consultas de pacientes.",
+    description: "Pedidos, precios y productos de la farmacia.",
     link: chat.link,
   },
   {
-    id: "profesional",
-    title: "Consulta profesional",
-    description: "Médicos: fórmulas, activos y preparaciones.",
+    id: "laboratorio",
+    title: "Laboratorio",
+    description: "Fórmulas magistrales, activos y preparaciones.",
     link: laboratoryConsult.link,
   },
 ];

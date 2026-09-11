@@ -22,12 +22,12 @@ const Contact: React.FC = () => {
           <ContactValue>{location.title}</ContactValue>
         </ContactCard>
 
-        {/* Una sola entrada de WhatsApp: la división entre público y
-            profesional la muestra el selector, al momento de elegir. */}
+        {/* Una sola entrada de WhatsApp: la división entre atención al
+            público y laboratorio la muestra el selector, al momento de elegir. */}
         <ContactCard as="button" type="button" onClick={openChannels}>
           <ContactIcon src={chatIcon} />
           <ContactLabel>WhatsApp</ContactLabel>
-          <ContactValue>Público o profesional</ContactValue>
+          <ContactValue>Público o laboratorio</ContactValue>
         </ContactCard>
 
         <ContactCard href={`tel:+${phone.title.replace(/\s/g, "")}`}>

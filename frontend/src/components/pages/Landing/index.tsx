@@ -39,7 +39,7 @@ const Landing: React.FC = () => {
             <ContactItem as="button" type="button" onClick={openChannels}>
               <ContactItemIcon src={chat.icon} />
               WhatsApp
-              <ContactHint>público o profesional ↗</ContactHint>
+              <ContactHint>público o laboratorio ↗</ContactHint>
             </ContactItem>
             <ContactItem href={`tel:+${phone.title.replace(/\s/g, "")}`}>
               <ContactItemIcon src={phone.icon} />

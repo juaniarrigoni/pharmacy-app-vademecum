@@ -17,7 +17,7 @@ import WhatsappIcon from "components/general/Icons/Whatsapp";
 import { whatsappChannels } from "assets/constants/contact";
 import { useContactChannels } from "contexts/ContactChannelsContext";
 import publicChannelIcon from "assets/media/CanalPublico.png";
-import professionalChannelIcon from "assets/media/CanalProfesional.png";
+import laboratoryChannelIcon from "assets/media/CanalLaboratorio.png";
 
 const ContactChannels: React.FC = () => {
   const { channelsOpen, openChannels, closeChannels } = useContactChannels();
@@ -40,7 +40,7 @@ const ContactChannels: React.FC = () => {
         fitContent
       >
         <h2>Escribinos por WhatsApp</h2>
-        <h3>Elegí por dónde seguir</h3>
+        <h3>Elegí con quién hablar</h3>
         <ChannelList>
           {whatsappChannels.map((channel) => (
             <ChannelCard
@@ -50,12 +50,12 @@ const ContactChannels: React.FC = () => {
               rel="noreferrer"
               onClick={closeChannels}
             >
-              {/* Dos canales, dos ilustraciones: una persona para el que viene
-                  a comprar, un matraz para el que viene a formular. */}
+              {/* Dos destinos, dos ilustraciones: una persona para atención
+                  al público, un matraz para el laboratorio. */}
               <ChannelIcon
                 $src={
-                  channel.id === "profesional"
-                    ? professionalChannelIcon
+                  channel.id === "laboratorio"
+                    ? laboratoryChannelIcon
                     : publicChannelIcon
                 }
               />
