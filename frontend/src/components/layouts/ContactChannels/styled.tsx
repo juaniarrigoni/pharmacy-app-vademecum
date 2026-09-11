@@ -72,18 +72,26 @@ export const ChannelCard = styled.a`
 `;
 
 /* El ícono es lo primero que se mira al elegir, así que va del tamaño del
-   texto de las dos líneas juntas y no de un renglón. */
-export const ChannelIcon = styled.span`
+   texto de las dos líneas juntas y no de un renglón.
+   Las ilustraciones son siluetas con fondo transparente usadas como máscara,
+   igual que ContactIcon: el color sale del token de la marca y no del sage
+   aproximado con el que las dibujó el generador, y no hay fondo que desentone
+   con el de la tarjeta. */
+export const ChannelIcon = styled.span<{ $src: string }>`
   flex-shrink: 0;
-  width: 38px;
-  height: 38px;
-  color: ${COLORS.SAGE};
-
-  svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
+  /* 46px y no menos: las ilustraciones son de trazo fino, y más chicas el
+     trazo cae por debajo del píxel y se lavan. El asset es de 138px (3x). */
+  width: 46px;
+  height: 46px;
+  background-color: ${COLORS.SAGE};
+  mask-image: url(${(props) => props.$src});
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url(${(props) => props.$src});
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
 `;
 
 /* El Box del Modal en modo fitContent centra todo su contenido; acá la

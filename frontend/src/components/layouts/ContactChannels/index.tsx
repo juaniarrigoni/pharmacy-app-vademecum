@@ -12,12 +12,12 @@ import {
 // Import inner components
 import Modal from "components/general/Modal";
 import WhatsappIcon from "components/general/Icons/Whatsapp";
-import PersonIcon from "components/general/Icons/Person";
-import FlaskIcon from "components/general/Icons/Flask";
 
 // Import assets
 import { whatsappChannels } from "assets/constants/contact";
 import { useContactChannels } from "contexts/ContactChannelsContext";
+import publicChannelIcon from "assets/media/CanalPublico.png";
+import professionalChannelIcon from "assets/media/CanalProfesional.png";
 
 const ContactChannels: React.FC = () => {
   const { channelsOpen, openChannels, closeChannels } = useContactChannels();
@@ -50,11 +50,15 @@ const ContactChannels: React.FC = () => {
               rel="noreferrer"
               onClick={closeChannels}
             >
-              {/* Dos canales, dos íconos: una persona para el que viene a
-                  comprar, un matraz para el que viene a formular. */}
-              <ChannelIcon>
-                {channel.id === "profesional" ? <FlaskIcon /> : <PersonIcon />}
-              </ChannelIcon>
+              {/* Dos canales, dos ilustraciones: una persona para el que viene
+                  a comprar, un matraz para el que viene a formular. */}
+              <ChannelIcon
+                $src={
+                  channel.id === "profesional"
+                    ? professionalChannelIcon
+                    : publicChannelIcon
+                }
+              />
               <ChannelText>
                 <ChannelTitle>{channel.title}</ChannelTitle>
                 <ChannelDescription>{channel.description}</ChannelDescription>
