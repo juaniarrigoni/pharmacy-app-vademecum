@@ -14,9 +14,11 @@ import logo from "assets/media/Logo.jpg";
 import { location, chat, phone } from "assets/constants/contact";
 import { SECTIONS } from "assets/constants/sections";
 import { useAuth } from "contexts/AuthContext";
+import { useContactChannels } from "contexts/ContactChannelsContext";
 
 const Landing: React.FC = () => {
   const { user, openAuthModal, openSidebar } = useAuth();
+  const { openChannels } = useContactChannels();
 
   return (
     <>
@@ -34,10 +36,10 @@ const Landing: React.FC = () => {
               {location.title}
               <ContactHint>ver en mapa ↗</ContactHint>
             </ContactItem>
-            <ContactItem href={chat.link} target="_blank" rel="noreferrer">
+            <ContactItem as="button" type="button" onClick={openChannels}>
               <ContactItemIcon src={chat.icon} />
-              {chat.title}
-              <ContactHint>abrir WhatsApp ↗</ContactHint>
+              WhatsApp
+              <ContactHint>público o laboratorio ↗</ContactHint>
             </ContactItem>
             <ContactItem href={`tel:+${phone.title.replace(/\s/g, "")}`}>
               <ContactItemIcon src={phone.icon} />

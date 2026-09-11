@@ -116,6 +116,13 @@ export const Button = styled.button`
   }
 `;
 
+/* Consulta al laboratorio. Se renderiza como <a> (as="a") para que el href
+   se compute en el render y refleje siempre la fórmula que está en pantalla. */
+export const ConsultButton = styled(Button)`
+  text-align: center;
+  text-decoration: none;
+`;
+
 export const Tabs = styled.div`
   display: flex;
   flex-direction: column;

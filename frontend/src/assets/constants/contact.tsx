@@ -5,6 +5,24 @@ import phoneIcon from "assets/media/Phone.png";
 
 export const phoneNumber = "5492995799121";
 
+// Destino de las consultas de profesionales sobre una fórmula del vademécum.
+// Línea propia del laboratorio (+54 9 299 419-5520), distinta de la que
+// atiende al público: una consulta de un profesional no entra por el mismo
+// canal que un pedido de mostrador. Si vuelve a cambiar, se cambia acá y
+// ningún componente se entera.
+export const laboratoryPhoneNumber = "5492994195520";
+
+// Copy del mensaje de consulta. Vive acá para que ajustarlo no obligue
+// a abrir un componente.
+export const laboratoryInquiryIntro =
+  "Hola! Consulta sobre una fórmula del vademécum:";
+export const laboratoryInquiryPrompt = "Mi consulta:";
+
+// Consulta suelta, sin una fórmula de por medio: el profesional que quiere
+// preguntar por un activo o una preparación no tiene que entrar a una fórmula
+// para poder escribir. Mismo destino que el botón del vademécum.
+export const laboratoryDirectInquiryIntro = "Hola! Consulta para el laboratorio:";
+
 export const developerWebsite = "https://franarrigoni.vercel.app/";
 
 export const location = {
@@ -18,8 +36,39 @@ export const chat = {
   type: "chat",
   title: "Atención por WhatsApp",
   icon: chatIcon,
-  link: "https://wa.me/542995799121?text=Hola!%20Vengo%20del%20sitio%20web",
+  link: `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+    "Hola! Vengo del sitio web"
+  )}`,
 };
+
+export const laboratoryConsult = {
+  type: "laboratory",
+  title: "Consulta al laboratorio",
+  icon: chatIcon,
+  link: `https://wa.me/${laboratoryPhoneNumber}?text=${encodeURIComponent(
+    laboratoryDirectInquiryIntro
+  )}`,
+};
+
+// Los dos canales de WhatsApp, juntos. La landing muestra una sola entrada de
+// WhatsApp y la división recién aparece acá, cuando el que escribe elige.
+// En los dos te atiende un profesional: lo que cambia es con quién hablás, así
+// que cada opción se nombra por su destino y se describe por lo que se
+// consulta ahí, nunca por quién pregunta.
+export const whatsappChannels = [
+  {
+    id: "publico",
+    title: "Atención al público",
+    description: "Pedidos, precios y productos de la farmacia.",
+    link: chat.link,
+  },
+  {
+    id: "laboratorio",
+    title: "Laboratorio",
+    description: "Fórmulas magistrales, activos y preparaciones.",
+    link: laboratoryConsult.link,
+  },
+];
 
 export const phone = {
   type: "phone",

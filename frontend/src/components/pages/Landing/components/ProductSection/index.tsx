@@ -28,6 +28,9 @@ const ProductSection: React.FC<ProductSectionProps> = ({ sectionConfig }) => {
   const [search, setSearch] = useState("");
   const [openProductModal, setOpenProductModal] = useState(false);
   const [productModal, setProductModal] = useState(emptyProductData);
+  // La categoría ya viaja en el DOM (data-category) pero no forma parte de
+  // ProductData: es contexto del modal, no del producto.
+  const [currentCategory, setCurrentCategory] = useState("");
 
   useEffect(() => {
     const fetch = sectionConfig.categories && sectionConfig.categories.length > 0
@@ -54,6 +57,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({ sectionConfig }) => {
       modoDeUso:    event.currentTarget?.dataset.mododeuso || "-",
       precio:       event.currentTarget?.dataset.precio || "-",
     };
+    setCurrentCategory(event.currentTarget?.dataset.category || "");
     setProductModal(productModalData);
     setOpenProductModal(true);
   };
@@ -83,6 +87,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({ sectionConfig }) => {
         open={openProductModal}
         setOpen={setOpenProductModal}
         sectionId={sectionConfig.id}
+        category={currentCategory}
       />
     </Container>
   );

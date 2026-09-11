@@ -16,7 +16,7 @@ import { useAuth } from 'contexts/AuthContext';
 const AuthModal: React.FC = () => {
   const { user, authModalOpen, closeAuthModal } = useAuth();
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
-  const [email, setEmail] = useState('juani.arrigoni@gmail.com');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [error, setError] = useState('');
