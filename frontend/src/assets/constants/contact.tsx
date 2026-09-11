@@ -50,30 +50,13 @@ export const laboratoryConsult = {
   )}`,
 };
 
-// Los dos canales de WhatsApp, juntos. La landing muestra una sola entrada de
-// WhatsApp y la división recién aparece acá, cuando el que escribe elige.
-// En los dos te atiende un profesional: lo que cambia es con quién hablás, así
-// que cada opción se nombra por su destino y se describe por lo que se
-// consulta ahí, nunca por quién pregunta.
-export const whatsappChannels = [
-  {
-    id: "publico",
-    title: "Atención al público",
-    description: "Pedidos, precios y productos de la farmacia.",
-    link: chat.link,
-  },
-  {
-    id: "laboratorio",
-    title: "Laboratorio",
-    description: "Fórmulas magistrales, activos y preparaciones.",
-    link: laboratoryConsult.link,
-  },
-];
-
+// El link se arma desde el número y no desde el texto visible: rearmarlo desde
+// "299 579 9121" daba tel:+2995799121, y +299 es el código de Groenlandia.
 export const phone = {
   type: "phone",
-  title: "299 579 9121",
+  title: "299 419 5520",
   icon: phoneIcon,
+  link: `tel:+${laboratoryPhoneNumber}`,
 };
 
 // Google Spreadsheet

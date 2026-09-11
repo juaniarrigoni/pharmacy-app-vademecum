@@ -11,14 +11,12 @@ import Cart from "components/layouts/Cart";
 
 // Import assets
 import logo from "assets/media/Logo.jpg";
-import { location, chat, phone } from "assets/constants/contact";
+import { location, laboratoryConsult, phone } from "assets/constants/contact";
 import { SECTIONS } from "assets/constants/sections";
 import { useAuth } from "contexts/AuthContext";
-import { useContactChannels } from "contexts/ContactChannelsContext";
 
 const Landing: React.FC = () => {
   const { user, openAuthModal, openSidebar } = useAuth();
-  const { openChannels } = useContactChannels();
 
   return (
     <>
@@ -36,12 +34,12 @@ const Landing: React.FC = () => {
               {location.title}
               <ContactHint>ver en mapa ↗</ContactHint>
             </ContactItem>
-            <ContactItem as="button" type="button" onClick={openChannels}>
-              <ContactItemIcon src={chat.icon} />
-              WhatsApp
-              <ContactHint>público o laboratorio ↗</ContactHint>
+            <ContactItem href={laboratoryConsult.link} target="_blank" rel="noreferrer">
+              <ContactItemIcon src={laboratoryConsult.icon} />
+              {laboratoryConsult.title}
+              <ContactHint>abrir WhatsApp ↗</ContactHint>
             </ContactItem>
-            <ContactItem href={`tel:+${phone.title.replace(/\s/g, "")}`}>
+            <ContactItem href={phone.link}>
               <ContactItemIcon src={phone.icon} />
               {phone.title}
               <ContactHint>llamar ↗</ContactHint>
