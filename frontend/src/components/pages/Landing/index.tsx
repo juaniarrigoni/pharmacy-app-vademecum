@@ -39,7 +39,7 @@ const Landing: React.FC = () => {
               {laboratoryConsult.title}
               <ContactHint>abrir WhatsApp ↗</ContactHint>
             </ContactItem>
-            <ContactItem href={`tel:+${phone.title.replace(/\s/g, "")}`}>
+            <ContactItem href={phone.link}>
               <ContactItemIcon src={phone.icon} />
               {phone.title}
               <ContactHint>llamar ↗</ContactHint>

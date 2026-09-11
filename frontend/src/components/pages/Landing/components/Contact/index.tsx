@@ -25,7 +25,7 @@ const Contact: React.FC = () => {
           <ContactValue>{laboratoryConsult.title}</ContactValue>
         </ContactCard>
 
-        <ContactCard href={`tel:+${phone.title.replace(/\s/g, "")}`}>
+        <ContactCard href={phone.link}>
           <ContactIcon src={phoneIcon} />
           <ContactLabel>Teléfono</ContactLabel>
           <ContactValue>{phone.title}</ContactValue>

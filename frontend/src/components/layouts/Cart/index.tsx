@@ -24,7 +24,7 @@ import RequestUserDataModal from "components/layouts/RequestUserDataModal";
 
 // Import assets
 import { useAppSelector } from "assets/store";
-import { phoneNumber } from "assets/constants/contact";
+import { laboratoryPhoneNumber } from "assets/constants/contact";
 import type { ProductData } from "assets/types";
 
 const Cart: React.FC = () => {
@@ -47,7 +47,7 @@ const Cart: React.FC = () => {
       .map((product) => `*${fx(product.nombre)}*%0a${fx(product.formula)}`)
       .join("%0a%0a");
     // eslint-disable-next-line no-param-reassign
-    event.currentTarget.href = `https://wa.me/${phoneNumber}?text=${message}%0a%0a${products}`;
+    event.currentTarget.href = `https://wa.me/${laboratoryPhoneNumber}?text=${message}%0a%0a${products}`;
   };
 
   const shareLink = () => {
@@ -61,7 +61,7 @@ const Cart: React.FC = () => {
     const customerMessage = fx(
       `Hola! Quisiera consultar el precio del siguiente listado, recomendado por ${username}:`
     );
-    const customerLink = `https://wa.me/${phoneNumber}?text=${customerMessage}%0a%0a${products}`;
+    const customerLink = `https://wa.me/${laboratoryPhoneNumber}?text=${customerMessage}%0a%0a${products}`;
     const message = fx("Hola! Quisiera recomendarte el siguiente listado");
     const cta = fx(
       `Ponte en contacto con Farmacéuticos Asociados a través del siguiente link para consultar el precio:`

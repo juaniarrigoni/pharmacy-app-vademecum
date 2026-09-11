@@ -50,10 +50,13 @@ export const laboratoryConsult = {
   )}`,
 };
 
+// El link se arma desde el número y no desde el texto visible: rearmarlo desde
+// "299 579 9121" daba tel:+2995799121, y +299 es el código de Groenlandia.
 export const phone = {
   type: "phone",
-  title: "299 579 9121",
+  title: "299 419 5520",
   icon: phoneIcon,
+  link: `tel:+${laboratoryPhoneNumber}`,
 };
 
 // Google Spreadsheet
